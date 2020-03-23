@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2842A59BC9FB564C3D1BF24B /* Pods_DeepSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */; };
 		9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B6F124284F5F00297C60 /* AppDelegate.swift */; };
 		9665B6F924284F5F00297C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9665B6F724284F5F00297C60 /* Main.storyboard */; };
 		9665B6FC24284F5F00297C60 /* DeepSleep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9665B6FA24284F5F00297C60 /* DeepSleep.xcdatamodeld */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepSleep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9665B6EE24284F5F00297C60 /* DeepSleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepSleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9665B6F124284F5F00297C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9665B6F824284F5F00297C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		9665B70C242881AD00297C60 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		9665B70E2428936C00297C60 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		9665B7102428955E00297C60 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		D618B26F0868E7F2A42121DD /* Pods-DeepSleep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepSleep.release.xcconfig"; path = "Target Support Files/Pods-DeepSleep/Pods-DeepSleep.release.xcconfig"; sourceTree = "<group>"; };
+		D65C55BFC277E9C8656CF144 /* Pods-DeepSleep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepSleep.debug.xcconfig"; path = "Target Support Files/Pods-DeepSleep/Pods-DeepSleep.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2842A59BC9FB564C3D1BF24B /* Pods_DeepSleep.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16290B2F005017301A4415BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E237FBD093E9C5DB95450AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D65C55BFC277E9C8656CF144 /* Pods-DeepSleep.debug.xcconfig */,
+				D618B26F0868E7F2A42121DD /* Pods-DeepSleep.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9665B6E524284F5F00297C60 = {
 			isa = PBXGroup;
 			children = (
 				9665B6F024284F5F00297C60 /* DeepSleep */,
 				9665B6EF24284F5F00297C60 /* Products */,
+				7E237FBD093E9C5DB95450AC /* Pods */,
+				16290B2F005017301A4415BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9665B70524284F6200297C60 /* Build configuration list for PBXNativeTarget "DeepSleep" */;
 			buildPhases = (
+				D2A6837C552A510026969D21 /* [CP] Check Pods Manifest.lock */,
 				9665B6EA24284F5F00297C60 /* Sources */,
 				9665B6EB24284F5F00297C60 /* Frameworks */,
 				9665B6EC24284F5F00297C60 /* Resources */,
+				723B782B71DE322227898896 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,6 +165,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		723B782B71DE322227898896 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepSleep/Pods-DeepSleep-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepSleep/Pods-DeepSleep-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeepSleep/Pods-DeepSleep-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2A6837C552A510026969D21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeepSleep-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9665B6EA24284F5F00297C60 /* Sources */ = {
@@ -290,6 +359,7 @@
 		};
 		9665B70624284F6200297C60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D65C55BFC277E9C8656CF144 /* Pods-DeepSleep.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -309,6 +379,7 @@
 		};
 		9665B70724284F6200297C60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D618B26F0868E7F2A42121DD /* Pods-DeepSleep.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

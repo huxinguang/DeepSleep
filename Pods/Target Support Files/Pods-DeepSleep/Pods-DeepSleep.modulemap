@@ -1,0 +1,6 @@
+framework module Pods_DeepSleep {
+  umbrella header "Pods-DeepSleep-umbrella.h"
+
+  export *
+  module * { export * }
+}
