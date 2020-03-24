@@ -89,8 +89,20 @@
                     <view key="view" contentMode="scaleToFill" id="sJQ-3Y-yr0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="W3U-Ra-bqQ"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-f6-I7J">
+                                <rect key="frame" x="364" y="20" width="30" height="30"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="onClose:" destination="bVb-h9-YpA" eventType="touchUpInside" id="Xjz-4y-Ka1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cbN-f6-I7J" firstAttribute="top" secondItem="sJQ-3Y-yr0" secondAttribute="top" constant="20" id="LLC-8Z-oed"/>
+                            <constraint firstAttribute="trailing" secondItem="cbN-f6-I7J" secondAttribute="trailing" constant="20" id="pLn-tH-gOl"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2w-3w-lk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -125,6 +137,7 @@
     <resources>
         <image name="bg1" width="540" height="540"/>
         <image name="bg2" width="540" height="540"/>
+        <image name="close" width="30" height="30"/>
         <image name="next" width="30" height="30"/>
         <image name="play" width="60" height="60"/>
         <image name="previous" width="30" height="30"/>

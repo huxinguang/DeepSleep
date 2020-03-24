@@ -35,31 +35,31 @@ class CustomPresentationController: UIPresentationController {
     }
     
     override func presentationTransitionDidEnd(_ completed: Bool) {
-//        if completed {
-//            dimmingView.removeFromSuperview()
-//        }
+        
     }
     
     override func dismissalTransitionWillBegin() {
+        let transitionCoordinator = presentingViewController.transitionCoordinator
+        transitionCoordinator?.animate(alongsideTransition: { (context) in
+            self.dimmingView.alpha = 0
+        }, completion: nil)
         
     }
     
     override func dismissalTransitionDidEnd(_ completed: Bool) {
-        
+        if completed {
+            dimmingView.removeFromSuperview()
+        }
     }
     
     override var frameOfPresentedViewInContainerView: CGRect{
-        return CGRect(x: 0, y: UIScreen.main.bounds.size.height-300, width: UIScreen.main.bounds.size.width, height: 300)
+        return CGRect(x: 0, y: UIScreen.main.bounds.size.height*0.3, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height*0.7)
     }
-    
-//    override var shouldPresentInFullscreen: Bool{
-//        return false
-//    }
 
     @objc
     fileprivate func onDimViewClicked(){
         guard let vc = presentedViewController as? MusicListVC else { return }
-        
+        vc.dismiss(animated: true, completion: nil)
     }
     
     

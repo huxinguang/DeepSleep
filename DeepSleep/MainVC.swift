@@ -29,11 +29,11 @@ class MainVC: BaseVC {
     }
     
     @IBAction func onListBtn(_ sender: UIButton) {
-        let vc = MusicListVC()
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MusicListVC")
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self
-//        vc.transitioningDelegate = PresentationObject.share
-//        navigationController?.present(vc, animated: true, completion: nil)
+        //vc.transitioningDelegate = PresentationObject.share
         present(vc, animated: true, completion: nil)
         
         

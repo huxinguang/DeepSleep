@@ -12,10 +12,13 @@ class MusicListVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.red
         view.setCorner(10, [.topLeft, .topRight])
-
     }
+    
+    @IBAction func onClose(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 
     /*
