@@ -26,8 +26,16 @@
                                     <constraint firstAttribute="width" secondItem="QA8-H5-qt0" secondAttribute="height" id="wn7-34-36b"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dG-qM-4iG">
+                                <rect key="frame" x="30" y="677" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wif-tM-9hr">
+                                <rect key="frame" x="316" y="677" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GIQ-Wc-fGa">
-                                <rect key="frame" x="28" y="722" width="358" height="31"/>
+                                <rect key="frame" x="28" y="727" width="358" height="31"/>
                             </slider>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="th4-BP-1ut">
                                 <rect key="frame" x="30" y="772" width="354" height="60"/>
@@ -62,16 +70,20 @@
                         <constraints>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="centerY" secondItem="fgv-6Q-3X2" secondAttribute="centerY" id="4iq-qb-bhs"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4zV-BT-Koi"/>
+                            <constraint firstItem="7dG-qM-4iG" firstAttribute="leading" secondItem="GIQ-Wc-fGa" secondAttribute="leading" id="Djq-C4-du6"/>
                             <constraint firstItem="GIQ-Wc-fGa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="HDK-6R-aJx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" constant="30" id="Hkw-La-QGs"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="centerX" secondItem="fgv-6Q-3X2" secondAttribute="centerX" id="Jzk-Ls-O7m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="th4-BP-1ut" secondAttribute="bottom" constant="30" id="acG-ZU-ycU"/>
+                            <constraint firstItem="GIQ-Wc-fGa" firstAttribute="top" secondItem="7dG-qM-4iG" secondAttribute="bottom" constant="20" id="dgD-VG-ONX"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="width" secondItem="fgv-6Q-3X2" secondAttribute="width" id="dv0-nO-b7A"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="height" secondItem="fgv-6Q-3X2" secondAttribute="height" id="fZ4-o6-zXG"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="jnI-RW-ksO"/>
+                            <constraint firstItem="GIQ-Wc-fGa" firstAttribute="top" secondItem="wif-tM-9hr" secondAttribute="bottom" constant="20" id="kLq-GW-DAl"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="keO-Em-jX5"/>
-                            <constraint firstItem="th4-BP-1ut" firstAttribute="top" secondItem="GIQ-Wc-fGa" secondAttribute="bottom" constant="20" id="qjg-l3-gtu"/>
+                            <constraint firstItem="th4-BP-1ut" firstAttribute="top" secondItem="GIQ-Wc-fGa" secondAttribute="bottom" constant="15" id="qjg-l3-gtu"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="leading" secondItem="GIQ-Wc-fGa" secondAttribute="leading" id="sQm-Xm-oZb"/>
+                            <constraint firstItem="wif-tM-9hr" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" id="v4d-0F-u1x"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" id="xQ7-5X-URg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
