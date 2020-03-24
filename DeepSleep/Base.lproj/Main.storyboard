@@ -129,7 +129,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.89870505136986301" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.85017123287671237" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Lgt-h1-qcQ" firstAttribute="leading" secondItem="v49-eu-LQa" secondAttribute="leading" constant="15" id="2FJ-Lp-vP6"/>
                             <constraint firstItem="Rnu-Tz-VVT" firstAttribute="leading" secondItem="v49-eu-LQa" secondAttribute="leading" id="2ab-0M-57Q"/>

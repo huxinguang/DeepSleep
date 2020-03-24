@@ -42,6 +42,10 @@ extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath)
+        cell.imageView?.image = UIImage(named: "music")
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.font = UIFont(name: "PingFangSC-Regular", size: 15)
+        cell.textLabel?.text = "第\(indexPath.row)首歌曲"
         return cell
     }
     
