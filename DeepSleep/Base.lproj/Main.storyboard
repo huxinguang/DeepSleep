@@ -91,12 +91,31 @@
                     <navigationItem key="navigationItem" id="M7z-l8-Ai1">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="setting" id="1M1-bW-SVK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="h5N-M5-ARI" kind="show" id="Mwa-9i-rCT"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="89.732142857142847"/>
+        </scene>
+        <!--设置-->
+        <scene sceneID="xz0-gC-MHB">
+            <objects>
+                <viewController storyboardIdentifier="SettingVC" id="h5N-M5-ARI" customClass="SettingVC" customModule="DeepSleep" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fme-qV-ba1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.20784313725490194" green="0.10980392156862745" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="uHd-7a-cT0"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="设置" id="Dow-3T-9Dd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zf2-iP-j2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1961" y="90"/>
         </scene>
         <!--Music ListVC-->
         <scene sceneID="W29-Dl-d6T">
@@ -178,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2w-3w-lk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918.840579710145" y="89.732142857142847"/>
+            <point key="canvasLocation" x="1961" y="755"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="6aT-3B-h30">
@@ -188,6 +207,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="27s-QR-MKz">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -212,6 +232,6 @@
         <image name="play" width="60" height="60"/>
         <image name="previous" width="30" height="30"/>
         <image name="recircle" width="25" height="25"/>
-        <image name="setting" width="24" height="24"/>
+        <image name="setting" width="30" height="30"/>
     </resources>
 </document>
