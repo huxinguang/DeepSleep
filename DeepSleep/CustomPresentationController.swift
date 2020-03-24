@@ -11,8 +11,9 @@ import UIKit
 class CustomPresentationController: UIPresentationController {
     
     fileprivate lazy var dimmingView: UIView = {
-        let dv = UIView(frame: UIScreen.main.bounds)
+        let dv = UIControl(frame: UIScreen.main.bounds)
         dv.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        dv.addTarget(self, action: #selector(onDimViewClicked), for: .touchUpInside)
         return dv
     }()
     
@@ -55,4 +56,12 @@ class CustomPresentationController: UIPresentationController {
 //        return false
 //    }
 
+    @objc
+    fileprivate func onDimViewClicked(){
+        guard let vc = presentedViewController as? MusicListVC else { return }
+        
+    }
+    
+    
+    
 }
