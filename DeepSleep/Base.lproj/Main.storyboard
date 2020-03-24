@@ -91,13 +91,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgt-h1-qcQ">
-                                <rect key="frame" x="15" y="59" width="384" height="25.5"/>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
+                                <rect key="frame" x="15" y="59" width="384" height="24"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wir-Ni-y0L">
-                                <rect key="frame" x="0.0" y="84.5" width="414" height="733.5"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="735"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicCell" rowHeight="67" id="PaK-tx-6A6">
@@ -120,7 +120,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="XBo-a8-G8x"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
                                 <state key="normal" title="关闭">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -145,6 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="v49-eu-LQa"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="Rnu-Tz-VVT" id="QsN-fK-Goq"/>
                         <outlet property="tableView" destination="wir-Ni-y0L" id="bfF-ol-XZO"/>
                     </connections>
                 </viewController>

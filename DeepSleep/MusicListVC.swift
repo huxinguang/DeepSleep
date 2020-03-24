@@ -11,10 +11,20 @@ import UIKit
 class MusicListVC: BaseVC {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var closeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setCorner(10, [.topLeft, .topRight])
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let lineLayer = CALayer()
+        lineLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0.5)
+        lineLayer.backgroundColor = UIColor.darkGray.cgColor
+        closeButton.layer.addSublayer(lineLayer)
     }
     
     @IBAction func onClose(_ sender: UIButton) {
