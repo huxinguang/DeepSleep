@@ -9,7 +9,9 @@
 import UIKit
 
 class MusicListVC: BaseVC {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setCorner(10, [.topLeft, .topRight])
@@ -31,4 +33,17 @@ class MusicListVC: BaseVC {
     }
     */
 
+}
+
+extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath)
+        return cell
+    }
+    
+    
 }

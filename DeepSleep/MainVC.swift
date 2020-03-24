@@ -35,8 +35,6 @@ class MainVC: BaseVC {
         vc.transitioningDelegate = self
         //vc.transitioningDelegate = PresentationObject.share
         present(vc, animated: true, completion: nil)
-        
-        
     }
     
     /*
