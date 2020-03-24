@@ -46,6 +46,7 @@ extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont(name: "PingFangSC-Regular", size: 15)
         cell.textLabel?.text = "第\(indexPath.row)首歌曲"
+        cell.accessoryView = UIImageView(image: UIImage(named: "cell_play"))
         return cell
     }
     
