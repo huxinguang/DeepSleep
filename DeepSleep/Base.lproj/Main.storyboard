@@ -89,6 +89,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="M7z-l8-Ai1">
+                        <barButtonItem key="backBarButtonItem" title="主页" id="j21-UE-bCh"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="setting" id="1M1-bW-SVK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
