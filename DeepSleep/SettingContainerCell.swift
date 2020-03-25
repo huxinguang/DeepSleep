@@ -37,10 +37,14 @@ extension SettingContainerCell: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
-        cell.textLabel?.text = titles![indexPath.row]
-        cell.textLabel?.textColor = .white
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SettingCell
+        cell.titleLabel.text = titles![indexPath.row]
         cell.accessoryView = UIImageView(image: UIImage(named: "arrow"))
+        if indexPath.row == titles!.count - 1 {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+        }else{
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        }
         return cell
     }
     

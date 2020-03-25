@@ -123,9 +123,10 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-JU-CeT">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-JU-CeT">
                                             <rect key="frame" x="10" y="5" width="394" height="83"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="separatorColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell" id="Ucm-w9-ceT" customClass="SettingCell" customModule="DeepSleep" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="28" width="394" height="60"/>
@@ -133,8 +134,24 @@
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ucm-w9-ceT" id="7Lh-ou-6l5">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-lS-Yro">
+                                                                <rect key="frame" x="15" y="20.5" width="39.5" height="19.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="dUP-lS-Yro" firstAttribute="centerY" secondItem="7Lh-ou-6l5" secondAttribute="centerY" id="cyJ-DB-tu7"/>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dUP-lS-Yro" secondAttribute="trailing" constant="30" id="fTA-NX-dFE"/>
+                                                            <constraint firstItem="dUP-lS-Yro" firstAttribute="leading" secondItem="7Lh-ou-6l5" secondAttribute="leading" constant="15" id="kml-6j-YlN"/>
+                                                        </constraints>
                                                     </tableViewCellContentView>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <outlet property="titleLabel" destination="dUP-lS-Yro" id="y7A-CT-WOj"/>
+                                                    </connections>
                                                 </tableViewCell>
                                             </prototypes>
                                             <connections>

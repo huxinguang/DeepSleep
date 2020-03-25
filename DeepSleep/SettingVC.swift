@@ -10,7 +10,7 @@ import UIKit
 
 class SettingVC: UITableViewController {
     
-    let titles = [["111111"],["22222","33333","444444444"]]
+    let titles = [["评分"],["意见反馈","关于","当前版本"]]
     
 
     override func viewDidLoad() {
