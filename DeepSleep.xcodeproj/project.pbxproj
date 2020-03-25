@@ -24,6 +24,7 @@
 		9665B723242B04C400297C60 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B722242B04C400297C60 /* SettingVC.swift */; };
 		9665B725242B0A0E00297C60 /* SettingContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B724242B0A0E00297C60 /* SettingContainerCell.swift */; };
 		9665B727242B197400297C60 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B726242B197400297C60 /* SettingCell.swift */; };
+		9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B728242B2A6700297C60 /* FeedbackVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		9665B722242B04C400297C60 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		9665B724242B0A0E00297C60 /* SettingContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingContainerCell.swift; sourceTree = "<group>"; };
 		9665B726242B197400297C60 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		9665B728242B2A6700297C60 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
 		D618B26F0868E7F2A42121DD /* Pods-DeepSleep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepSleep.release.xcconfig"; path = "Target Support Files/Pods-DeepSleep/Pods-DeepSleep.release.xcconfig"; sourceTree = "<group>"; };
 		D65C55BFC277E9C8656CF144 /* Pods-DeepSleep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepSleep.debug.xcconfig"; path = "Target Support Files/Pods-DeepSleep/Pods-DeepSleep.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 				9665B722242B04C400297C60 /* SettingVC.swift */,
 				9665B724242B0A0E00297C60 /* SettingContainerCell.swift */,
 				9665B726242B197400297C60 /* SettingCell.swift */,
+				9665B728242B2A6700297C60 /* FeedbackVC.swift */,
 				9665B7142429A12300297C60 /* CustomPresentationController.swift */,
 				9665B71A2429B09C00297C60 /* PresentationObject.swift */,
 				9665B71C2429D65100297C60 /* UIView.swift */,
@@ -247,6 +250,7 @@
 				9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */,
 				9665B723242B04C400297C60 /* SettingVC.swift in Sources */,
 				9665B71B2429B09C00297C60 /* PresentationObject.swift in Sources */,
+				9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */,
 				9665B71D2429D65100297C60 /* UIView.swift in Sources */,
 				9665B7112428955E00297C60 /* BaseVC.swift in Sources */,
 			);

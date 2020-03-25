@@ -48,5 +48,25 @@ extension SettingContainerCell: UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch titles![indexPath.row] {
+        case "评分":
+            break
+        case "意见反馈":
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "FeedbackVC")
+            
+            break
+        case "关于":
+            break
+        case "当前版本":
+            break
+        default:
+            break
+        }
+        
+        
+    }
     
 }
