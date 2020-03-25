@@ -22,7 +22,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2" translatesAutoresizingMaskIntoConstraints="NO" id="QA8-H5-qt0">
                                 <rect key="frame" x="52" y="272.5" width="310.5" height="310.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="310.5" id="mjU-B2-ABO"/>
                                     <constraint firstAttribute="width" secondItem="QA8-H5-qt0" secondAttribute="height" id="wn7-34-36b"/>
                                 </constraints>
                             </imageView>
