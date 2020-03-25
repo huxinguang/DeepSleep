@@ -38,7 +38,7 @@ extension SettingContainerCell: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        cell.textLabel?.text = titles![indexPath.row]
         cell.textLabel?.textColor = .white
         cell.accessoryView = UIImageView(image: UIImage(named: "arrow"))
         return cell

@@ -45,6 +45,14 @@ class SettingVC: UITableViewController {
         return CGFloat(titles[indexPath.section].count * 60 + 5*2)
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
