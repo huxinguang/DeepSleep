@@ -15,12 +15,20 @@ PODS:
     - LeanCloud/Foundation (= 17.5.0)
     - Starscream (~> 3.1)
     - SwiftProtobuf (~> 1.8)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
   - Starscream (3.1.1)
   - SwiftProtobuf (1.8.0)
 
 DEPENDENCIES:
   - Kingfisher
   - LeanCloud
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -28,6 +36,9 @@ SPEC REPOS:
     - GRDB.swift
     - Kingfisher
     - LeanCloud
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - Starscream
     - SwiftProtobuf
 
@@ -36,9 +47,12 @@ SPEC CHECKSUMS:
   GRDB.swift: 4a6aab0c6f492db0ed42c76efdd5733245516db4
   Kingfisher: f33a848445e33c543620812158dc5d47f6bf90df
   LeanCloud: 2baac97f876a637abf7c861487dc3451543dd2db
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftProtobuf: 2cbd9409689b7df170d82a92a33443c8e3e14a70
 
-PODFILE CHECKSUM: 274b8b3a5ba9b241f85b875673de509cb3d59e6f
+PODFILE CHECKSUM: 03b45c943585e5d75ffd9c6fa00dbf95c4569575
 
 COCOAPODS: 1.7.4

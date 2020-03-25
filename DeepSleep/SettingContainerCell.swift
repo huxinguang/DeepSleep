@@ -11,6 +11,7 @@ import UIKit
 class SettingContainerCell: UITableViewCell {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var titles: [String]? {
         didSet{
             tableView.reloadData()
@@ -20,6 +21,7 @@ class SettingContainerCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,28 +47,28 @@ extension SettingContainerCell: UITableViewDataSource, UITableViewDelegate{
         }else{
             cell.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
+
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        switch titles![indexPath.row] {
-        case "评分":
-            break
-        case "意见反馈":
-//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "FeedbackVC")
-            
-            break
-        case "关于":
-            break
-        case "当前版本":
-            break
-        default:
-            break
-        }
-        
-        
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath)
+//        switch titles![indexPath.row] {
+//        case "评分":
+//            break
+//        case "意见反馈":
+////            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+////            let vc = storyboard.instantiateViewController(withIdentifier: "FeedbackVC")
+//            
+//            break
+//        case "关于":
+//            break
+//        case "当前版本":
+//            break
+//        default:
+//            break
+//        }
+//        
+//    }
     
 }

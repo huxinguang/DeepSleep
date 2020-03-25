@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
 
 class SettingVC: UITableViewController {
     
     let titles = [["评分"],["意见反馈","关于","当前版本"]]
+    let disposeBag = DisposeBag()
     
 
     override func viewDidLoad() {
@@ -21,6 +25,9 @@ class SettingVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+        
+    
     }
 
     // MARK: - Table view data source
@@ -38,6 +45,23 @@ class SettingVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingContainerCell", for: indexPath) as! SettingContainerCell
         cell.titles = titles[indexPath.section]
+        cell.tableView.rx.itemSelected.subscribe(onNext: { (subIndexPath) in
+            if indexPath.section == 0{
+                
+            }else{
+                switch subIndexPath.row {
+                case 0:
+                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "FeedbackVC")
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    break
+                case 1:
+                    break
+                default:
+                    break
+                }
+            }
+            }).disposed(by: disposeBag)
         return cell
     }
     

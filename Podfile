@@ -5,5 +5,6 @@ target 'DeepSleep' do
   inhibit_all_warnings!
   pod 'Kingfisher'
   pod 'LeanCloud'
-  
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
 end
