@@ -28,6 +28,10 @@ class MainVC: BaseVC {
         
     }
     
+    @IBAction func onUnfoldBtn(_ sender: UIButton) {
+        
+    }
+    
     @IBAction func onListBtn(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "MusicListVC")

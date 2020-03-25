@@ -84,6 +84,9 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Button" image="unfold"/>
+                            <connections>
+                                <action selector="onUnfoldBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a7V-EQ-p05"/>
+                            </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="setting" id="1M1-bW-SVK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
