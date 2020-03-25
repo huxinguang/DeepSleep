@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import KMPlaceholderTextView
 
 class FeedbackVC: UIViewController {
 
+    @IBOutlet weak var textView: KMPlaceholderTextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.tintColor = .white
 
         // Do any additional setup after loading the view.
     }
