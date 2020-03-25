@@ -21,7 +21,7 @@
 		9665B71B2429B09C00297C60 /* PresentationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B71A2429B09C00297C60 /* PresentationObject.swift */; };
 		9665B71D2429D65100297C60 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B71C2429D65100297C60 /* UIView.swift */; };
 		9665B71F2429E71800297C60 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B71E2429E71800297C60 /* MusicCell.swift */; };
-		9665B721242A07BE00297C60 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B720242A07BE00297C60 /* SettingVC.swift */; };
+		9665B723242B04C400297C60 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B722242B04C400297C60 /* SettingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		9665B71A2429B09C00297C60 /* PresentationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationObject.swift; sourceTree = "<group>"; };
 		9665B71C2429D65100297C60 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		9665B71E2429E71800297C60 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
-		9665B720242A07BE00297C60 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		9665B722242B04C400297C60 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		D618B26F0868E7F2A42121DD /* Pods-DeepSleep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepSleep.release.xcconfig"; path = "Target Support Files/Pods-DeepSleep/Pods-DeepSleep.release.xcconfig"; sourceTree = "<group>"; };
 		D65C55BFC277E9C8656CF144 /* Pods-DeepSleep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepSleep.debug.xcconfig"; path = "Target Support Files/Pods-DeepSleep/Pods-DeepSleep.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +102,7 @@
 				9665B70E2428936C00297C60 /* MainVC.swift */,
 				9665B7122429A03B00297C60 /* MusicListVC.swift */,
 				9665B71E2429E71800297C60 /* MusicCell.swift */,
-				9665B720242A07BE00297C60 /* SettingVC.swift */,
+				9665B722242B04C400297C60 /* SettingVC.swift */,
 				9665B7142429A12300297C60 /* CustomPresentationController.swift */,
 				9665B71A2429B09C00297C60 /* PresentationObject.swift */,
 				9665B71C2429D65100297C60 /* UIView.swift */,
@@ -237,7 +237,7 @@
 				9665B6FC24284F5F00297C60 /* DeepSleep.xcdatamodeld in Sources */,
 				9665B71F2429E71800297C60 /* MusicCell.swift in Sources */,
 				9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */,
-				9665B721242A07BE00297C60 /* SettingVC.swift in Sources */,
+				9665B723242B04C400297C60 /* SettingVC.swift in Sources */,
 				9665B71B2429B09C00297C60 /* PresentationObject.swift in Sources */,
 				9665B71D2429D65100297C60 /* UIView.swift in Sources */,
 				9665B7112428955E00297C60 /* BaseVC.swift in Sources */,

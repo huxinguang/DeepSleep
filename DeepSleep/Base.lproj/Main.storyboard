@@ -26,14 +26,6 @@
                                     <constraint firstAttribute="width" secondItem="QA8-H5-qt0" secondAttribute="height" id="wn7-34-36b"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dG-qM-4iG">
-                                <rect key="frame" x="30" y="677" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wif-tM-9hr">
-                                <rect key="frame" x="316" y="677" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GIQ-Wc-fGa">
                                 <rect key="frame" x="28" y="727" width="358" height="31"/>
                             </slider>
@@ -70,30 +62,34 @@
                         <constraints>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="centerY" secondItem="fgv-6Q-3X2" secondAttribute="centerY" id="4iq-qb-bhs"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4zV-BT-Koi"/>
-                            <constraint firstItem="7dG-qM-4iG" firstAttribute="leading" secondItem="GIQ-Wc-fGa" secondAttribute="leading" id="Djq-C4-du6"/>
                             <constraint firstItem="GIQ-Wc-fGa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="HDK-6R-aJx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" constant="30" id="Hkw-La-QGs"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="centerX" secondItem="fgv-6Q-3X2" secondAttribute="centerX" id="Jzk-Ls-O7m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="th4-BP-1ut" secondAttribute="bottom" constant="30" id="acG-ZU-ycU"/>
-                            <constraint firstItem="GIQ-Wc-fGa" firstAttribute="top" secondItem="7dG-qM-4iG" secondAttribute="bottom" constant="20" id="dgD-VG-ONX"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="width" secondItem="fgv-6Q-3X2" secondAttribute="width" id="dv0-nO-b7A"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="height" secondItem="fgv-6Q-3X2" secondAttribute="height" id="fZ4-o6-zXG"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="jnI-RW-ksO"/>
-                            <constraint firstItem="GIQ-Wc-fGa" firstAttribute="top" secondItem="wif-tM-9hr" secondAttribute="bottom" constant="20" id="kLq-GW-DAl"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="keO-Em-jX5"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="top" secondItem="GIQ-Wc-fGa" secondAttribute="bottom" constant="15" id="qjg-l3-gtu"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="leading" secondItem="GIQ-Wc-fGa" secondAttribute="leading" id="sQm-Xm-oZb"/>
-                            <constraint firstItem="wif-tM-9hr" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" id="v4d-0F-u1x"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" id="xQ7-5X-URg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="M7z-l8-Ai1">
-                        <barButtonItem key="backBarButtonItem" title="主页" id="j21-UE-bCh"/>
+                        <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title="返回" id="j21-UE-bCh"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="lyn-QH-lPd">
+                            <rect key="frame" x="157" y="0.0" width="100" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Button" image="unfold"/>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="setting" id="1M1-bW-SVK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="h5N-M5-ARI" kind="show" id="Mwa-9i-rCT"/>
+                                <segue destination="4Sw-1U-rMc" kind="show" id="HLL-k2-7aJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -103,20 +99,36 @@
             <point key="canvasLocation" x="1047.8260869565217" y="89.732142857142847"/>
         </scene>
         <!--设置-->
-        <scene sceneID="xz0-gC-MHB">
+        <scene sceneID="oMH-Gr-auu">
             <objects>
-                <viewController storyboardIdentifier="SettingVC" id="h5N-M5-ARI" customClass="SettingVC" customModule="DeepSleep" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fme-qV-ba1">
+                <tableViewController id="4Sw-1U-rMc" customClass="SettingVC" customModule="DeepSleep" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JT3-ki-Y9Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.20784313725490194" green="0.10980392156862745" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="uHd-7a-cT0"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="设置" id="Dow-3T-9Dd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zf2-iP-j2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" red="0.20784313730000001" green="0.10980392160000001" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell" id="6Ql-26-MC5">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Ql-26-MC5" id="bYT-iS-tB9">
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4Sw-1U-rMc" id="DWh-2F-TGF"/>
+                            <outlet property="delegate" destination="4Sw-1U-rMc" id="vj0-6A-Pj0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="设置" id="Ttp-th-eF6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0K-7q-QrW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="90"/>
+            <point key="canvasLocation" x="1933" y="81"/>
         </scene>
         <!--Music ListVC-->
         <scene sceneID="W29-Dl-d6T">
@@ -210,6 +222,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
@@ -234,5 +247,6 @@
         <image name="previous" width="30" height="30"/>
         <image name="recircle" width="25" height="25"/>
         <image name="setting" width="30" height="30"/>
+        <image name="unfold" width="22" height="22"/>
     </resources>
 </document>
