@@ -16,6 +16,11 @@ class MusicTypeVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func onCloseBtn(_ sender: UIButton) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     deinit {
         print("MusicTypeVC denit")
     }

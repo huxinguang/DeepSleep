@@ -111,6 +111,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-Xm-eDB">
                                 <rect key="frame" x="352" y="70" width="30" height="30"/>
                                 <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="7qq-jh-3Ur"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

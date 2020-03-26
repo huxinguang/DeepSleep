@@ -33,8 +33,8 @@ class MainVC: BaseVC {
     @IBAction func onUnfoldBtn(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeVC")
-        vc.modalPresentationStyle = .custom
-        vc.transitioningDelegate = vc.presentationDelegate
+        vc.modalPresentationStyle = .overCurrentContext
+//        vc.transitioningDelegate = vc.presentationDelegate
         present(vc, animated: false, completion: nil)
         
     }
