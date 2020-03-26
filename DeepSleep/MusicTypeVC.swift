@@ -16,6 +16,10 @@ class MusicTypeVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    deinit {
+        print("MusicTypeVC denit")
+    }
+    
 
     /*
     // MARK: - Navigation

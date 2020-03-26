@@ -66,6 +66,7 @@ class CustomPresentationController: UIPresentationController {
 
     @objc
     fileprivate func onDimViewClicked(){
+        
         presentedViewController.dismiss(animated: true, completion: nil)
     }
     

@@ -107,7 +107,17 @@
                     <view key="view" contentMode="scaleToFill" id="fPs-jg-z76">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-Xm-eDB">
+                                <rect key="frame" x="352" y="70" width="30" height="30"/>
+                                <state key="normal" image="close"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="FfO-Xm-eDB" secondAttribute="trailing" constant="32" id="fmm-bD-aQr"/>
+                            <constraint firstItem="FfO-Xm-eDB" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="26" id="zzG-cW-ula"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VH8-BG-EWp"/>
                     </view>
                 </viewController>
@@ -381,6 +391,7 @@
     <resources>
         <image name="bg1" width="540" height="540"/>
         <image name="bg2" width="540" height="540"/>
+        <image name="close" width="30" height="30"/>
         <image name="next" width="30" height="30"/>
         <image name="play" width="60" height="60"/>
         <image name="previous" width="30" height="30"/>
