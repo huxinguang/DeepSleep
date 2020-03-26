@@ -8,19 +8,14 @@
 
 import UIKit
 
-enum PresentationDirection {
-    case top
-    case bottom
-}
-
 class CustomPresentationController: UIPresentationController {
     
-//    fileprivate var presentationDirection: PresentationDirection!
+    fileprivate var presentedViewHeight: CGFloat!
     
-//    convenience init(from direction: PresentationDirection, presentedViewController: UIViewController, presenting: UIViewController) {
-//        self.init(presentedViewController: presentedViewController, presenting: presenting)
-//        self.presentationDirection = direction
-//    }
+    convenience init(presentedViewHeight: CGFloat, presentedViewController: UIViewController, presenting: UIViewController?) {
+        self.init(presentedViewController: presentedViewController, presenting: presenting)
+        self.presentedViewHeight = presentedViewHeight
+    }
     
     
     fileprivate lazy var dimmingView: UIView = {
@@ -66,13 +61,12 @@ class CustomPresentationController: UIPresentationController {
     }
     
     override var frameOfPresentedViewInContainerView: CGRect{
-        return CGRect(x: 0, y: UIScreen.main.bounds.size.height*0.3, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height*0.7)
+        return CGRect(x: 0, y: UIScreen.main.bounds.size.height-presentedViewHeight, width: UIScreen.main.bounds.size.width, height: presentedViewHeight)
     }
 
     @objc
     fileprivate func onDimViewClicked(){
-        guard let vc = presentedViewController as? MusicListVC else { return }
-        vc.dismiss(animated: true, completion: nil)
+        presentedViewController.dismiss(animated: true, completion: nil)
     }
     
     

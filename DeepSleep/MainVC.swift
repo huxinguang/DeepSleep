@@ -36,8 +36,7 @@ class MainVC: BaseVC {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "MusicListVC")
         vc.modalPresentationStyle = .custom
-        vc.transitioningDelegate = self
-        //vc.transitioningDelegate = PresentationObject.share
+        vc.transitioningDelegate = PresentationObject.share
         present(vc, animated: true, completion: nil)
     }
     
@@ -53,23 +52,3 @@ class MainVC: BaseVC {
 
 }
 
-extension MainVC: UIViewControllerTransitioningDelegate{
-    
-    /*
-     You can provide separate animator objects for presenting and dismissing the view controller.
-     此方法返回的CustomPresentationController实例就是一个animator object，如果presenting和dismissing使用的是不同的animator object， 可以在在协议方法
-     
-     animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
-     
-     中返回一个新的animator object
-     
-     */
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CustomPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-    
-    
-    
-    
-}
