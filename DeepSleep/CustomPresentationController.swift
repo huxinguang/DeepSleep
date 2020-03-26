@@ -8,7 +8,20 @@
 
 import UIKit
 
+enum PresentationDirection {
+    case top
+    case bottom
+}
+
 class CustomPresentationController: UIPresentationController {
+    
+//    fileprivate var presentationDirection: PresentationDirection!
+    
+//    convenience init(from direction: PresentationDirection, presentedViewController: UIViewController, presenting: UIViewController) {
+//        self.init(presentedViewController: presentedViewController, presenting: presenting)
+//        self.presentationDirection = direction
+//    }
+    
     
     fileprivate lazy var dimmingView: UIView = {
         let dv = UIControl(frame: UIScreen.main.bounds)

@@ -100,6 +100,21 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="89.732142857142847"/>
         </scene>
+        <!--Music TypeVC-->
+        <scene sceneID="s1a-JN-3hH">
+            <objects>
+                <viewController storyboardIdentifier="MusicTypeVC" id="IMG-ar-S58" customClass="MusicTypeVC" customModule="DeepSleep" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fPs-jg-z76">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="VH8-BG-EWp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U8a-ad-Yez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1932" y="-597"/>
+        </scene>
         <!--设置-->
         <scene sceneID="oMH-Gr-auu">
             <objects>
