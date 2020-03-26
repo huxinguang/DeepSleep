@@ -115,9 +115,14 @@
                                     <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="7qq-jh-3Ur"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch1" translatesAutoresizingMaskIntoConstraints="NO" id="0be-NA-tWl">
+                                <rect key="frame" x="182" y="428" width="50" height="50"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="0be-NA-tWl" firstAttribute="centerX" secondItem="VH8-BG-EWp" secondAttribute="centerX" id="JSh-Il-mmm"/>
+                            <constraint firstItem="0be-NA-tWl" firstAttribute="centerY" secondItem="VH8-BG-EWp" secondAttribute="centerY" id="blA-ig-5if"/>
                             <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="FfO-Xm-eDB" secondAttribute="trailing" constant="32" id="fmm-bD-aQr"/>
                             <constraint firstItem="FfO-Xm-eDB" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="26" id="zzG-cW-ula"/>
                         </constraints>
@@ -126,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8a-ad-Yez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="-597"/>
+            <point key="canvasLocation" x="1931.8840579710147" y="-597.32142857142856"/>
         </scene>
         <!--设置-->
         <scene sceneID="oMH-Gr-auu">
@@ -395,6 +400,7 @@
         <image name="bg1" width="540" height="540"/>
         <image name="bg2" width="540" height="540"/>
         <image name="close" width="30" height="30"/>
+        <image name="launch1" width="50" height="50"/>
         <image name="next" width="30" height="30"/>
         <image name="play" width="60" height="60"/>
         <image name="previous" width="30" height="30"/>

@@ -12,8 +12,13 @@ class MusicTypeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.setCorner(10, [.bottomLeft, .bottomRight])
     }
     
     @IBAction func onCloseBtn(_ sender: UIButton) {

@@ -24,6 +24,7 @@
 		9665B725242B0A0E00297C60 /* SettingContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B724242B0A0E00297C60 /* SettingContainerCell.swift */; };
 		9665B727242B197400297C60 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B726242B197400297C60 /* SettingCell.swift */; };
 		9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B728242B2A6700297C60 /* FeedbackVC.swift */; };
+		969BA10F242C93CA00710F83 /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA10E242C93CA00710F83 /* TestObject.swift */; };
 		96C9B3DD242C47F10021781B /* MusicTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DC242C47F10021781B /* MusicTypeVC.swift */; };
 		96C9B3DF242C58490021781B /* AnimatorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DE242C58490021781B /* AnimatorObject.swift */; };
 		96C9B3E1242C71B60021781B /* PresentationDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */; };
@@ -50,6 +51,7 @@
 		9665B724242B0A0E00297C60 /* SettingContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingContainerCell.swift; sourceTree = "<group>"; };
 		9665B726242B197400297C60 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		9665B728242B2A6700297C60 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
+		969BA10E242C93CA00710F83 /* TestObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
 		96C9B3DC242C47F10021781B /* MusicTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTypeVC.swift; sourceTree = "<group>"; };
 		96C9B3DE242C58490021781B /* AnimatorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorObject.swift; sourceTree = "<group>"; };
 		96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDelegateObject.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				9665B726242B197400297C60 /* SettingCell.swift */,
 				9665B728242B2A6700297C60 /* FeedbackVC.swift */,
 				96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */,
+				969BA10E242C93CA00710F83 /* TestObject.swift */,
 				9665B7142429A12300297C60 /* CustomPresentationController.swift */,
 				96C9B3DE242C58490021781B /* AnimatorObject.swift */,
 				9665B71C2429D65100297C60 /* UIView.swift */,
@@ -260,6 +263,7 @@
 				9665B71F2429E71800297C60 /* MusicCell.swift in Sources */,
 				9665B727242B197400297C60 /* SettingCell.swift in Sources */,
 				9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */,
+				969BA10F242C93CA00710F83 /* TestObject.swift in Sources */,
 				9665B723242B04C400297C60 /* SettingVC.swift in Sources */,
 				9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */,
 				9665B71D2429D65100297C60 /* UIView.swift in Sources */,
