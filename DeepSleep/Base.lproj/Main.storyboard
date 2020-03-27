@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -108,14 +109,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1j-SZ-QXM">
-                                <rect key="frame" x="30" y="74" width="354" height="738"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="onTestBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="1MT-ts-7Mu"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doi-8a-KXK">
                                 <rect key="frame" x="192" y="822" width="30" height="30"/>
                                 <state key="normal" image="packup"/>
@@ -123,21 +116,42 @@
                                     <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="Vum-iT-gWg"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XlT-by-zJb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewLayout key="collectionViewLayout" id="vWB-51-2jq" customClass="MusicTypeLayout" customModule="DeepSleep" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MusicTypeCell" id="8ZF-gU-kQ1" customClass="MusicTypeCell" customModule="DeepSleep" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="142" height="136"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xyb-ff-SVL">
+                                            <rect key="frame" x="0.0" y="0.0" width="142" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.99607843139999996" green="0.80000000000000004" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="142" height="136"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="IMG-ar-S58" id="xBy-cm-oW8"/>
+                                    <outlet property="delegate" destination="IMG-ar-S58" id="XHg-4a-TiV"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.84696061643835618" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="S1j-SZ-QXM" secondAttribute="trailing" constant="30" id="Mzw-NV-Fwy"/>
-                            <constraint firstItem="S1j-SZ-QXM" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="30" id="g6B-rZ-qSP"/>
-                            <constraint firstItem="S1j-SZ-QXM" firstAttribute="leading" secondItem="VH8-BG-EWp" secondAttribute="leading" constant="30" id="ktI-PJ-3Dh"/>
+                            <constraint firstItem="XlT-by-zJb" firstAttribute="leading" secondItem="VH8-BG-EWp" secondAttribute="leading" id="5bq-f3-TRz"/>
+                            <constraint firstItem="XlT-by-zJb" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" id="A2S-aI-LuL"/>
+                            <constraint firstItem="VH8-BG-EWp" firstAttribute="bottom" secondItem="XlT-by-zJb" secondAttribute="bottom" constant="50" id="Lvb-sW-UZf"/>
+                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="XlT-by-zJb" secondAttribute="trailing" id="f3o-Ox-gqo"/>
                             <constraint firstItem="Doi-8a-KXK" firstAttribute="centerX" secondItem="VH8-BG-EWp" secondAttribute="centerX" id="lUW-vK-dQp"/>
                             <constraint firstItem="VH8-BG-EWp" firstAttribute="bottom" secondItem="Doi-8a-KXK" secondAttribute="bottom" constant="10" id="u4R-Rw-JxI"/>
-                            <constraint firstItem="VH8-BG-EWp" firstAttribute="bottom" secondItem="S1j-SZ-QXM" secondAttribute="bottom" constant="50" id="xH4-hk-ERR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VH8-BG-EWp"/>
                     </view>
                     <connections>
                         <outlet property="closeBtn" destination="Doi-8a-KXK" id="TBK-Fr-gNe"/>
-                        <outlet property="testBtn" destination="S1j-SZ-QXM" id="e1q-tr-wQi"/>
+                        <outlet property="collectionView" destination="XlT-by-zJb" id="6g9-UT-KYH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8a-ad-Yez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

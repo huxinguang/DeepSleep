@@ -52,12 +52,12 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
             if self.type == .present {
                 toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 500)
                 if let vc = fromVC as? MusicTypeVC {
-                    vc.testBtn.alpha = 0
+                    vc.collectionView.alpha = 0
                 }
             }else{
                 fromVC.view.frame = CGRect(x: 0, y: -200, width: UIScreen.main.bounds.size.width, height: 500)
                 if let vc = toVC as? MusicTypeVC {
-                    vc.testBtn.alpha = 1
+                    vc.collectionView.alpha = 1
                 }
                 if let vc = fromVC as? MusicTypeListVC {
                     vc.closeBtn.alpha = 0

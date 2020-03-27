@@ -10,7 +10,7 @@ import UIKit
 
 class MusicTypeVC: UIViewController {
 
-    @IBOutlet weak var testBtn: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeBtn: UIButton!
     
     
@@ -31,11 +31,7 @@ class MusicTypeVC: UIViewController {
     }
     
     @IBAction func onTestBtn(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeListVC")
-        vc.modalPresentationStyle = .custom
-        vc.transitioningDelegate = TestObjectTwo.share
-        present(vc, animated: true, completion: nil)
+        
     }
     
     deinit {
@@ -53,4 +49,26 @@ class MusicTypeVC: UIViewController {
     }
     */
 
+}
+
+extension MusicTypeVC: UICollectionViewDataSource, UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MusicTypeCell", for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeListVC")
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = TestObjectTwo.share
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
 }
