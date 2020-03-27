@@ -25,6 +25,9 @@
 		9665B727242B197400297C60 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B726242B197400297C60 /* SettingCell.swift */; };
 		9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B728242B2A6700297C60 /* FeedbackVC.swift */; };
 		969BA10F242C93CA00710F83 /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA10E242C93CA00710F83 /* TestObject.swift */; };
+		969BA111242D9C2000710F83 /* MusicTypeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA110242D9C2000710F83 /* MusicTypeListVC.swift */; };
+		969BA113242DA03F00710F83 /* TestObjectTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA112242DA03F00710F83 /* TestObjectTwo.swift */; };
+		969BA115242DA07900710F83 /* AnimatorObjectTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA114242DA07900710F83 /* AnimatorObjectTwo.swift */; };
 		96C9B3DD242C47F10021781B /* MusicTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DC242C47F10021781B /* MusicTypeVC.swift */; };
 		96C9B3DF242C58490021781B /* AnimatorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DE242C58490021781B /* AnimatorObject.swift */; };
 		96C9B3E1242C71B60021781B /* PresentationDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */; };
@@ -52,6 +55,9 @@
 		9665B726242B197400297C60 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		9665B728242B2A6700297C60 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
 		969BA10E242C93CA00710F83 /* TestObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
+		969BA110242D9C2000710F83 /* MusicTypeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTypeListVC.swift; sourceTree = "<group>"; };
+		969BA112242DA03F00710F83 /* TestObjectTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObjectTwo.swift; sourceTree = "<group>"; };
+		969BA114242DA07900710F83 /* AnimatorObjectTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorObjectTwo.swift; sourceTree = "<group>"; };
 		96C9B3DC242C47F10021781B /* MusicTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTypeVC.swift; sourceTree = "<group>"; };
 		96C9B3DE242C58490021781B /* AnimatorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorObject.swift; sourceTree = "<group>"; };
 		96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDelegateObject.swift; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 				9665B70E2428936C00297C60 /* MainVC.swift */,
 				9665B7122429A03B00297C60 /* MusicListVC.swift */,
 				96C9B3DC242C47F10021781B /* MusicTypeVC.swift */,
+				969BA110242D9C2000710F83 /* MusicTypeListVC.swift */,
 				9665B71E2429E71800297C60 /* MusicCell.swift */,
 				9665B722242B04C400297C60 /* SettingVC.swift */,
 				9665B724242B0A0E00297C60 /* SettingContainerCell.swift */,
@@ -123,8 +130,10 @@
 				9665B728242B2A6700297C60 /* FeedbackVC.swift */,
 				96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */,
 				969BA10E242C93CA00710F83 /* TestObject.swift */,
+				969BA112242DA03F00710F83 /* TestObjectTwo.swift */,
 				9665B7142429A12300297C60 /* CustomPresentationController.swift */,
 				96C9B3DE242C58490021781B /* AnimatorObject.swift */,
+				969BA114242DA07900710F83 /* AnimatorObjectTwo.swift */,
 				9665B71C2429D65100297C60 /* UIView.swift */,
 				96C9B3E2242C7E2F0021781B /* UIViewController.swift */,
 				9665B6F724284F5F00297C60 /* Main.storyboard */,
@@ -266,9 +275,12 @@
 				969BA10F242C93CA00710F83 /* TestObject.swift in Sources */,
 				9665B723242B04C400297C60 /* SettingVC.swift in Sources */,
 				9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */,
+				969BA115242DA07900710F83 /* AnimatorObjectTwo.swift in Sources */,
 				9665B71D2429D65100297C60 /* UIView.swift in Sources */,
 				96C9B3E1242C71B60021781B /* PresentationDelegateObject.swift in Sources */,
+				969BA111242D9C2000710F83 /* MusicTypeListVC.swift in Sources */,
 				9665B7112428955E00297C60 /* BaseVC.swift in Sources */,
+				969BA113242DA03F00710F83 /* TestObjectTwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

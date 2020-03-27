@@ -1,28 +1,27 @@
 //
-//  TestObject.swift
+//  TestObjectTwo.swift
 //  DeepSleep
 //
-//  Created by xinguang hu on 2020/3/26.
+//  Created by xinguang hu on 2020/3/27.
 //  Copyright © 2020 wy. All rights reserved.
 //
 
 import UIKit
 
-class TestObject: NSObject {
-    static let share: TestObject = {
-        let instance = TestObject()
+class TestObjectTwo: NSObject {
+    static let share: TestObjectTwo = {
+        let instance = TestObjectTwo()
         return instance
     }()
-    
 }
 
-extension TestObject: UIViewControllerTransitioningDelegate{
+extension TestObjectTwo: UIViewControllerTransitioningDelegate{
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimatorObject(type: .present, duration: 0.5)
+        return AnimatorObjectTwo(type: .present, duration: 0.5)
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AnimatorObject(type: .dismiss, duration: 0.5)
+        return AnimatorObjectTwo(type: .dismiss, duration: 0.5)
     }
 }
