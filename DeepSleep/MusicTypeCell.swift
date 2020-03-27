@@ -10,4 +10,9 @@ import UIKit
 
 class MusicTypeCell: UICollectionViewCell {
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
 }

@@ -20,6 +20,7 @@ class MusicTypeVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.setCorner(10, [.bottomLeft, .bottomRight])

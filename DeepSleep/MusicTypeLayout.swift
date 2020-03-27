@@ -9,7 +9,7 @@
 import UIKit
 
 class MusicTypeLayout: UICollectionViewFlowLayout {
-    let column: CGFloat = 5.0
+    let column: CGFloat = 3.0
     let cellSpacing: CGFloat = 10.0
     let lineSpacing: CGFloat = 10.0
     let inset = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
