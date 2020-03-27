@@ -20,6 +20,9 @@ class MusicTypeVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

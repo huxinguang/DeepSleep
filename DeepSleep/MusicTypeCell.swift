@@ -10,9 +10,20 @@ import UIKit
 
 class MusicTypeCell: UICollectionViewCell {
     
+    @IBOutlet weak var iconView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
+    
+    
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//    }
+    
+    
     
 }

@@ -41,6 +41,9 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
             if let vc = fromVC as? MusicTypeVC {
                 vc.closeBtn.isHidden = true
             }
+            if let vc = toVC as? MusicTypeListVC {
+                vc.tableView.alpha = 0
+            }
         }else{
             fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 500)
             if let vc = toVC as? MusicTypeVC {
@@ -54,6 +57,9 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 if let vc = fromVC as? MusicTypeVC {
                     vc.collectionView.alpha = 0
                 }
+                if let vc = toVC as? MusicTypeListVC {
+                    vc.tableView.alpha = 1
+                }
             }else{
                 fromVC.view.frame = CGRect(x: 0, y: -200, width: UIScreen.main.bounds.size.width, height: 500)
                 if let vc = toVC as? MusicTypeVC {
@@ -61,16 +67,13 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 }
                 if let vc = fromVC as? MusicTypeListVC {
                     vc.closeBtn.alpha = 0
+                    vc.tableView.alpha = 0
                 }
                 
             }
         }) { (finished) in
             
-//            if self.type == .dismiss && finished{
-//                if let vc = fromVC as? MusicTypeListVC {
-//                    vc.view.isHidden = true
-//                }
-//            }
+
             
             transitionContext.completeTransition(finished)
         }
