@@ -17,6 +17,12 @@ class AnimatorObjectTwo: NSObject {
         self.type = type
         self.duration = duration
     }
+    
+//    @objc func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) -> Void {
+//
+//    }
+    
+//    dismiss(animated flag: Bool, completion: (() -> Void)? = nil)
 }
 
 extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
@@ -44,7 +50,9 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
             }
             if let vc = toVC as? MusicTypeListVC {
                 vc.tableView.alpha = 0
+                dv.addTarget(vc, action: #selector(vc.onCloseBtn(_:)), for: .touchUpInside)
             }
+            
         }else{
             fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: vHeight)
             if let vc = toVC as? MusicTypeVC {
@@ -73,9 +81,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 
             }
         }) { (finished) in
-            
-
-            
+        
             transitionContext.completeTransition(finished)
         }
         

@@ -12,6 +12,7 @@ class MusicTypeVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeBtn: UIButton!
+    var dimView: UIControl!
     
     
     override func viewDidLoad() {
