@@ -32,7 +32,6 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
         }
         
         let dv = UIControl(frame: UIScreen.main.bounds)
-        dv.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         transitionContext.containerView.addSubview(dv)
         
         dv.addSubview(type == .present ? toVC.view : fromVC.view)
@@ -48,10 +47,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 vc.closeBtn.isHidden = false
             }
         }
-        
-        dv.alpha = type == .present ? 0 : 1
-        
-        
+                
         UIView.animate(withDuration: duration, animations: {
             if self.type == .present {
                 toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 500)
@@ -68,8 +64,6 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 }
                 
             }
-            
-            dv.alpha = self.type == .present ? 1 : 0
         }) { (finished) in
             
 //            if self.type == .dismiss && finished{
