@@ -18,11 +18,6 @@ class AnimatorObjectTwo: NSObject {
         self.duration = duration
     }
     
-//    @objc func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) -> Void {
-//
-//    }
-    
-//    dismiss(animated flag: Bool, completion: (() -> Void)? = nil)
 }
 
 extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
@@ -41,10 +36,8 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
         transitionContext.containerView.addSubview(dv)
         dv.addSubview(type == .present ? toVC.view : fromVC.view)
         
-        let vHeight = UIScreen.main.bounds.size.height - (UIDevice.isFullScreen ? 34 : 0)
-        
         if type == .present {
-            toVC.view.frame = CGRect(x: 0, y: 300-vHeight , width: UIScreen.main.bounds.size.width, height: vHeight)
+            toVC.view.frame = CGRect(x: 0, y: Styles.Constant.music_type_view_height-Styles.Constant.music_type_list_view_height , width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_list_view_height)
             if let vc = fromVC as? MusicTypeVC {
                 vc.closeBtn.isHidden = true
             }
@@ -54,7 +47,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
             }
             
         }else{
-            fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: vHeight)
+            fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_list_view_height)
             if let vc = toVC as? MusicTypeVC {
                 vc.closeBtn.isHidden = false
             }
@@ -62,7 +55,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 
         UIView.animate(withDuration: duration, animations: {
             if self.type == .present {
-                toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: vHeight)
+                toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_list_view_height)
                 if let vc = fromVC as? MusicTypeVC {
                     vc.collectionView.alpha = 0
                 }
@@ -70,7 +63,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                     vc.tableView.alpha = 1
                 }
             }else{
-                fromVC.view.frame = CGRect(x: 0, y: 300-vHeight, width: UIScreen.main.bounds.size.width, height: vHeight)
+                fromVC.view.frame = CGRect(x: 0, y: Styles.Constant.music_type_view_height-Styles.Constant.music_type_list_view_height, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_list_view_height)
                 if let vc = toVC as? MusicTypeVC {
                     vc.collectionView.alpha = 1
                 }

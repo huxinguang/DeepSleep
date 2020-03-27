@@ -28,10 +28,6 @@ class AnimatorObject: NSObject {
         self.duration = duration
     }
     
-    deinit {
-        print("AnimatorObject deinit")
-    }
-    
 }
 
 extension AnimatorObject: UIViewControllerAnimatedTransitioning{
@@ -53,20 +49,20 @@ extension AnimatorObject: UIViewControllerAnimatedTransitioning{
         dv.addSubview(type == .present ? toVC.view : fromVC.view)
         
         if type == .present {
-            toVC.view.frame = CGRect(x: 0, y: -300 , width: UIScreen.main.bounds.size.width, height: 300)
+            toVC.view.frame = CGRect(x: 0, y: -Styles.Constant.music_type_view_height , width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
             if let vc = toVC as? MusicTypeVC {
                 dv.addTarget(vc, action: #selector(vc.onCloseBtn(_:)), for: .touchUpInside)
             }
         }else{
-            fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
+            fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
         }
         
         dv.alpha = type == .present ? 0 : 1
         UIView.animate(withDuration: duration, animations: {
             if self.type == .present {
-                toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300)
+                toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
             }else{
-                fromVC.view.frame = CGRect(x: 0, y: -300, width: UIScreen.main.bounds.size.width, height: 300)
+                fromVC.view.frame = CGRect(x: 0, y: -Styles.Constant.music_type_view_height, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
             }
             
             dv.alpha = self.type == .present ? 1 : 0
