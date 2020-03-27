@@ -109,8 +109,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-Xm-eDB">
-                                <rect key="frame" x="352" y="70" width="30" height="30"/>
-                                <state key="normal" image="close"/>
+                                <rect key="frame" x="372" y="59" width="22" height="22"/>
+                                <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="7qq-jh-3Ur"/>
                                 </connections>
@@ -119,12 +119,12 @@
                                 <rect key="frame" x="182" y="428" width="50" height="50"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.84696061643835618" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0be-NA-tWl" firstAttribute="centerX" secondItem="VH8-BG-EWp" secondAttribute="centerX" id="JSh-Il-mmm"/>
                             <constraint firstItem="0be-NA-tWl" firstAttribute="centerY" secondItem="VH8-BG-EWp" secondAttribute="centerY" id="blA-ig-5if"/>
-                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="FfO-Xm-eDB" secondAttribute="trailing" constant="32" id="fmm-bD-aQr"/>
-                            <constraint firstItem="FfO-Xm-eDB" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="26" id="zzG-cW-ula"/>
+                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="FfO-Xm-eDB" secondAttribute="trailing" constant="20" id="fmm-bD-aQr"/>
+                            <constraint firstItem="FfO-Xm-eDB" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="15" id="zzG-cW-ula"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VH8-BG-EWp"/>
                     </view>
@@ -225,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="1931.8840579710147" y="80.357142857142847"/>
         </scene>
-        <!--FeedbackVC-->
+        <!--意见反馈-->
         <scene sceneID="SoD-BN-cfY">
             <objects>
-                <viewController storyboardIdentifier="FeedbackVC" id="SAo-gr-yES" customClass="FeedbackVC" customModule="DeepSleep" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedbackVC" title="意见反馈" id="SAo-gr-yES" customClass="FeedbackVC" customModule="DeepSleep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OTw-Ka-Y7o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -399,9 +399,9 @@
     <resources>
         <image name="bg1" width="540" height="540"/>
         <image name="bg2" width="540" height="540"/>
-        <image name="close" width="30" height="30"/>
         <image name="launch1" width="50" height="50"/>
         <image name="next" width="30" height="30"/>
+        <image name="packup" width="22" height="22"/>
         <image name="play" width="60" height="60"/>
         <image name="previous" width="30" height="30"/>
         <image name="recircle" width="25" height="25"/>
