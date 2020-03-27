@@ -109,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-Xm-eDB">
-                                <rect key="frame" x="372" y="59" width="22" height="22"/>
+                                <rect key="frame" x="370" y="55" width="22" height="22"/>
                                 <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="7qq-jh-3Ur"/>
@@ -123,8 +123,8 @@
                         <constraints>
                             <constraint firstItem="0be-NA-tWl" firstAttribute="centerX" secondItem="VH8-BG-EWp" secondAttribute="centerX" id="JSh-Il-mmm"/>
                             <constraint firstItem="0be-NA-tWl" firstAttribute="centerY" secondItem="VH8-BG-EWp" secondAttribute="centerY" id="blA-ig-5if"/>
-                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="FfO-Xm-eDB" secondAttribute="trailing" constant="20" id="fmm-bD-aQr"/>
-                            <constraint firstItem="FfO-Xm-eDB" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="15" id="zzG-cW-ula"/>
+                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="FfO-Xm-eDB" secondAttribute="trailing" constant="22" id="fmm-bD-aQr"/>
+                            <constraint firstItem="FfO-Xm-eDB" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="11" id="zzG-cW-ula"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VH8-BG-EWp"/>
                     </view>
