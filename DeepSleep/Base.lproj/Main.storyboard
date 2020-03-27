@@ -159,9 +159,18 @@
                                     <action selector="onCloseBtn:" destination="h7A-dL-qzK" eventType="touchUpInside" id="mfg-qS-SVM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqr-jk-Uek">
+                                <rect key="frame" x="184" y="438" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onTestBtn:" destination="h7A-dL-qzK" eventType="touchUpInside" id="S4T-s3-HGX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.84696061639999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Zqr-jk-Uek" firstAttribute="centerY" secondItem="WaF-Ym-5Vu" secondAttribute="centerY" id="0fv-qB-3fW"/>
+                            <constraint firstItem="Zqr-jk-Uek" firstAttribute="centerX" secondItem="WaF-Ym-5Vu" secondAttribute="centerX" id="GJf-Bf-ieC"/>
                             <constraint firstItem="WaF-Ym-5Vu" firstAttribute="bottom" secondItem="mSh-Yc-5NO" secondAttribute="bottom" constant="10" id="GZy-7e-g2Q"/>
                             <constraint firstItem="mSh-Yc-5NO" firstAttribute="centerX" secondItem="WaF-Ym-5Vu" secondAttribute="centerX" id="T6W-n2-kj2"/>
                         </constraints>

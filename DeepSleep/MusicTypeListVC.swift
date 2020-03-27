@@ -23,6 +23,9 @@ class MusicTypeListVC: UIViewController {
         view.setCorner(10, [.bottomLeft, .bottomRight])
     }
 
+    @IBAction func onTestBtn(_ sender: UIButton) {
+        
+    }
     @IBAction func onCloseBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
