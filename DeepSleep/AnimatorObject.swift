@@ -42,36 +42,40 @@ extension AnimatorObject: UIViewControllerAnimatedTransitioning{
             return
         }
         
-        let dv = UIControl(frame: UIScreen.main.bounds)
-        dv.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        transitionContext.containerView.addSubview(dv)
-    
-        dv.addSubview(type == .present ? toVC.view : fromVC.view)
-        
         if type == .present {
+            let dv = UIControl(frame: UIScreen.main.bounds)
+            dv.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            transitionContext.containerView.addSubview(dv)
+            dv.addSubview(toVC.view)
+            
             toVC.view.frame = CGRect(x: 0, y: -Styles.Constant.music_type_view_height , width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
             if let vc = toVC as? MusicTypeVC {
                 dv.addTarget(vc, action: #selector(vc.onCloseBtn(_:)), for: .touchUpInside)
             }
-        }else{
-            fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
-        }
-        
-        dv.alpha = type == .present ? 0 : 1
-        UIView.animate(withDuration: duration, animations: {
-            if self.type == .present {
+
+            dv.alpha = 0
+            UIView.animate(withDuration: duration, animations: {
                 toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
-            }else{
-                fromVC.view.frame = CGRect(x: 0, y: -Styles.Constant.music_type_view_height, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
+                dv.alpha = 1
+            }) { (finished) in
+                transitionContext.completeTransition(finished)
+            }
+        }else{
+            guard let vc = fromVC as? MusicTypeVC else {
+                transitionContext.completeTransition(true)
+                return
+            }
+            vc.view.superview?.alpha = 1
+            vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
+            UIView.animate(withDuration: duration, animations: {
+                vc.view.frame = CGRect(x: 0, y: -Styles.Constant.music_type_view_height, width: UIScreen.main.bounds.size.width, height: Styles.Constant.music_type_view_height)
+                vc.view.superview?.alpha = 0
+            }) { (finished) in
+                transitionContext.completeTransition(finished)
             }
             
-            dv.alpha = self.type == .present ? 1 : 0
-        }) { (finished) in
-            transitionContext.completeTransition(finished)
         }
         
     }
     
-    
-
 }
