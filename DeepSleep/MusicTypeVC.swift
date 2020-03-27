@@ -10,6 +10,10 @@ import UIKit
 
 class MusicTypeVC: UIViewController {
 
+    @IBOutlet weak var testBtn: UIButton!
+    @IBOutlet weak var closeBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

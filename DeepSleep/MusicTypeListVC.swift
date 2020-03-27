@@ -9,7 +9,9 @@
 import UIKit
 
 class MusicTypeListVC: UIViewController {
-
+    
+    @IBOutlet weak var closeBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

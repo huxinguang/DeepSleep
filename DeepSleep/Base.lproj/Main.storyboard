@@ -108,33 +108,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-Xm-eDB">
-                                <rect key="frame" x="370" y="55" width="22" height="22"/>
-                                <state key="normal" image="packup"/>
-                                <connections>
-                                    <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="7qq-jh-3Ur"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1j-SZ-QXM">
-                                <rect key="frame" x="30" y="74" width="354" height="758"/>
+                                <rect key="frame" x="30" y="74" width="354" height="738"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="onTestBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="1MT-ts-7Mu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doi-8a-KXK">
+                                <rect key="frame" x="192" y="822" width="30" height="30"/>
+                                <state key="normal" image="packup"/>
+                                <connections>
+                                    <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="Vum-iT-gWg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.84696061643835618" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="S1j-SZ-QXM" secondAttribute="trailing" constant="30" id="Mzw-NV-Fwy"/>
-                            <constraint firstItem="VH8-BG-EWp" firstAttribute="trailing" secondItem="FfO-Xm-eDB" secondAttribute="trailing" constant="22" id="fmm-bD-aQr"/>
                             <constraint firstItem="S1j-SZ-QXM" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="30" id="g6B-rZ-qSP"/>
                             <constraint firstItem="S1j-SZ-QXM" firstAttribute="leading" secondItem="VH8-BG-EWp" secondAttribute="leading" constant="30" id="ktI-PJ-3Dh"/>
-                            <constraint firstItem="VH8-BG-EWp" firstAttribute="bottom" secondItem="S1j-SZ-QXM" secondAttribute="bottom" constant="30" id="xH4-hk-ERR"/>
-                            <constraint firstItem="FfO-Xm-eDB" firstAttribute="top" secondItem="VH8-BG-EWp" secondAttribute="top" constant="11" id="zzG-cW-ula"/>
+                            <constraint firstItem="Doi-8a-KXK" firstAttribute="centerX" secondItem="VH8-BG-EWp" secondAttribute="centerX" id="lUW-vK-dQp"/>
+                            <constraint firstItem="VH8-BG-EWp" firstAttribute="bottom" secondItem="Doi-8a-KXK" secondAttribute="bottom" constant="10" id="u4R-Rw-JxI"/>
+                            <constraint firstItem="VH8-BG-EWp" firstAttribute="bottom" secondItem="S1j-SZ-QXM" secondAttribute="bottom" constant="50" id="xH4-hk-ERR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VH8-BG-EWp"/>
                     </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="Doi-8a-KXK" id="TBK-Fr-gNe"/>
+                        <outlet property="testBtn" destination="S1j-SZ-QXM" id="e1q-tr-wQi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8a-ad-Yez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,8 +153,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-Yc-5NO">
-                                <rect key="frame" x="350" y="56" width="30" height="30"/>
-                                <state key="normal" image="close"/>
+                                <rect key="frame" x="192" y="822" width="30" height="30"/>
+                                <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="h7A-dL-qzK" eventType="touchUpInside" id="mfg-qS-SVM"/>
                                 </connections>
@@ -158,15 +162,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.84696061639999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WaF-Ym-5Vu" firstAttribute="trailing" secondItem="mSh-Yc-5NO" secondAttribute="trailing" constant="34" id="244-rG-kwC"/>
-                            <constraint firstItem="mSh-Yc-5NO" firstAttribute="top" secondItem="WaF-Ym-5Vu" secondAttribute="top" constant="12" id="aFK-zO-HjW"/>
+                            <constraint firstItem="WaF-Ym-5Vu" firstAttribute="bottom" secondItem="mSh-Yc-5NO" secondAttribute="bottom" constant="10" id="GZy-7e-g2Q"/>
+                            <constraint firstItem="mSh-Yc-5NO" firstAttribute="centerX" secondItem="WaF-Ym-5Vu" secondAttribute="centerX" id="T6W-n2-kj2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WaF-Ym-5Vu"/>
                     </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="mSh-Yc-5NO" id="Goi-q8-Qtd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tJi-kV-d05" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2801" y="-605"/>
+            <point key="canvasLocation" x="2800" y="-605.35714285714278"/>
         </scene>
         <!--设置-->
         <scene sceneID="oMH-Gr-auu">
@@ -434,9 +441,8 @@
     <resources>
         <image name="bg1" width="540" height="540"/>
         <image name="bg2" width="540" height="540"/>
-        <image name="close" width="30" height="30"/>
         <image name="next" width="30" height="30"/>
-        <image name="packup" width="22" height="22"/>
+        <image name="packup" width="30" height="30"/>
         <image name="play" width="60" height="60"/>
         <image name="previous" width="30" height="30"/>
         <image name="recircle" width="25" height="25"/>

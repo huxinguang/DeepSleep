@@ -38,21 +38,46 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
         dv.addSubview(type == .present ? toVC.view : fromVC.view)
         
         if type == .present {
-            toVC.view.frame = CGRect(x: 0, y: -500 , width: UIScreen.main.bounds.size.width, height: 500)
+            toVC.view.frame = CGRect(x: 0, y: -200 , width: UIScreen.main.bounds.size.width, height: 500)
+            if let vc = fromVC as? MusicTypeVC {
+                vc.closeBtn.isHidden = true
+            }
         }else{
             fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 500)
+            if let vc = toVC as? MusicTypeVC {
+                vc.closeBtn.isHidden = false
+            }
         }
         
         dv.alpha = type == .present ? 0 : 1
+        
+        
         UIView.animate(withDuration: duration, animations: {
             if self.type == .present {
                 toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 500)
+                if let vc = fromVC as? MusicTypeVC {
+                    vc.testBtn.alpha = 0
+                }
             }else{
-                fromVC.view.frame = CGRect(x: 0, y: -500, width: UIScreen.main.bounds.size.width, height: 500)
+                fromVC.view.frame = CGRect(x: 0, y: -200, width: UIScreen.main.bounds.size.width, height: 500)
+                if let vc = toVC as? MusicTypeVC {
+                    vc.testBtn.alpha = 1
+                }
+                if let vc = fromVC as? MusicTypeListVC {
+                    vc.closeBtn.alpha = 0
+                }
+                
             }
             
             dv.alpha = self.type == .present ? 1 : 0
         }) { (finished) in
+            
+//            if self.type == .dismiss && finished{
+//                if let vc = fromVC as? MusicTypeListVC {
+//                    vc.view.isHidden = true
+//                }
+//            }
+            
             transitionContext.completeTransition(finished)
         }
         
