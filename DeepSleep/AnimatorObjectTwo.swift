@@ -33,11 +33,12 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
         
         let dv = UIControl(frame: UIScreen.main.bounds)
         transitionContext.containerView.addSubview(dv)
-        
         dv.addSubview(type == .present ? toVC.view : fromVC.view)
         
+        let vHeight = UIScreen.main.bounds.size.height - (UIDevice.isFullScreen ? 34 : 0)
+        
         if type == .present {
-            toVC.view.frame = CGRect(x: 0, y: -200 , width: UIScreen.main.bounds.size.width, height: 500)
+            toVC.view.frame = CGRect(x: 0, y: 300-vHeight , width: UIScreen.main.bounds.size.width, height: vHeight)
             if let vc = fromVC as? MusicTypeVC {
                 vc.closeBtn.isHidden = true
             }
@@ -45,7 +46,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 vc.tableView.alpha = 0
             }
         }else{
-            fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 500)
+            fromVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: vHeight)
             if let vc = toVC as? MusicTypeVC {
                 vc.closeBtn.isHidden = false
             }
@@ -53,7 +54,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                 
         UIView.animate(withDuration: duration, animations: {
             if self.type == .present {
-                toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 500)
+                toVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: vHeight)
                 if let vc = fromVC as? MusicTypeVC {
                     vc.collectionView.alpha = 0
                 }
@@ -61,7 +62,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
                     vc.tableView.alpha = 1
                 }
             }else{
-                fromVC.view.frame = CGRect(x: 0, y: -200, width: UIScreen.main.bounds.size.width, height: 500)
+                fromVC.view.frame = CGRect(x: 0, y: 300-vHeight, width: UIScreen.main.bounds.size.width, height: vHeight)
                 if let vc = toVC as? MusicTypeVC {
                     vc.collectionView.alpha = 1
                 }

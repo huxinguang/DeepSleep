@@ -10,12 +10,14 @@ import UIKit
 
 class MainVC: BaseVC {
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sunshine girl"
     }
+    
+//    override var preferredStatusBarStyle: UIStatusBarStyle{
+//        return .default
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
