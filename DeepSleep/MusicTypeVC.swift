@@ -17,8 +17,7 @@ class MusicTypeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(onCloseBtn(_:)), name: NSNotification.Name.App.DismissMusicTypeVC, object: nil)
     }
     
     override var prefersStatusBarHidden: Bool{
@@ -31,16 +30,12 @@ class MusicTypeVC: UIViewController {
     }
     
     @IBAction func onCloseBtn(_ sender: UIButton) {
-        
         dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func onTestBtn(_ sender: UIButton) {
-        
     }
     
     deinit {
         print("MusicTypeVC denit")
+        NotificationCenter.default.removeObserver(self)
     }
     
 

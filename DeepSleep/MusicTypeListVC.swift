@@ -15,7 +15,6 @@ class MusicTypeListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        tableView.register(MusicCell.self, forCellReuseIdentifier: "MusicCell")
     }
     
     override func viewDidLayoutSubviews() {
@@ -23,12 +22,17 @@ class MusicTypeListVC: UIViewController {
         view.setCorner(10, [.bottomLeft, .bottomRight])
     }
 
-    @IBAction func onTestBtn(_ sender: UIButton) {
-        
-    }
     @IBAction func onCloseBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @objc
+    func closeAll() {
+        dismiss(animated: true) {
+            NotificationCenter.default.post(name: NSNotification.Name.App.DismissMusicTypeVC, object: nil)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

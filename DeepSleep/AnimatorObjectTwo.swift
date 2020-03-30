@@ -43,7 +43,7 @@ extension AnimatorObjectTwo: UIViewControllerAnimatedTransitioning{
             }
             if let vc = toVC as? MusicTypeListVC {
                 vc.tableView.alpha = 0
-                dv.addTarget(vc, action: #selector(vc.onCloseBtn(_:)), for: .touchUpInside)
+                dv.addTarget(vc, action: #selector(vc.closeAll), for: .touchUpInside)
             }
             
         }else{

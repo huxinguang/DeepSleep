@@ -27,7 +27,6 @@ struct Styles {
     
     struct Constant {
         static let music_type_view_height = UIScreen.main.bounds.size.height*0.382
-//        static let music_type_list_view_height = UIScreen.main.bounds.size.height - (UIDevice.isFullScreen ? 34 : 0)
         static let music_type_list_view_height = UIScreen.main.bounds.size.height*0.618
         
     }
