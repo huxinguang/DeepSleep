@@ -14,13 +14,7 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
 
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-    
-    
-    
+
     
     
 
