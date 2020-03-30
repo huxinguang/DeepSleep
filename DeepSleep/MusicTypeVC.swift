@@ -32,7 +32,7 @@ class MusicTypeVC: UIViewController {
     @IBAction func onCloseBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     deinit {
         print("MusicTypeVC denit")
         NotificationCenter.default.removeObserver(self)
