@@ -9,6 +9,7 @@
 import UIKit
 
 class AudioItem: NSObject {
+    var id: Int!
     var url: String!
     var name: String!    
     

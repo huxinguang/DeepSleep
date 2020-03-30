@@ -15,12 +15,21 @@ enum AudioPlayMode {
     case listRandom
 }
 
+protocol AudioPlayerUIDelegate {
+    func playerDidPlayed(atTime: TimeInterval)
+    
+    
+}
+
 class AudioPlayerManager: NSObject {
     
     fileprivate var player: AVAudioPlayer!
     fileprivate var audioItems: [AudioItem]!
+    fileprivate var shuffledAudioItems: [AudioItem]!
     fileprivate var currentItem: AudioItem!
     fileprivate var currentPlayMode: AudioPlayMode!
+    var delegate: AudioPlayerUIDelegate?
+    
     
     static let share: AudioPlayerManager = {
         let instance = AudioPlayerManager()
@@ -36,6 +45,7 @@ class AudioPlayerManager: NSObject {
             player.stop()
             player = nil
         }
+        currentItem = audioItem
         do {
             let player = try AVAudioPlayer(contentsOf: url)
             player.delegate = self
@@ -44,10 +54,12 @@ class AudioPlayerManager: NSObject {
             if player.prepareToPlay() {
                 player.play()
             }
+            player.addObserver(self, forKeyPath: "currentTime", options: .new, context: nil)
             self.player = player
         } catch  {
             print(error)
         }
+
     }
     
     func resetPlayMode() {
@@ -56,6 +68,7 @@ class AudioPlayerManager: NSObject {
             currentPlayMode = .singleLoop
         case .singleLoop:
             currentPlayMode = .listRandom
+            shuffledAudioItems = shuffled(originalItems: audioItems)
         default:
             currentPlayMode = .listLoop
         }
@@ -65,6 +78,26 @@ class AudioPlayerManager: NSObject {
         return player.play(atTime: time)
     }
     
+    fileprivate func shuffled(originalItems items: [AudioItem]) -> [AudioItem]{
+        var newItems:[AudioItem] = items
+        for i in 1..<items.count {
+            let index = Int(arc4random()) % i
+            if index != i {
+                newItems.swapAt(i, index)
+            }
+        }
+        return newItems
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "currentTime" {
+            guard let delegate = delegate else { return }
+            delegate.playerDidPlayed(atTime: player.currentTime)
+        }else{
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+
     
     
 }
@@ -73,9 +106,15 @@ extension AudioPlayerManager: AVAudioPlayerDelegate{
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if flag {
-            if currentPlayMode == .listLoop {
-                
-                
+            switch currentPlayMode {
+            case .listLoop, .listRandom:
+                if let items = currentPlayMode == .listLoop ? audioItems : shuffledAudioItems, let index = items.firstIndex(of: currentItem){
+                    let nextIndex = index + 1 >= items.count ? 0 : index + 1
+                    play(audioItem: items[nextIndex])
+                    player.numberOfLoops = 0
+                }
+            default:
+                player.numberOfLoops = -1
             }
         }
     }
