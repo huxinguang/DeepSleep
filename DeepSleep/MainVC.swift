@@ -15,16 +15,11 @@ class MainVC: BaseVC {
         title = "Sunshine girl"
     }
     
-//    override var preferredStatusBarStyle: UIStatusBarStyle{
-//        return .default
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
-        UIApplication.shared.statusBarStyle = .lightContent
-//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        
+
         return true
     }
 
