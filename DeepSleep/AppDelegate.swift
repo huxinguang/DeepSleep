@@ -8,13 +8,13 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         sleep(2)
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -24,6 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
+//        // Get the singleton instance.
+//        let audioSession = AVAudioSession.sharedInstance()
+//        do {
+//            // Set the audio session category, mode, and options.
+//            try audioSession.setCategory(.playback, mode: .moviePlayback, options: [])
+//        } catch {
+//            print("Failed to set audio session category.")
+//        }
 
         return true
     }
