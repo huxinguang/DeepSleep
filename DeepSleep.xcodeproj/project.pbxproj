@@ -35,6 +35,7 @@
 		969BA11F243189A400710F83 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA11E243189A400710F83 /* Notification.swift */; };
 		969BA1212431BAD900710F83 /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA1202431BAD900710F83 /* AudioPlayerManager.swift */; };
 		969BA1232431CD3700710F83 /* AudioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA1222431CD3700710F83 /* AudioItem.swift */; };
+		969BA1252432D77A00710F83 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA1242432D77A00710F83 /* UIButton.swift */; };
 		96C9B3DD242C47F10021781B /* MusicTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DC242C47F10021781B /* MusicTypeVC.swift */; };
 		96C9B3DF242C58490021781B /* AnimatorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DE242C58490021781B /* AnimatorObject.swift */; };
 		96C9B3E1242C71B60021781B /* PresentationDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */; };
@@ -72,6 +73,7 @@
 		969BA11E243189A400710F83 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		969BA1202431BAD900710F83 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
 		969BA1222431CD3700710F83 /* AudioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioItem.swift; sourceTree = "<group>"; };
+		969BA1242432D77A00710F83 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		96C9B3DC242C47F10021781B /* MusicTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTypeVC.swift; sourceTree = "<group>"; };
 		96C9B3DE242C58490021781B /* AnimatorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorObject.swift; sourceTree = "<group>"; };
 		96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDelegateObject.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				9665B71C2429D65100297C60 /* UIView.swift */,
 				969BA11A242DE08800710F83 /* UIDevice.swift */,
 				96C9B3E2242C7E2F0021781B /* UIViewController.swift */,
+				969BA1242432D77A00710F83 /* UIButton.swift */,
 				969BA11C242DED8B00710F83 /* Styles.swift */,
 				969BA11E243189A400710F83 /* Notification.swift */,
 				9665B6F724284F5F00297C60 /* Main.storyboard */,
@@ -290,6 +293,7 @@
 				9665B70D242881AD00297C60 /* MainNavigationController.swift in Sources */,
 				969BA11B242DE08800710F83 /* UIDevice.swift in Sources */,
 				969BA119242DC2C600710F83 /* MusicTypeLayout.swift in Sources */,
+				969BA1252432D77A00710F83 /* UIButton.swift in Sources */,
 				9665B70F2428936C00297C60 /* MainVC.swift in Sources */,
 				9665B6FC24284F5F00297C60 /* DeepSleep.xcdatamodeld in Sources */,
 				969BA1232431CD3700710F83 /* AudioItem.swift in Sources */,

@@ -35,18 +35,33 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zhp-81-UaL">
                                         <rect key="frame" x="0.0" y="0.0" width="71" height="60"/>
                                         <state key="normal" image="recircle"/>
+                                        <connections>
+                                            <action selector="onModeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lLy-bv-gzU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEm-fy-iEK">
                                         <rect key="frame" x="71" y="0.0" width="70.5" height="60"/>
                                         <state key="normal" image="previous"/>
+                                        <connections>
+                                            <action selector="onPreviousBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWL-F2-JIO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdS-fY-Md3">
                                         <rect key="frame" x="141.5" y="0.0" width="71" height="60"/>
                                         <state key="normal" image="play"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="pause"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onPlayPauseBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z7r-k3-j7b"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0e-5m-ifK">
                                         <rect key="frame" x="212.5" y="0.0" width="70.5" height="60"/>
                                         <state key="normal" image="next"/>
+                                        <connections>
+                                            <action selector="onNextBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rEX-Wn-EVW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyJ-ey-Z7W">
                                         <rect key="frame" x="283" y="0.0" width="71" height="60"/>
@@ -96,6 +111,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="modeBtn" destination="Zhp-81-UaL" id="75h-LS-sz4"/>
+                        <outlet property="slider" destination="GIQ-Wc-fGa" id="1jw-dF-Pqk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doi-8a-KXK">
-                                <rect key="frame" x="192" y="856" width="30" height="30"/>
+                                <rect key="frame" x="177" y="826" width="60" height="60"/>
                                 <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="Vum-iT-gWg"/>
@@ -161,6 +180,7 @@
                             <constraint firstItem="Doi-8a-KXK" firstAttribute="centerX" secondItem="fPs-jg-z76" secondAttribute="centerX" id="lUW-vK-dQp"/>
                             <constraint firstAttribute="bottom" secondItem="Doi-8a-KXK" secondAttribute="bottom" constant="10" id="u4R-Rw-JxI"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="l36-bS-qk0"/>
                     </view>
                     <connections>
                         <outlet property="closeBtn" destination="Doi-8a-KXK" id="TBK-Fr-gNe"/>
@@ -180,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mej-nR-jR7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicCell" id="8sD-zN-aUb" customClass="MusicCell" customModule="DeepSleep" customModuleProvider="target">
@@ -199,7 +219,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-Yc-5NO">
-                                <rect key="frame" x="192" y="856" width="30" height="30"/>
+                                <rect key="frame" x="177" y="826" width="60" height="60"/>
                                 <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="h7A-dL-qzK" eventType="touchUpInside" id="mfg-qS-SVM"/>
@@ -215,6 +235,7 @@
                             <constraint firstItem="mSh-Yc-5NO" firstAttribute="centerX" secondItem="Xac-nK-45u" secondAttribute="centerX" id="T6W-n2-kj2"/>
                             <constraint firstItem="Mej-nR-jR7" firstAttribute="top" secondItem="Xac-nK-45u" secondAttribute="top" id="qLz-0P-xaA"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="1ZO-QI-ZdE"/>
                     </view>
                     <connections>
                         <outlet property="closeBtn" destination="mSh-Yc-5NO" id="Goi-q8-Qtd"/>
@@ -493,6 +514,7 @@
         <image name="bg2" width="540" height="540"/>
         <image name="next" width="30" height="30"/>
         <image name="packup" width="30" height="30"/>
+        <image name="pause" width="60" height="60"/>
         <image name="play" width="60" height="60"/>
         <image name="previous" width="30" height="30"/>
         <image name="recircle" width="25" height="25"/>

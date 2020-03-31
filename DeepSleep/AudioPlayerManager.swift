@@ -16,8 +16,7 @@ enum AudioPlayMode {
 }
 
 protocol AudioPlayerUIDelegate {
-    func playerDidPlayed(atTime: TimeInterval)
-    
+    func playerDidPlayed(atTime time: TimeInterval)
     
 }
 
@@ -29,7 +28,6 @@ class AudioPlayerManager: NSObject {
     fileprivate var currentItem: AudioItem!
     fileprivate var currentPlayMode: AudioPlayMode!
     var delegate: AudioPlayerUIDelegate?
-    
     
     static let share: AudioPlayerManager = {
         let instance = AudioPlayerManager()
@@ -43,6 +41,7 @@ class AudioPlayerManager: NSObject {
                 player.pause()
             }
             player.stop()
+            player.removeObserver(self, forKeyPath: "currentTime")
             player = nil
         }
         currentItem = audioItem
@@ -99,7 +98,6 @@ class AudioPlayerManager: NSObject {
     }
 
     
-    
 }
 
 extension AudioPlayerManager: AVAudioPlayerDelegate{
@@ -123,7 +121,5 @@ extension AudioPlayerManager: AVAudioPlayerDelegate{
         
     }
 
-    
-    
     
 }

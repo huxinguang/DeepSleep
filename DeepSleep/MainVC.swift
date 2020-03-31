@@ -10,6 +10,9 @@ import UIKit
 
 class MainVC: BaseVC {
     
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var modeBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sunshine girl"
@@ -33,6 +36,22 @@ class MainVC: BaseVC {
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = TestObject.share
         present(vc, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func onModeBtn(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func onPreviousBtn(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func onPlayPauseBtn(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
+    @IBAction func onNextBtn(_ sender: UIButton) {
         
     }
     
