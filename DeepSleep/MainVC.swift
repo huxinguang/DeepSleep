@@ -15,10 +15,12 @@ class MainVC: BaseVC {
     @IBOutlet weak var modeBtn: UIButton!
     var data: [AudioItem]!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sunshine girl"
+        
+        slider.setThumbImage(UIImage(named: "dot_nor"), for: .normal)
+        slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
         
         let path = Bundle.main.path(forResource: "music", ofType: "json")
         let url = URL(fileURLWithPath: path!)
@@ -116,6 +118,7 @@ class MainVC: BaseVC {
 
 extension MainVC: PlayerUIDelegate{
     func playerReadyToPlay() {
+        
         print("playerReadyToPlay")
     }
     

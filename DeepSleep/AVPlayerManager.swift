@@ -108,7 +108,6 @@ class AVPlayerManager: NSObject {
         
     }
     
-    
     func play() {
         guard let _ = player.currentItem else { return }
         player.play()
