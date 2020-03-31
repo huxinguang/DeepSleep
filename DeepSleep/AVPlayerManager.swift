@@ -57,7 +57,7 @@ class AVPlayerManager: NSObject {
             player.automaticallyWaitsToMinimizeStalling = true
             player.usesExternalPlaybackWhileExternalScreenIsActive = true
             player.play()
-            timeObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1.0, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
+            timeObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
                 guard let strongSelf = self, let delegate = strongSelf.delegate, let playerItem = strongSelf.player.currentItem else {return}
                 delegate.playerDidPlay(toTime: time, totalTime: playerItem.duration)
             }

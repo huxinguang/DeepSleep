@@ -123,11 +123,14 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerDidLoad(toProgress progress: Float64) {
-        print(progress)
+        
     }
     
     func playerDidPlay(toTime: CMTime, totalTime: CMTime) {
-        print("toTime \(toTime), totalTime\(totalTime)")
+        let progress = CMTimeGetSeconds(toTime)/CMTimeGetSeconds(totalTime)
+        print(progress)
+        slider.setValue(Float(progress), animated: true)
+        
     }
     
     func playerPlaybackBufferEmpty() {
