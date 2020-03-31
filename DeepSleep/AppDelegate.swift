@@ -24,14 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
-//        // Get the singleton instance.
-//        let audioSession = AVAudioSession.sharedInstance()
-//        do {
-//            // Set the audio session category, mode, and options.
-//            try audioSession.setCategory(.playback, mode: .moviePlayback, options: [])
-//        } catch {
-//            print("Failed to set audio session category.")
-//        }
+        // Get the singleton instance.
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            // Set the audio session category, mode, and options.
+            try audioSession.setCategory(.playback, mode: .default, options: [])
+            try audioSession.setActive(true, options: [])
+        } catch {
+            print("Failed to set audio session category.")
+        }
+        
         
 
         return true

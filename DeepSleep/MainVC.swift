@@ -7,15 +7,42 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainVC: BaseVC {
     
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var modeBtn: UIButton!
+    var data: [AudioItem]!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sunshine girl"
+        
+        let path = Bundle.main.path(forResource: "music", ofType: "json")
+        let url = URL(fileURLWithPath: path!)
+        do {
+            let json = try Data(contentsOf: url)
+            let jsonData = try JSONSerialization.jsonObject(with: json, options: .mutableContainers)
+            if let data = jsonData as? NSDictionary,let musics = data["data"] as? NSArray {
+                var items = [AudioItem]()
+                for music in musics {
+                    if let dic = music as? NSDictionary {
+                        let item = AudioItem(fromDictionary: dic)
+                        items.append(item)
+                    }
+                }
+                self.data = items
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+        AVPlayerManager.share.delegate = self
+        AVPlayerManager.share.play(audioItem: data[0])
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +75,11 @@ class MainVC: BaseVC {
     }
     
     @IBAction func onPlayPauseBtn(_ sender: UIButton) {
+        if sender.isSelected {
+            AVPlayerManager.share.pause()
+        }else{
+            AVPlayerManager.share.play()
+        }
         sender.isSelected = !sender.isSelected
     }
     
@@ -80,6 +112,38 @@ class MainVC: BaseVC {
     }
     */
 
+}
+
+extension MainVC: PlayerUIDelegate{
+    func playerReadyToPlay() {
+        print("playerReadyToPlay")
+    }
+    
+    func playerDidLoad(toProgress progress: Float64) {
+        print(progress)
+    }
+    
+    func playerDidPlay(toTime: CMTime, totalTime: CMTime) {
+        print("toTime \(toTime), totalTime\(totalTime)")
+    }
+    
+    func playerPlaybackBufferEmpty() {
+        print("playerPlaybackBufferEmpty")
+    }
+    
+    func playerPlaybackLikelyToKeepUp() {
+        print("playerPlaybackLikelyToKeepUp")
+    }
+    
+    func playerDidFinishPlaying() {
+        print("playerDidFinishPlaying")
+    }
+    
+    func playerDidFailToPlay() {
+        print("playerDidFailToPlay")
+    }
+    
+    
 }
 
 

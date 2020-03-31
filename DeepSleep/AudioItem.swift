@@ -13,8 +13,10 @@ class AudioItem: NSObject {
     var url: String!
     var name: String!    
     
-    init(withUrl url: String) {
-        self.url = url
+    init(fromDictionary dictionary: NSDictionary) {
+        self.id = dictionary["id"] as? Int
+        self.url = dictionary["url"] as? String
+        self.name = dictionary["name"] as? String
     }
     
 }
