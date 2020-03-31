@@ -23,12 +23,13 @@ protocol PlayerUIDelegate {
     func playerPlaybackLikelyToKeepUp() -> Void
     func playerDidFinishPlaying() -> Void
     func playerDidFailToPlay() -> Void
+    func playerDidEndSeeking() -> Void
 }
 
 class AVPlayerManager: NSObject {
         
     fileprivate var player: AVPlayer!
-    fileprivate var chaseTime: CMTime!
+    fileprivate var chaseTime: CMTime = .zero
     fileprivate var timeObserverToken: Any!
     var delegate: PlayerUIDelegate?
     fileprivate var audioItems: [AudioItem]!
@@ -118,10 +119,19 @@ class AVPlayerManager: NSObject {
         player.pause()
     }
     
+    func update(progress: Float) {
+        guard let playerItem = player.currentItem else { return }
+        let totalSeconds = CMTimeGetSeconds(playerItem.duration)
+        let currentSeconds = totalSeconds * Float64(progress)
+        let timeScale = playerItem.currentTime().timescale
+        let current = CMTime(seconds: currentSeconds, preferredTimescale: timeScale)
+        seekSmoothly(toTime: current) 
+    }
+    
     func seekSmoothly(toTime time: CMTime) {
         guard let playerItem = player.currentItem else { return }
         player.pause()
-        if CMTimeCompare(time, .zero) == 1 && CMTimeCompare(time, playerItem.duration) == -1 && CMTimeCompare(time, chaseTime) != 0 {
+        if CMTimeCompare(time, .zero) == 1 && CMTimeCompare(time, playerItem.duration) == -1  {
             chaseTime = time
             if !isSeekInProgress {
                 trySeekToChaseTime()
@@ -139,7 +149,7 @@ class AVPlayerManager: NSObject {
     }
     
     func actuallySeekToTime() {
-        guard let seekTimeInProgress = chaseTime else{ return }
+        let seekTimeInProgress = chaseTime
         isSeekInProgress = true
         //Important: Calling the seekToTime:toleranceBefore:toleranceAfter: method with small or zero-valued tolerances may incur additional decoding delay, which can impact your app’s seeking behavior.
         player.seek(to: seekTimeInProgress, toleranceBefore: .zero, toleranceAfter: .zero) {[unowned self] (finished) in
@@ -147,6 +157,9 @@ class AVPlayerManager: NSObject {
                 if finished {
                     self.isSeekInProgress = false
                     self.player.play()
+                    if let delegate = self.delegate {
+                        delegate.playerDidEndSeeking()
+                    }
                 }
             }else{
                 self.trySeekToChaseTime()

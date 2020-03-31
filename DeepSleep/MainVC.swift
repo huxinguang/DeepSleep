@@ -13,6 +13,10 @@ class MainVC: BaseVC {
     
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var modeBtn: UIButton!
+    @IBOutlet weak var playBtn: UIButton!
+    var sliderIsSliding: Bool = false
+    
+    
     var data: [AudioItem]!
     
     override func viewDidLoad() {
@@ -68,6 +72,14 @@ class MainVC: BaseVC {
         
     }
     
+    @IBAction func slideDidEnd(_ sender: ThinTrackSlider) {
+        AVPlayerManager.share.update(progress: sender.value)
+    }
+    
+    @IBAction func sliderValueDidChange(_ sender: ThinTrackSlider) {
+        sliderIsSliding = true
+    }
+    
     @IBAction func onModeBtn(_ sender: UIButton) {
         
     }
@@ -118,7 +130,6 @@ class MainVC: BaseVC {
 
 extension MainVC: PlayerUIDelegate{
     func playerReadyToPlay() {
-        
         print("playerReadyToPlay")
     }
     
@@ -127,10 +138,11 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerDidPlay(toTime: CMTime, totalTime: CMTime) {
-        let progress = CMTimeGetSeconds(toTime)/CMTimeGetSeconds(totalTime)
-        print(progress)
-        slider.setValue(Float(progress), animated: true)
-        
+        if !sliderIsSliding {
+            let progress = CMTimeGetSeconds(toTime)/CMTimeGetSeconds(totalTime)
+            slider.setValue(Float(progress), animated: true)
+        }
+    
     }
     
     func playerPlaybackBufferEmpty() {
@@ -147,6 +159,10 @@ extension MainVC: PlayerUIDelegate{
     
     func playerDidFailToPlay() {
         print("playerDidFailToPlay")
+    }
+    
+    func playerDidEndSeeking() {
+        sliderIsSliding = false
     }
     
     

@@ -29,6 +29,10 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GIQ-Wc-fGa" customClass="ThinTrackSlider" customModule="DeepSleep" customModuleProvider="target">
                                 <rect key="frame" x="28" y="727" width="358" height="31"/>
                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="slideDidEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aaR-DD-CcJ"/>
+                                    <action selector="sliderValueDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="ORL-Yu-W5a"/>
+                                </connections>
                             </slider>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="th4-BP-1ut">
                                 <rect key="frame" x="30" y="772" width="354" height="60"/>
@@ -114,6 +118,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="modeBtn" destination="Zhp-81-UaL" id="75h-LS-sz4"/>
+                        <outlet property="playBtn" destination="rdS-fY-Md3" id="IUl-ku-GCU"/>
                         <outlet property="slider" destination="GIQ-Wc-fGa" id="1jw-dF-Pqk"/>
                     </connections>
                 </viewController>
