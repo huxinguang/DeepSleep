@@ -179,8 +179,10 @@ extension MainVC: PlayerUIDelegate{
         }
     }
     
-    func playerItemDidChange(toItem item: AudioItem) {
-        
+    func playerItemDidChange(toItem item: AudioItem?) {
+        if let playingItem = item {
+            nameLabel.text = playingItem.name
+        }
     }
     
 }
