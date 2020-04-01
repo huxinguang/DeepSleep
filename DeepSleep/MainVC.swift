@@ -47,6 +47,7 @@ class MainVC: BaseVC {
         }
         
         AVPlayerManager.share.delegate = self
+        AVPlayerManager.share.audioItems = data
         AVPlayerManager.share.play(audioItem: data[0])
         
     }
@@ -81,7 +82,7 @@ class MainVC: BaseVC {
     }
     
     @IBAction func onModeBtn(_ sender: UIButton) {
-        
+        AVPlayerManager.share.resetPlayMode()
     }
     
     @IBAction func onPreviousBtn(_ sender: UIButton) {

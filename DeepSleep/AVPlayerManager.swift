@@ -9,10 +9,10 @@
 import UIKit
 import AVFoundation
 
-enum AudioPlayMode {
-    case listLoop
-    case singleLoop
-    case listRandom
+enum AudioPlayMode: Int {
+    case listLoop = 0
+    case singleLoop = 1
+    case listRandom = 2
 }
 
 protocol PlayerUIDelegate {
@@ -32,9 +32,17 @@ class AVPlayerManager: NSObject {
     fileprivate var chaseTime: CMTime = .zero
     fileprivate var timeObserverToken: Any!
     var delegate: PlayerUIDelegate?
-    fileprivate var audioItems: [AudioItem]!
-    fileprivate var shuffledAudioItems: [AudioItem]!
-    fileprivate var currentPlayMode: AudioPlayMode!
+    var audioItems: [AudioItem]?
+    fileprivate var shuffledAudioItems: [AudioItem]?
+    fileprivate var currentPlayMode: AudioPlayMode!{
+        didSet{
+            if let player = player {
+                player.actionAtItemEnd = currentPlayMode == .singleLoop ? .none : .pause
+                UserDefaults.standard.set(currentPlayMode.rawValue, forKey: Constant.UserDefaults.PlayerMode)
+                UserDefaults.standard.synchronize()
+            }
+        }
+    }
     fileprivate var currentItem: AudioItem!
     var isSeekInProgress: Bool = false
     
@@ -54,7 +62,11 @@ class AVPlayerManager: NSObject {
             perform(#selector(addKVO), on: .main, with: self, waitUntilDone: true)
         }else{
             player = AVPlayer(playerItem: playerItem)
-            player.actionAtItemEnd = currentPlayMode == .singleLoop ? .none : .pause
+            if let mode = UserDefaults.standard.object(forKey: Constant.UserDefaults.PlayerMode) as? Int {
+                currentPlayMode = AudioPlayMode(rawValue: mode)
+            }else{
+                currentPlayMode = .listLoop
+            }
             player.automaticallyWaitsToMinimizeStalling = true
             player.usesExternalPlaybackWhileExternalScreenIsActive = true
             player.play()
@@ -95,16 +107,14 @@ class AVPlayerManager: NSObject {
         guard let delegate = delegate else { return }
         delegate.playerDidFinishPlaying()
         player.seek(to: .zero)
-        
         switch currentPlayMode {
         case .listLoop, .listRandom:
             if let items = currentPlayMode == .listLoop ? audioItems : shuffledAudioItems, let index = items.firstIndex(of: currentItem){
                 let nextIndex = index + 1 >= items.count ? 0 : index + 1
                 play(audioItem: items[nextIndex])
-                player.actionAtItemEnd = .pause
             }
         default:
-            player.actionAtItemEnd = .none
+            break
         }
         
     }
@@ -230,7 +240,9 @@ class AVPlayerManager: NSObject {
             currentPlayMode = .singleLoop
         case .singleLoop:
             currentPlayMode = .listRandom
+            guard let audioItems = audioItems else { return }
             shuffledAudioItems = shuffled(originalItems: audioItems)
+            print(shuffledAudioItems!, audioItems)
         default:
             currentPlayMode = .listLoop
         }

@@ -38,6 +38,7 @@
 		969BA1272432E90800710F83 /* music.json in Resources */ = {isa = PBXBuildFile; fileRef = 969BA1262432E90800710F83 /* music.json */; };
 		969BA1292433082E00710F83 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA1282433082E00710F83 /* AVPlayerManager.swift */; };
 		969BA12B24333F5800710F83 /* ThinTrackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA12A24333F5700710F83 /* ThinTrackSlider.swift */; };
+		969BA12D2434321C00710F83 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA12C2434321B00710F83 /* Constant.swift */; };
 		96C9B3DD242C47F10021781B /* MusicTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DC242C47F10021781B /* MusicTypeVC.swift */; };
 		96C9B3DF242C58490021781B /* AnimatorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3DE242C58490021781B /* AnimatorObject.swift */; };
 		96C9B3E1242C71B60021781B /* PresentationDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */; };
@@ -78,6 +79,7 @@
 		969BA1262432E90800710F83 /* music.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = music.json; sourceTree = "<group>"; };
 		969BA1282433082E00710F83 /* AVPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
 		969BA12A24333F5700710F83 /* ThinTrackSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinTrackSlider.swift; sourceTree = "<group>"; };
+		969BA12C2434321B00710F83 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		96C9B3DC242C47F10021781B /* MusicTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTypeVC.swift; sourceTree = "<group>"; };
 		96C9B3DE242C58490021781B /* AnimatorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorObject.swift; sourceTree = "<group>"; };
 		96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDelegateObject.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				96C9B3E2242C7E2F0021781B /* UIViewController.swift */,
 				969BA1242432D77A00710F83 /* UIButton.swift */,
 				969BA11C242DED8B00710F83 /* Styles.swift */,
+				969BA12C2434321B00710F83 /* Constant.swift */,
 				969BA11E243189A400710F83 /* Notification.swift */,
 				9665B6F724284F5F00297C60 /* Main.storyboard */,
 				9665B6FD24284F6200297C60 /* Assets.xcassets */,
@@ -310,6 +313,7 @@
 				9665B71F2429E71800297C60 /* MusicCell.swift in Sources */,
 				9665B727242B197400297C60 /* SettingCell.swift in Sources */,
 				9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */,
+				969BA12D2434321C00710F83 /* Constant.swift in Sources */,
 				969BA10F242C93CA00710F83 /* TestObject.swift in Sources */,
 				969BA11D242DED8B00710F83 /* Styles.swift in Sources */,
 				9665B723242B04C400297C60 /* SettingVC.swift in Sources */,
