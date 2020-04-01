@@ -23,7 +23,8 @@ enum AudioPlayMode: Int {
 protocol PlayerUIDelegate {
     func playerReadyToPlay() -> Void
     func playerDidLoad(toProgress progress: Float64) -> Void
-    func playerDidPlay(toTime: CMTime, totalTime: CMTime) -> Void
+    func playerDidPlay(toProgress progress: Float) -> Void
+    func playerDidPlay(toTime: Float64, totalTime: Float64) -> Void
     func playerPlaybackBufferEmpty() -> Void
     func playerPlaybackLikelyToKeepUp() -> Void
     func playerDidFinishPlaying() -> Void
@@ -37,6 +38,7 @@ class AVPlayerManager: NSObject {
         
     fileprivate var player: AVPlayer!
     fileprivate var chaseTime: CMTime = .zero
+    fileprivate var sliderObserverToken: Any!
     fileprivate var timeObserverToken: Any!
     var delegate: PlayerUIDelegate?
     var audioItems: [AudioItem]?
@@ -83,10 +85,16 @@ class AVPlayerManager: NSObject {
             player.automaticallyWaitsToMinimizeStalling = true
             player.usesExternalPlaybackWhileExternalScreenIsActive = true
             player.play()
-            timeObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
-                guard let strongSelf = self, let delegate = strongSelf.delegate, let playerItem = strongSelf.player.currentItem else {return}
-                delegate.playerDidPlay(toTime: time, totalTime: playerItem.duration)
+            sliderObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.05, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
+                guard let strongSelf = self, let delegate = strongSelf.delegate, let playerItem = strongSelf.player.currentItem else { return }
+                let progress = CMTimeGetSeconds(time)/CMTimeGetSeconds(playerItem.duration)
+                delegate.playerDidPlay(toProgress: Float(progress))
             }
+            timeObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
+                guard let strongSelf = self, let delegate = strongSelf.delegate, let playerItem = strongSelf.player.currentItem, strongSelf.player.status == .readyToPlay, !time.isIndefinite, !playerItem.duration.isIndefinite else { return }
+                delegate.playerDidPlay(toTime: CMTimeGetSeconds(time), totalTime: CMTimeGetSeconds(playerItem.duration))
+            }
+
             perform(#selector(addKVO), on: .main, with: self, waitUntilDone: true)
         }
         
@@ -320,7 +328,9 @@ class AVPlayerManager: NSObject {
     }
     
     deinit {
+        player.removeTimeObserver(sliderObserverToken!)
         player.removeTimeObserver(timeObserverToken!)
+        sliderObserverToken = nil
         timeObserverToken = nil
         NotificationCenter.default.removeObserver(self)
         player.currentItem?.cancelPendingSeeks()

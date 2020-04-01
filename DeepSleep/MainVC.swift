@@ -118,6 +118,22 @@ class MainVC: BaseVC {
         present(vc, animated: true, completion: nil)
     }
     
+    func timeConverted(fromSeconds seconds: Float64) -> String {
+        let sec = Int(seconds)
+        if sec >= 0 && sec < 10 {
+            return "00:0\(sec)"
+        }else if sec >= 10 && sec < 60{
+            return "00:\(sec)"
+        }else if sec >= 60 && sec < 600{
+            return "0\(sec/60):\(timeConverted(fromSeconds: Float64(sec%60)).suffix(2))"
+        }else if sec >= 600 && sec < 3600{
+            return "\(sec/60):\(timeConverted(fromSeconds: Float64(sec%60)).suffix(2))"
+        }else{
+            return "too long"
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -140,12 +156,16 @@ extension MainVC: PlayerUIDelegate{
         
     }
     
-    func playerDidPlay(toTime: CMTime, totalTime: CMTime) {
-        if !sliderIsSliding {
-            let progress = CMTimeGetSeconds(toTime)/CMTimeGetSeconds(totalTime)
-            slider.setValue(Float(progress), animated: true)
-        }
+    func playerDidPlay(toTime: Float64, totalTime: Float64) {
+        print(toTime,totalTime)
+        currentTimeLabel.text = timeConverted(fromSeconds: toTime)
+        totalTimeLabel.text = timeConverted(fromSeconds: totalTime)
+    }
     
+    func playerDidPlay(toProgress progress: Float){
+        if !sliderIsSliding {
+            slider.setValue(progress, animated: false)
+        }
     }
     
     func playerPlaybackBufferEmpty() {
