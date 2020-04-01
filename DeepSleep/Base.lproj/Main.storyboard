@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dfb-yg-qbH">
+                                <rect key="frame" x="116.5" y="337" width="181" height="181"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-6Q-3X2">
                                 <rect key="frame" x="52" y="272.5" width="310.5" height="310.5"/>
                             </imageView>
@@ -109,13 +112,17 @@
                             <constraint firstItem="wcx-Ce-WLf" firstAttribute="leading" secondItem="GIQ-Wc-fGa" secondAttribute="leading" constant="-6" id="NJ7-Fp-R1q"/>
                             <constraint firstItem="gNy-kq-dFP" firstAttribute="centerY" secondItem="wcx-Ce-WLf" secondAttribute="centerY" id="TdW-az-WI7"/>
                             <constraint firstItem="GIQ-Wc-fGa" firstAttribute="top" secondItem="xBI-r7-sUw" secondAttribute="bottom" constant="10" id="U3L-cR-ZIF"/>
+                            <constraint firstItem="Dfb-yg-qbH" firstAttribute="centerX" secondItem="fgv-6Q-3X2" secondAttribute="centerX" id="XYk-wy-7OL"/>
                             <constraint firstItem="gNy-kq-dFP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wcx-Ce-WLf" secondAttribute="trailing" constant="20" id="ZfP-3N-zd2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="th4-BP-1ut" secondAttribute="bottom" constant="30" id="acG-ZU-ycU"/>
+                            <constraint firstItem="Dfb-yg-qbH" firstAttribute="width" secondItem="fgv-6Q-3X2" secondAttribute="width" multiplier="630:1080" id="an3-Nl-Y4T"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="width" secondItem="fgv-6Q-3X2" secondAttribute="width" id="dv0-nO-b7A"/>
                             <constraint firstItem="QA8-H5-qt0" firstAttribute="height" secondItem="fgv-6Q-3X2" secondAttribute="height" id="fZ4-o6-zXG"/>
                             <constraint firstItem="xBI-r7-sUw" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" constant="6" id="fhz-Ed-OUe"/>
+                            <constraint firstItem="Dfb-yg-qbH" firstAttribute="height" secondItem="fgv-6Q-3X2" secondAttribute="height" multiplier="630:1080" id="iHS-Kr-mL5"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="jnI-RW-ksO"/>
                             <constraint firstItem="fgv-6Q-3X2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="keO-Em-jX5"/>
+                            <constraint firstItem="Dfb-yg-qbH" firstAttribute="centerY" secondItem="fgv-6Q-3X2" secondAttribute="centerY" id="pVs-7O-ido"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="top" secondItem="GIQ-Wc-fGa" secondAttribute="bottom" constant="30" id="qjg-l3-gtu"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="leading" secondItem="GIQ-Wc-fGa" secondAttribute="leading" id="sQm-Xm-oZb"/>
                             <constraint firstItem="th4-BP-1ut" firstAttribute="trailing" secondItem="GIQ-Wc-fGa" secondAttribute="trailing" id="xQ7-5X-URg"/>
@@ -144,6 +151,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currentTimeLabel" destination="wcx-Ce-WLf" id="qpd-O4-AKf"/>
+                        <outlet property="imageView" destination="Dfb-yg-qbH" id="7nF-gX-eRh"/>
                         <outlet property="modeBtn" destination="Zhp-81-UaL" id="75h-LS-sz4"/>
                         <outlet property="nameLabel" destination="xBI-r7-sUw" id="8FF-Dj-obF"/>
                         <outlet property="playBtn" destination="rdS-fY-Md3" id="IUl-ku-GCU"/>
@@ -546,7 +554,7 @@
     </scenes>
     <resources>
         <image name="bg1" width="540" height="540"/>
-        <image name="bg2" width="540" height="540"/>
+        <image name="bg2" width="270" height="270"/>
         <image name="next" width="30" height="30"/>
         <image name="packup" width="30" height="30"/>
         <image name="pause" width="60" height="60"/>

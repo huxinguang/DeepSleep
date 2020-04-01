@@ -8,9 +8,11 @@
 
 import UIKit
 import AVFoundation
+import Kingfisher
 
 class MainVC: BaseVC {
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var slider: ThinTrackSlider!
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -204,6 +206,7 @@ extension MainVC: PlayerUIDelegate{
             nameLabel.text = playingItem.name
             currentTimeLabel.text = "00:00"
             totalTimeLabel.text = "--:--"
+            imageView.kf.setImage(with: URL(string: playingItem.image_url))
         }
     }
     
