@@ -11,13 +11,15 @@ import AVFoundation
 
 class MainVC: BaseVC {
     
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var slider: ThinTrackSlider!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var modeBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
     var sliderIsSliding: Bool = false
-    
     var data: [AudioItem]!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sunshine girl"
@@ -177,6 +179,9 @@ extension MainVC: PlayerUIDelegate{
         }
     }
     
+    func playerItemDidChange(toItem item: AudioItem) {
+        
+    }
     
 }
 

@@ -25,6 +25,7 @@ protocol PlayerUIDelegate {
     func playerDidFailToPlay() -> Void
     func playerDidEndSeeking() -> Void
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
+    func playerItemDidChange(toItem item: AudioItem) -> Void
 }
 
 class AVPlayerManager: NSObject {
@@ -45,7 +46,7 @@ class AVPlayerManager: NSObject {
             }
         }
     }
-    fileprivate var currentItem: AudioItem!
+    fileprivate var currentItem: AudioItem?
     var isSeekInProgress: Bool = false
     
     static let share: AVPlayerManager = {
@@ -77,6 +78,10 @@ class AVPlayerManager: NSObject {
                 delegate.playerDidPlay(toTime: time, totalTime: playerItem.duration)
             }
             perform(#selector(addKVO), on: .main, with: self, waitUntilDone: true)
+        }
+        
+        if let delegate = delegate {
+            delegate.playerItemDidChange(toItem: audioItem)
         }
         
     }
@@ -111,10 +116,21 @@ class AVPlayerManager: NSObject {
         player.seek(to: .zero)
         switch currentPlayMode {
         case .listLoop, .listRandom:
-            if let items = currentPlayMode == .listLoop ? audioItems : shuffledAudioItems, let index = items.firstIndex(of: currentItem){
+            guard let currentItem = currentItem, let audioItems = audioItems else { return }
+            var items: [AudioItem]!
+            if currentPlayMode == .listLoop {
+                items = audioItems
+            }else{
+                if shuffledAudioItems == nil {
+                    shuffledAudioItems = shuffled(originalItems: audioItems)
+                }
+                items = shuffledAudioItems
+            }
+            if let index = items.firstIndex(of: currentItem){
                 let nextIndex = index + 1 >= items.count ? 0 : index + 1
                 play(audioItem: items[nextIndex])
             }
+            
         default:
             break
         }
