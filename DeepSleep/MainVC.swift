@@ -22,12 +22,25 @@ class MainVC: BaseVC {
     var sliderIsSliding: Bool = false
     var data: [AudioItem]!
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sunshine girl"
         
         slider.setThumbImage(UIImage(named: "dot_nor"), for: .normal)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
+        
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.fromValue = 0
+        animation.toValue = Double.pi*2
+        animation.duration = 10
+        animation.autoreverses = false
+        animation.fillMode = .forwards
+        animation.repeatCount = MAXFLOAT
+        imageView.layer.add(animation, forKey: "ImageRotationAnimation")
+        
+        
+        
         
         let path = Bundle.main.path(forResource: "music", ofType: "json")
         let url = URL(fileURLWithPath: path!)
@@ -95,8 +108,21 @@ class MainVC: BaseVC {
     @IBAction func onPlayPauseBtn(_ sender: UIButton) {
         if sender.isSelected {
             AVPlayerManager.share.pause()
+            
+            let pausedTime = imageView.layer.convertTime(CACurrentMediaTime(), from: nil)
+            imageView.layer.speed = 0.0
+            imageView.layer.timeOffset = pausedTime
+            
         }else{
             AVPlayerManager.share.play()
+            
+            let pausedTime = imageView.layer.timeOffset
+            imageView.layer.speed = 1.0
+            imageView.layer.timeOffset = 0.0
+            imageView.layer.beginTime = 0.0
+            let timeSincePause = imageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+            imageView.layer.beginTime = timeSincePause
+            
         }
         sender.isSelected = !sender.isSelected
     }
@@ -207,6 +233,10 @@ extension MainVC: PlayerUIDelegate{
             currentTimeLabel.text = "00:00"
             totalTimeLabel.text = "--:--"
             imageView.kf.setImage(with: URL(string: playingItem.image_url))
+            
+            
+            
+        
         }
     }
     
