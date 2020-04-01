@@ -24,6 +24,7 @@ protocol PlayerUIDelegate {
     func playerDidFinishPlaying() -> Void
     func playerDidFailToPlay() -> Void
     func playerDidEndSeeking() -> Void
+    func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
 }
 
 class AVPlayerManager: NSObject {
@@ -34,12 +35,13 @@ class AVPlayerManager: NSObject {
     var delegate: PlayerUIDelegate?
     var audioItems: [AudioItem]?
     fileprivate var shuffledAudioItems: [AudioItem]?
-    fileprivate var currentPlayMode: AudioPlayMode!{
+    private(set) var currentPlayMode: AudioPlayMode!{
         didSet{
-            if let player = player {
+            if let player = player, let delegate = delegate {
                 player.actionAtItemEnd = currentPlayMode == .singleLoop ? .none : .pause
                 UserDefaults.standard.set(currentPlayMode.rawValue, forKey: Constant.UserDefaults.PlayerMode)
                 UserDefaults.standard.synchronize()
+                delegate.playerModeDidChange(toMode: currentPlayMode)
             }
         }
     }

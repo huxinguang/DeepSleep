@@ -16,7 +16,6 @@ class MainVC: BaseVC {
     @IBOutlet weak var playBtn: UIButton!
     var sliderIsSliding: Bool = false
     
-    
     var data: [AudioItem]!
     
     override func viewDidLoad() {
@@ -130,6 +129,7 @@ class MainVC: BaseVC {
 }
 
 extension MainVC: PlayerUIDelegate{
+    
     func playerReadyToPlay() {
         print("playerReadyToPlay")
     }
@@ -164,6 +164,17 @@ extension MainVC: PlayerUIDelegate{
     
     func playerDidEndSeeking() {
         sliderIsSliding = false
+    }
+    
+    func playerModeDidChange(toMode mode: AudioPlayMode) {
+        switch mode {
+        case .listLoop:
+            modeBtn.setImage(UIImage(named: "list_loop"), for: .normal)
+        case .listRandom:
+            modeBtn.setImage(UIImage(named: "list_random"), for: .normal)
+        default:
+            modeBtn.setImage(UIImage(named: "single_loop"), for: .normal)
+        }
     }
     
     
