@@ -9,6 +9,11 @@
 import UIKit
 import AVFoundation
 
+private let kStatusKeyPath = "status"
+private let kLoadedTimeRangesKeyPath = "loadedTimeRanges"
+private let kPlaybackBufferEmptyKeyPath = "playbackBufferEmpty"
+private let kPlaybackLikelyToKeepUpKeyPath = "playbackLikelyToKeepUp"
+
 enum AudioPlayMode: Int {
     case listLoop = 0
     case singleLoop = 1
@@ -92,20 +97,20 @@ class AVPlayerManager: NSObject {
         Important: You should register for KVO change notifications and unregister from KVO change notifications on the main thread. This avoids the possibility of receiving a partial notification if a change is being made on another thread. AV Foundation invokes observeValueForKeyPath:ofObject:change:context: on the main thread, even if the change operation is made on another thread.
         */
         guard let playerItem = player.currentItem else { return }
-        playerItem.addObserver(self, forKeyPath: "status", options: [.new,.old], context: nil)
-        playerItem.addObserver(self, forKeyPath: "loadedTimeRanges", options: [.new,.old], context: nil)
-        playerItem.addObserver(self, forKeyPath: "playbackBufferEmpty", options: [.new,.old], context: nil)
-        playerItem.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: [.new,.old], context: nil)
+        playerItem.addObserver(self, forKeyPath: kStatusKeyPath, options: [.new,.old], context: nil)
+        playerItem.addObserver(self, forKeyPath: kLoadedTimeRangesKeyPath, options: [.new,.old], context: nil)
+        playerItem.addObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath, options: [.new,.old], context: nil)
+        playerItem.addObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath, options: [.new,.old], context: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
     
     @objc
     func removeKVO() {
         guard let playerItem = player.currentItem else { return }
-        playerItem.removeObserver(self, forKeyPath: "status")
-        playerItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
-        playerItem.removeObserver(self, forKeyPath: "playbackBufferEmpty")
-        playerItem.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        playerItem.removeObserver(self, forKeyPath: kStatusKeyPath)
+        playerItem.removeObserver(self, forKeyPath: kLoadedTimeRangesKeyPath)
+        playerItem.removeObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath)
+        playerItem.removeObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
     
@@ -145,6 +150,40 @@ class AVPlayerManager: NSObject {
     func pause() {
         guard let _ = player.currentItem else { return }
         player.pause()
+    }
+    
+    func playPreviousItem() {
+        guard let audioItems = audioItems, let currentItem = currentItem else { return }
+        var items: [AudioItem]!
+        if currentPlayMode == .listRandom {
+            if shuffledAudioItems == nil {
+                shuffledAudioItems = shuffled(originalItems: audioItems)
+            }
+            items = shuffledAudioItems
+        }else{
+            items = audioItems
+        }
+        if let index = items.firstIndex(of: currentItem){
+            let previousIndex = index - 1 < 0 ? items.count - 1 : index - 1
+            play(audioItem: items[previousIndex])
+        }
+    }
+    
+    func playNextItem() {
+        guard let audioItems = audioItems, let currentItem = currentItem else { return }
+        var items: [AudioItem]!
+        if currentPlayMode == .listRandom {
+            if shuffledAudioItems == nil {
+                shuffledAudioItems = shuffled(originalItems: audioItems)
+            }
+            items = shuffledAudioItems
+        }else{
+            items = audioItems
+        }
+        if let index = items.firstIndex(of: currentItem){
+            let nextIndex = index + 1 >= items.count ? 0 : index + 1
+            play(audioItem: items[nextIndex])
+        }
     }
     
     func update(progress: Float) {
@@ -197,7 +236,7 @@ class AVPlayerManager: NSObject {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "status" {
+        if keyPath == kStatusKeyPath {
             guard let newChange = change,let status = newChange[NSKeyValueChangeKey.newKey] as? AVPlayer.Status else { return }
             switch status {
             case .unknown:
@@ -227,7 +266,7 @@ class AVPlayerManager: NSObject {
                 break
             }
             
-        }else if keyPath == "loadedTimeRanges"{
+        }else if keyPath == kLoadedTimeRangesKeyPath{
             guard let playerItem = player.currentItem, let timeRange = playerItem.loadedTimeRanges.first?.timeRangeValue, let delegate = delegate else { return }
             let rangeStart = CMTimeGetSeconds(timeRange.start)
             let rangeDuration = CMTimeGetSeconds(timeRange.duration)
@@ -236,12 +275,12 @@ class AVPlayerManager: NSObject {
             DispatchQueue.main.async {
                 delegate.playerDidLoad(toProgress: progress)
             }
-        }else if keyPath == "playbackBufferEmpty"{
+        }else if keyPath == kPlaybackBufferEmptyKeyPath{
             guard let delegate = delegate else { return }
             DispatchQueue.main.async {
                 delegate.playerPlaybackBufferEmpty()
             }
-        }else if keyPath == "playbackLikelyToKeepUp"{
+        }else if keyPath == kPlaybackLikelyToKeepUpKeyPath{
             guard let delegate = delegate else { return }
             DispatchQueue.main.async {
                 delegate.playerPlaybackLikelyToKeepUp()

@@ -87,7 +87,7 @@ class MainVC: BaseVC {
     }
     
     @IBAction func onPreviousBtn(_ sender: UIButton) {
-        
+        AVPlayerManager.share.playPreviousItem()
     }
     
     @IBAction func onPlayPauseBtn(_ sender: UIButton) {
@@ -100,7 +100,7 @@ class MainVC: BaseVC {
     }
     
     @IBAction func onNextBtn(_ sender: UIButton) {
-        
+        AVPlayerManager.share.playNextItem()
     }
     
     @IBAction func onListBtn(_ sender: UIButton) {
