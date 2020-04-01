@@ -202,6 +202,8 @@ extension MainVC: PlayerUIDelegate{
     func playerItemDidChange(toItem item: AudioItem?) {
         if let playingItem = item {
             nameLabel.text = playingItem.name
+            currentTimeLabel.text = "00:00"
+            totalTimeLabel.text = "--:--"
         }
     }
     

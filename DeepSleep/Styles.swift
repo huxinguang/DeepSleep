@@ -28,6 +28,8 @@ struct Styles {
     struct Constant {
         static let music_type_view_height = UIScreen.main.bounds.size.height*0.382
         static let music_type_list_view_height = UIScreen.main.bounds.size.height*0.618
+        static let player_slider_height: CGFloat = 1.5
+        static let player_slider_thumbimage_size: CGSize = CGSize(width: 24, height: 24)
         
     }
 
