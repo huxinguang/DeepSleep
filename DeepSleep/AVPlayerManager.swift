@@ -61,19 +61,24 @@ class AVPlayerManager: NSObject {
         }
     }
     var isSeekInProgress: Bool = false
+    var headphonesConnected: Bool = false
+    
+    
     
     static let share: AVPlayerManager = {
         let instance = AVPlayerManager()
+        NotificationCenter.default.addObserver(instance, selector: #selector(handleInterruption(_:)), name: AVAudioSession.interruptionNotification, object: AVAudioSession.sharedInstance())
+        NotificationCenter.default.addObserver(instance, selector: #selector(handleRouteChange(_:)), name: AVAudioSession.routeChangeNotification, object: AVAudioSession.sharedInstance())
         return instance
     }()
-
+    
     func play(audioItem: AudioItem) {
         guard let url = URL(string: audioItem.url), audioItem != playingItem else { return }
         let playerItem = AVPlayerItem(url: url)
         if player != nil {
             perform(#selector(removeKVO), on: .main, with: self, waitUntilDone: true)
             player.replaceCurrentItem(with: playerItem)
-            player.play()
+            play()
             perform(#selector(addKVO), on: .main, with: self, waitUntilDone: true)
         }else{
             player = AVPlayer(playerItem: playerItem)
@@ -84,7 +89,7 @@ class AVPlayerManager: NSObject {
             }
             player.automaticallyWaitsToMinimizeStalling = true
             player.usesExternalPlaybackWhileExternalScreenIsActive = true
-            player.play()
+            play()
             sliderObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.05, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
                 guard let strongSelf = self, let delegate = strongSelf.delegate, let playerItem = strongSelf.player.currentItem else { return }
                 let progress = CMTimeGetSeconds(time)/CMTimeGetSeconds(playerItem.duration)
@@ -153,9 +158,73 @@ class AVPlayerManager: NSObject {
         
     }
     
+    @objc
+    func handleInterruption(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else { return }
+        if type == .began {
+            // Interruption began, take appropriate actions (save state, update user interface)
+        }else if type == .ended {
+            /*
+             If the interruption type is AVAudioSessionInterruptionTypeEnded, the userInfo dictionary might contain an AVAudioSessionInterruptionOptions value. An options value of AVAudioSessionInterruptionOptionShouldResume is a hint that indicates whether your app should automatically resume playback if it had been playing when it was interrupted. Media playback apps should always look for this flag before beginning playback after an interruption. If it’s not present, playback should not begin again until initiated by the user. Apps that don’t present a playback interface, such as a game, can ignore this flag and reactivate and resume playback when the interruption ends.
+             
+             Note: There is no guarantee that a begin interruption will have a corresponding end interruption. Your app needs to be aware of a switch to a foreground running state or the user pressing a Play button. In either case, determine whether your app should reactivate its audio session.
+
+             */
+            guard let optionsValue =
+                userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            if options.contains(.shouldResume) {
+                // Interruption Ended - playback should resume
+            }
+        }
+    }
+    
+    @objc
+    func handleRouteChange(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else {
+                return
+        }
+        switch reason {
+        case .newDeviceAvailable:
+            let session = AVAudioSession.sharedInstance()
+            for output in session.currentRoute.outputs where output.portType == AVAudioSession.Port.headphones {
+                headphonesConnected = true
+                break
+            }
+        case .oldDeviceUnavailable:
+            if let previousRoute =
+                userInfo[AVAudioSessionRouteChangePreviousRouteKey] as? AVAudioSessionRouteDescription {
+                for output in previousRoute.outputs where output.portType == AVAudioSession.Port.headphones {
+                    headphonesConnected = false
+                    break
+                }
+            }
+        default: ()
+        }
+    }
+    
     func play() {
         guard let _ = player.currentItem else { return }
+        /*
+         You can activate the audio session at any time after setting its category, but it’s generally preferable to defer this call until your app begins audio playback. Deferring the call ensures that you won’t prematurely interrupt any other background audio that may be in progress.
+         */
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(true)
+        } catch {
+            print("Failed to activate audio session")
+        }
         player.play()
+        
+        
+        
+//        UIApplication.shared.beginBackgroundTask(withName: Constant.Background.taskName) {
+//
+//        }
     }
     
     func pause() {
@@ -234,7 +303,7 @@ class AVPlayerManager: NSObject {
             if CMTimeCompare(seekTimeInProgress, self.chaseTime) == 0 {
                 if finished {
                     self.isSeekInProgress = false
-                    self.player.play()
+                    self.play()
                     if let delegate = self.delegate {
                         delegate.playerDidEndSeeking()
                     }

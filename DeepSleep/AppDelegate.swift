@@ -24,17 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
-        // Get the singleton instance.
+        /*
+         You can interact with the audio session throughout your app’s life cycle, but it’s often useful to perform this configuration at app launch
+         */
         let audioSession = AVAudioSession.sharedInstance()
         do {
             // Set the audio session category, mode, and options.
-            try audioSession.setCategory(.playback, mode: .default, options: [])
-            try audioSession.setActive(true, options: [])
+            try audioSession.setCategory(.playback)
+            /*
+             You can activate the audio session at any time after setting its category, but it’s generally preferable to defer this call until your app begins audio playback. Deferring the call ensures that you won’t prematurely interrupt any other background audio that may be in progress.
+             */
+            
+            // try audioSession.setActive(true, options: [])
         } catch {
             print("Failed to set audio session category.")
         }
-        
-        
+
 
         return true
     }
@@ -85,6 +90,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
+    /*
+     When your app moves to the background, the system calls your app delegate’s applicationDidEnterBackground(_:) method. That method has five seconds to perform any tasks and return. Shortly after that method returns, the system puts your app into the suspended state. For most apps, five seconds is enough to perform any crucial tasks, but if you need more time, you can ask UIKit to extend your app’s runtime.
+     */
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        
+    }
+    
+
+    
 
 }
 

@@ -32,5 +32,9 @@ struct Constant {
         static let temporary = NSTemporaryDirectory()
     }
     
+    struct Background {
+        static let taskName = "deepsleep.background.task.audio"
+    }
+    
     
 }
