@@ -124,7 +124,7 @@ class MainVC: BaseVC {
             imageView.layer.beginTime = timeSincePause
             
         }
-        sender.isSelected = !sender.isSelected
+//        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func onNextBtn(_ sender: UIButton) {
@@ -185,7 +185,6 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerDidPlay(toTime: Float64, totalTime: Float64) {
-        print(toTime,totalTime)
         currentTimeLabel.text = timeConverted(fromSeconds: toTime)
         totalTimeLabel.text = timeConverted(fromSeconds: totalTime)
     }
@@ -196,12 +195,22 @@ extension MainVC: PlayerUIDelegate{
         }
     }
     
-    func playerPlaybackBufferEmpty() {
-        print("playerPlaybackBufferEmpty")
+    func playbackBufferEmpty(_ bufferEmpty: Bool) {
+        print("playerPlaybackBufferEmpty = \(bufferEmpty)")
+        if bufferEmpty {
+            slider.showIndicator()
+        }
     }
     
-    func playerPlaybackLikelyToKeepUp() {
-        print("playerPlaybackLikelyToKeepUp")
+    func playbackLikelyToKeepUp(_ likelyToKeepUp: Bool) {
+        print("playerPlaybackLikelyToKeepUp = \(likelyToKeepUp)")
+        if likelyToKeepUp {
+            slider.hideIndicator()
+        }
+    }
+    
+    func playbackBufferFull(_ bufferFull: Bool) {
+        print("playbackBufferFull = \(bufferFull)")
     }
     
     func playerDidFinishPlaying() {
@@ -234,10 +243,12 @@ extension MainVC: PlayerUIDelegate{
             totalTimeLabel.text = "--:--"
             imageView.kf.setImage(with: URL(string: playingItem.image_url))
             
-            
-            
-        
         }
+    }
+    
+    func playerRateDidChange(toValue value: Float) {
+        print("rate = \(value)")
+        playBtn.isSelected = value > 0
     }
     
 }

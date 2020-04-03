@@ -18,7 +18,6 @@ class ThinTrackSlider: UISlider {
         indicatorView.frame.size = CGSize(width: Styles.Constant.player_slider_thumbimage_size.width + 6*2, height: Styles.Constant.player_slider_thumbimage_size.height + 6*2)
         indicatorView.isUserInteractionEnabled = false
         addSubview(indicatorView)
-        indicatorView.startAnimating()
     }
     
     override func trackRect(forBounds bounds: CGRect) -> CGRect {

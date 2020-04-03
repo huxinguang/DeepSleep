@@ -12,6 +12,7 @@ import AVFoundation
 private let kStatusKeyPath = "status"
 private let kLoadedTimeRangesKeyPath = "loadedTimeRanges"
 private let kPlaybackBufferEmptyKeyPath = "playbackBufferEmpty"
+private let kPlaybackBufferFullKeyPath = "playbackBufferFull"
 private let kPlaybackLikelyToKeepUpKeyPath = "playbackLikelyToKeepUp"
 private let kPlayerRateKeyPath = "rate"
 
@@ -26,13 +27,15 @@ protocol PlayerUIDelegate {
     func playerDidLoad(toProgress progress: Float64) -> Void
     func playerDidPlay(toProgress progress: Float) -> Void
     func playerDidPlay(toTime: Float64, totalTime: Float64) -> Void
-    func playerPlaybackBufferEmpty() -> Void
-    func playerPlaybackLikelyToKeepUp() -> Void
+    func playbackBufferEmpty(_ bufferEmpty: Bool) -> Void
+    func playbackLikelyToKeepUp(_ likelyToKeepUp: Bool) -> Void
+    func playbackBufferFull(_ bufferFull: Bool) -> Void
     func playerDidFinishPlaying() -> Void
     func playerDidFailToPlay() -> Void
     func playerDidEndSeeking() -> Void
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
+    func playerRateDidChange(toValue value: Float ) -> Void
     
 }
 
@@ -120,20 +123,29 @@ class AVPlayerManager: NSObject {
         /*
         Important: You should register for KVO change notifications and unregister from KVO change notifications on the main thread. This avoids the possibility of receiving a partial notification if a change is being made on another thread. AV Foundation invokes observeValueForKeyPath:ofObject:change:context: on the main thread, even if the change operation is made on another thread.
         */
+        guard let player = player else { return }
+        player.addObserver(self, forKeyPath: kPlayerRateKeyPath, options: .new, context: nil)
+        
         guard let playerItem = player.currentItem else { return }
-        playerItem.addObserver(self, forKeyPath: kStatusKeyPath, options: [.new,.old], context: nil)
-        playerItem.addObserver(self, forKeyPath: kLoadedTimeRangesKeyPath, options: [.new,.old], context: nil)
-        playerItem.addObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath, options: [.new,.old], context: nil)
-        playerItem.addObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath, options: [.new,.old], context: nil)
+        playerItem.addObserver(self, forKeyPath: kStatusKeyPath, options: .new, context: nil)
+        playerItem.addObserver(self, forKeyPath: kLoadedTimeRangesKeyPath, options: .new, context: nil)
+        playerItem.addObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath, options: .new, context: nil)
+        playerItem.addObserver(self, forKeyPath: kPlaybackBufferFullKeyPath, options: .new, context: nil)
+        playerItem.addObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath, options: .new, context: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
     
     @objc
     func removeKVO() {
+        guard let player = player else { return }
+        player.removeObserver(self, forKeyPath: kPlayerRateKeyPath)
+        
         guard let playerItem = player.currentItem else { return }
         playerItem.removeObserver(self, forKeyPath: kStatusKeyPath)
         playerItem.removeObserver(self, forKeyPath: kLoadedTimeRangesKeyPath)
         playerItem.removeObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath)
+        playerItem.removeObserver(self, forKeyPath: kPlaybackBufferFullKeyPath)
         playerItem.removeObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
@@ -322,8 +334,12 @@ class AVPlayerManager: NSObject {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let newChange = change else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
         if keyPath == kStatusKeyPath {
-            guard let newChange = change,let status = newChange[NSKeyValueChangeKey.newKey] as? AVPlayer.Status else { return }
+            guard let status = newChange[NSKeyValueChangeKey.newKey] as? AVPlayer.Status else { return }
             switch status {
             case .unknown:
                 break
@@ -362,15 +378,28 @@ class AVPlayerManager: NSObject {
                 delegate.playerDidLoad(toProgress: progress)
             }
         }else if keyPath == kPlaybackBufferEmptyKeyPath{
+            guard let bufferEmpty = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
             guard let delegate = delegate else { return }
             DispatchQueue.main.async {
-                delegate.playerPlaybackBufferEmpty()
+                delegate.playbackBufferEmpty(bufferEmpty)
             }
         }else if keyPath == kPlaybackLikelyToKeepUpKeyPath{
+            guard let likelyToKeepUp = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
             guard let delegate = delegate else { return }
             DispatchQueue.main.async {
-                delegate.playerPlaybackLikelyToKeepUp()
+                delegate.playbackLikelyToKeepUp(likelyToKeepUp)
             }
+        }else if keyPath == kPlaybackBufferFullKeyPath{
+            guard let bufferFull = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
+            guard let delegate = delegate else { return }
+            DispatchQueue.main.async {
+                delegate.playbackBufferFull(bufferFull)
+            }
+        }else if keyPath == kPlayerRateKeyPath{
+            guard let rate = newChange[NSKeyValueChangeKey.newKey] as? Float else { return }
+            guard let delegate = delegate else { return }
+            delegate.playerRateDidChange(toValue: rate)
+            
         }else{
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
