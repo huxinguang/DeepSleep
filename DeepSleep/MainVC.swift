@@ -124,7 +124,7 @@ class MainVC: BaseVC {
             imageView.layer.beginTime = timeSincePause
             
         }
-//        sender.isSelected = !sender.isSelected
+        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func onNextBtn(_ sender: UIButton) {
@@ -181,10 +181,12 @@ extension MainVC: PlayerUIDelegate{
     
     func playerDidLoad(toProgress progress: Float64) {
         print(progress)
+       
     }
     
     func playerDidPlay(toTime: Float64, totalTime: Float64) {
         currentTimeLabel.text = timeConverted(fromSeconds: toTime)
+        
     }
     
     func playerDidPlay(toProgress progress: Float){
@@ -247,10 +249,6 @@ extension MainVC: PlayerUIDelegate{
         }
     }
     
-    func playerRateDidChange(toValue value: Float) {
-//        print("rate = \(value)")
-        playBtn.isSelected = value > 0
-    }
     
 }
 

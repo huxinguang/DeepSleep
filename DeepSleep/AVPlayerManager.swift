@@ -35,7 +35,6 @@ protocol PlayerUIDelegate {
     func playerDidEndSeeking() -> Void
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
-    func playerRateDidChange(toValue value: Float ) -> Void
 }
 
 class AVPlayerManager: NSObject {
@@ -122,8 +121,6 @@ class AVPlayerManager: NSObject {
         /*
         Important: You should register for KVO change notifications and unregister from KVO change notifications on the main thread. This avoids the possibility of receiving a partial notification if a change is being made on another thread. AV Foundation invokes observeValueForKeyPath:ofObject:change:context: on the main thread, even if the change operation is made on another thread.
         */
-        guard let player = player else { return }
-        player.addObserver(self, forKeyPath: kPlayerRateKeyPath, options: .new, context: nil)
         
         guard let playerItem = player.currentItem else { return }
         playerItem.addObserver(self, forKeyPath: kStatusKeyPath, options: .new, context: nil)
@@ -141,9 +138,6 @@ class AVPlayerManager: NSObject {
     
     @objc
     func removeKVO() {
-        guard let player = player else { return }
-        player.removeObserver(self, forKeyPath: kPlayerRateKeyPath)
-        
         guard let playerItem = player.currentItem else { return }
         playerItem.removeObserver(self, forKeyPath: kStatusKeyPath)
         playerItem.removeObserver(self, forKeyPath: kLoadedTimeRangesKeyPath)
@@ -165,6 +159,7 @@ class AVPlayerManager: NSObject {
         guard let delegate = delegate else { return }
         player.seek(to: .zero)
         delegate.playerDidFinishPlaying()
+        print("rate === \(player.rate)")
         switch currentPlayMode {
         case .listLoop, .listRandom:
             guard let currentItem = playingItem, let audioItems = audioItems else { return }
@@ -391,6 +386,7 @@ class AVPlayerManager: NSObject {
             let progress = rangeEnd/CMTimeGetSeconds(playerItem.duration)
             DispatchQueue.main.async {
                 delegate.playerDidLoad(toProgress: progress)
+                print("rate = \(self.player.rate)")
             }
         }else if keyPath == kPlaybackBufferEmptyKeyPath{
             guard let bufferEmpty = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
@@ -415,11 +411,6 @@ class AVPlayerManager: NSObject {
             DispatchQueue.main.async {
                 delegate.playbackBufferFull(bufferFull)
             }
-        }else if keyPath == kPlayerRateKeyPath{
-            guard let rate = newChange[NSKeyValueChangeKey.newKey] as? Float else { return }
-            guard let delegate = delegate else { return }
-            delegate.playerRateDidChange(toValue: rate)
-            
         }else{
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
