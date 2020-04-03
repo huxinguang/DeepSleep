@@ -360,6 +360,9 @@ class AVPlayerManager: NSObject {
                 1. Wait until the status of the player item is AVPlayerItem.Status.readyToPlay.
                 
                 2. Register for key-value observation of the property, requesting the initial value. If the initial value is reported as indefinite, the player item will notify you of the availability of its duration via key-value observing as soon as its value becomes known.
+                 
+                 readyToPlay不代表AVPlayerItem就能播放了
+                 
                 */
                 guard let delegate = delegate, let playItem = player.currentItem else { return }
                 DispatchQueue.main.async {

@@ -176,6 +176,7 @@ class MainVC: BaseVC {
 
 extension MainVC: PlayerUIDelegate{
     func playerReadyToPlay(withDuration duration: Float64) {
+        print("playerReadyToPlay")
         totalTimeLabel.text = timeConverted(fromSeconds: duration)
     }
     
