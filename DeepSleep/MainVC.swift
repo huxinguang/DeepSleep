@@ -175,18 +175,16 @@ class MainVC: BaseVC {
 }
 
 extension MainVC: PlayerUIDelegate{
-    
-    func playerReadyToPlay() {
-        print("playerReadyToPlay")
+    func playerReadyToPlay(withDuration duration: Float64) {
+        totalTimeLabel.text = timeConverted(fromSeconds: duration)
     }
     
     func playerDidLoad(toProgress progress: Float64) {
-        
+        print(progress)
     }
     
     func playerDidPlay(toTime: Float64, totalTime: Float64) {
         currentTimeLabel.text = timeConverted(fromSeconds: toTime)
-        totalTimeLabel.text = timeConverted(fromSeconds: totalTime)
     }
     
     func playerDidPlay(toProgress progress: Float){
@@ -206,6 +204,8 @@ extension MainVC: PlayerUIDelegate{
         print("playerPlaybackLikelyToKeepUp = \(likelyToKeepUp)")
         if likelyToKeepUp {
             slider.hideIndicator()
+        }else{
+            slider.showIndicator()
         }
     }
     
@@ -215,6 +215,7 @@ extension MainVC: PlayerUIDelegate{
     
     func playerDidFinishPlaying() {
         print("playerDidFinishPlaying")
+        slider.showIndicator()
     }
     
     func playerDidFailToPlay() {
@@ -247,7 +248,7 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerRateDidChange(toValue value: Float) {
-        print("rate = \(value)")
+//        print("rate = \(value)")
         playBtn.isSelected = value > 0
     }
     

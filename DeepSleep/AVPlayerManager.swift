@@ -23,7 +23,7 @@ enum AudioPlayMode: Int {
 }
 
 protocol PlayerUIDelegate {
-    func playerReadyToPlay() -> Void
+    func playerReadyToPlay(withDuration duration: Float64) -> Void
     func playerDidLoad(toProgress progress: Float64) -> Void
     func playerDidPlay(toProgress progress: Float) -> Void
     func playerDidPlay(toTime: Float64, totalTime: Float64) -> Void
@@ -36,7 +36,6 @@ protocol PlayerUIDelegate {
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
     func playerRateDidChange(toValue value: Float ) -> Void
-    
 }
 
 class AVPlayerManager: NSObject {
@@ -133,7 +132,11 @@ class AVPlayerManager: NSObject {
         playerItem.addObserver(self, forKeyPath: kPlaybackBufferFullKeyPath, options: .new, context: nil)
         playerItem.addObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath, options: .new, context: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(playbackStalled(_:)), name: .AVPlayerItemPlaybackStalled, object: playerItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidPlayToEndTime(_:)), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemFailedToPlayToEndTime(_:)), name: .AVPlayerItemFailedToPlayToEndTime, object: playerItem)
+        
+        
     }
     
     @objc
@@ -147,14 +150,21 @@ class AVPlayerManager: NSObject {
         playerItem.removeObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath)
         playerItem.removeObserver(self, forKeyPath: kPlaybackBufferFullKeyPath)
         playerItem.removeObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemPlaybackStalled, object: playerItem)
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemFailedToPlayToEndTime, object: playerItem)
     }
     
     @objc
-    func playerItemDidReachEnd() {
+    func playbackStalled(_ notification: Notification) {
+        print("playbackStalled")
+    }
+    
+    @objc
+    func playerItemDidPlayToEndTime(_ notification: Notification) {
         guard let delegate = delegate else { return }
-        delegate.playerDidFinishPlaying()
         player.seek(to: .zero)
+        delegate.playerDidFinishPlaying()
         switch currentPlayMode {
         case .listLoop, .listRandom:
             guard let currentItem = playingItem, let audioItems = audioItems else { return }
@@ -175,7 +185,11 @@ class AVPlayerManager: NSObject {
         default:
             break
         }
-        
+    }
+    
+    @objc
+    func playerItemFailedToPlayToEndTime(_ notification: Notification) {
+        print("playerItemFailedToPlayToEndTime")
     }
     
     @objc
@@ -339,7 +353,8 @@ class AVPlayerManager: NSObject {
             return
         }
         if keyPath == kStatusKeyPath {
-            guard let status = newChange[NSKeyValueChangeKey.newKey] as? AVPlayer.Status else { return }
+            guard let newValue = newChange[NSKeyValueChangeKey.newKey] as? Int else { return }
+            let status = AVPlayer.Status(rawValue: newValue)
             switch status {
             case .unknown:
                 break
@@ -351,9 +366,9 @@ class AVPlayerManager: NSObject {
                 
                 2. Register for key-value observation of the property, requesting the initial value. If the initial value is reported as indefinite, the player item will notify you of the availability of its duration via key-value observing as soon as its value becomes known.
                 */
-                guard let delegate = delegate else { return }
+                guard let delegate = delegate, let playItem = player.currentItem else { return }
                 DispatchQueue.main.async {
-                    delegate.playerReadyToPlay()
+                    delegate.playerReadyToPlay(withDuration: CMTimeGetSeconds(playItem.duration))
                 }
                 
             case .failed:
@@ -384,6 +399,11 @@ class AVPlayerManager: NSObject {
                 delegate.playbackBufferEmpty(bufferEmpty)
             }
         }else if keyPath == kPlaybackLikelyToKeepUpKeyPath{
+            /*
+                Indicates whether the item will likely play through without stalling.
+             AVPlayer会根据当前的AVPlayerItem的loadedTimeRanges和网速来评估AVPlayerItem是否可以流畅播放而没有停顿，不同AVPlayerItem、不同网络状况，playbackLikelyToKeepUp从fasle变成true时loadedTimeRanges占总的百分比也不尽相同，只有playbackLikelyToKeepUp变成true时，AVPlayer才会播放，否则处于暂停加载状态
+                
+            */
             guard let likelyToKeepUp = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
             guard let delegate = delegate else { return }
             DispatchQueue.main.async {
