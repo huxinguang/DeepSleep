@@ -13,6 +13,7 @@ private let kStatusKeyPath = "status"
 private let kLoadedTimeRangesKeyPath = "loadedTimeRanges"
 private let kPlaybackBufferEmptyKeyPath = "playbackBufferEmpty"
 private let kPlaybackLikelyToKeepUpKeyPath = "playbackLikelyToKeepUp"
+private let kPlayerRateKeyPath = "rate"
 
 enum AudioPlayMode: Int {
     case listLoop = 0
@@ -32,6 +33,7 @@ protocol PlayerUIDelegate {
     func playerDidEndSeeking() -> Void
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
+    
 }
 
 class AVPlayerManager: NSObject {
@@ -61,9 +63,15 @@ class AVPlayerManager: NSObject {
         }
     }
     var isSeekInProgress: Bool = false
-    var headphonesConnected: Bool = false
-    
-    
+    var headphonesConnected: Bool = false{
+        didSet{
+            if headphonesConnected {
+                play()
+            }else{
+                pause()
+            }
+        }
+    }
     
     static let share: AVPlayerManager = {
         let instance = AVPlayerManager()
@@ -219,8 +227,6 @@ class AVPlayerManager: NSObject {
             print("Failed to activate audio session")
         }
         player.play()
-        
-        
         
 //        UIApplication.shared.beginBackgroundTask(withName: Constant.Background.taskName) {
 //
