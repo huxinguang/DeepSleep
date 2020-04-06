@@ -95,6 +95,10 @@ class MainVC: BaseVC {
     
     @IBAction func sliderValueDidChange(_ sender: ThinTrackSlider) {
         sliderIsSliding = true
+        guard let playerItem = AVPlayerManager.share.player.currentItem else { return }
+        let totalSeconds = CMTimeGetSeconds(playerItem.duration)
+        let currentSeconds = totalSeconds * Float64(sender.value)
+        currentTimeLabel.text = timeConverted(fromSeconds: currentSeconds)
     }
     
     @IBAction func onModeBtn(_ sender: UIButton) {
@@ -124,7 +128,6 @@ class MainVC: BaseVC {
             imageView.layer.beginTime = timeSincePause
             
         }
-//        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func onNextBtn(_ sender: UIButton) {
@@ -186,8 +189,9 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerDidPlay(toTime: Float64, totalTime: Float64) {
-        currentTimeLabel.text = timeConverted(fromSeconds: toTime)
-        
+        if !sliderIsSliding {
+            currentTimeLabel.text = timeConverted(fromSeconds: toTime)
+        }
     }
     
     func playerDidPlay(toProgress progress: Float){
@@ -227,6 +231,7 @@ extension MainVC: PlayerUIDelegate{
     
     func playerDidEndSeeking() {
         sliderIsSliding = false
+
     }
     
     func playerModeDidChange(toMode mode: AudioPlayMode) {
@@ -251,6 +256,7 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus){
+ 
         switch status {
         case .paused:
             playBtn.isSelected = false

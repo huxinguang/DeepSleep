@@ -43,7 +43,7 @@ protocol PlayerUIDelegate {
 
 class AVPlayerManager: NSObject {
         
-    fileprivate var player: AVPlayer!
+    private(set) var player: AVPlayer!
     fileprivate var chaseTime: CMTime = .zero
     fileprivate var sliderObserverToken: Any!
     fileprivate var timeObserverToken: Any!
