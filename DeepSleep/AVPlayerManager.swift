@@ -14,6 +14,7 @@ private let kLoadedTimeRangesKeyPath = "loadedTimeRanges"
 private let kPlaybackBufferEmptyKeyPath = "playbackBufferEmpty"
 private let kPlaybackBufferFullKeyPath = "playbackBufferFull"
 private let kPlaybackLikelyToKeepUpKeyPath = "playbackLikelyToKeepUp"
+private let kTimeControlStatus = "timeControlStatus"
 private let kPlayerRateKeyPath = "rate"
 
 enum AudioPlayMode: Int {
@@ -35,6 +36,9 @@ protocol PlayerUIDelegate {
     func playerDidEndSeeking() -> Void
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
+    func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus) -> Void
+    
+    
 }
 
 class AVPlayerManager: NSObject {
@@ -122,6 +126,9 @@ class AVPlayerManager: NSObject {
         Important: You should register for KVO change notifications and unregister from KVO change notifications on the main thread. This avoids the possibility of receiving a partial notification if a change is being made on another thread. AV Foundation invokes observeValueForKeyPath:ofObject:change:context: on the main thread, even if the change operation is made on another thread.
         */
         
+        guard let player = player else { return }
+        player.addObserver(self, forKeyPath: kTimeControlStatus, options: .new, context: nil)
+        
         guard let playerItem = player.currentItem else { return }
         playerItem.addObserver(self, forKeyPath: kStatusKeyPath, options: .new, context: nil)
         playerItem.addObserver(self, forKeyPath: kLoadedTimeRangesKeyPath, options: .new, context: nil)
@@ -138,6 +145,10 @@ class AVPlayerManager: NSObject {
     
     @objc
     func removeKVO() {
+        
+        guard let player = player else { return }
+        player.removeObserver(self, forKeyPath: kTimeControlStatus)
+        
         guard let playerItem = player.currentItem else { return }
         playerItem.removeObserver(self, forKeyPath: kStatusKeyPath)
         playerItem.removeObserver(self, forKeyPath: kLoadedTimeRangesKeyPath)
@@ -413,6 +424,11 @@ class AVPlayerManager: NSObject {
             guard let delegate = delegate else { return }
             DispatchQueue.main.async {
                 delegate.playbackBufferFull(bufferFull)
+            }
+        }else if keyPath == kTimeControlStatus{
+            guard let newValue = newChange[NSKeyValueChangeKey.newKey] as? Int, let timeControlStatus = AVPlayer.TimeControlStatus(rawValue: newValue), let delegate = delegate else { return }
+            DispatchQueue.main.async {
+                delegate.playerTimeControlStatusDidChange(toStatus: timeControlStatus)
             }
         }else{
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)

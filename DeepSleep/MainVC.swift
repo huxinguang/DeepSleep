@@ -124,7 +124,7 @@ class MainVC: BaseVC {
             imageView.layer.beginTime = timeSincePause
             
         }
-        sender.isSelected = !sender.isSelected
+//        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func onNextBtn(_ sender: UIButton) {
@@ -250,6 +250,16 @@ extension MainVC: PlayerUIDelegate{
         }
     }
     
+    func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus){
+        switch status {
+        case .paused:
+            playBtn.isSelected = false
+        case .playing:
+            playBtn.isSelected = true
+        default:
+            break
+        }
+    }
     
 }
 
