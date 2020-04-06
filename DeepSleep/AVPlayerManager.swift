@@ -363,6 +363,7 @@ class AVPlayerManager: NSObject {
             let status = AVPlayer.Status(rawValue: newValue)
             switch status {
             case .unknown:
+                print("AVPlayerStatusUnknown")
                 break
             case .readyToPlay:
                 /*

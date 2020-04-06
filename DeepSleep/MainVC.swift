@@ -40,8 +40,6 @@ class MainVC: BaseVC {
         imageView.layer.add(animation, forKey: "ImageRotationAnimation")
         
         
-        
-        
         let path = Bundle.main.path(forResource: "music", ofType: "json")
         let url = URL(fileURLWithPath: path!)
         do {
@@ -222,7 +220,6 @@ extension MainVC: PlayerUIDelegate{
     
     func playerDidFinishPlaying() {
         print("playerDidFinishPlaying")
-        slider.showIndicator()
     }
     
     func playerDidFailToPlay() {
