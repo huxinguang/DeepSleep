@@ -18,7 +18,6 @@ private let kPlayerRateKeyPath = "rate"
 private var playerItemContext = 0
 private var playerContext = 0
 
-
 let requiredAssetKeys = [
     "playable",
     "hasProtectedContent"
@@ -368,8 +367,12 @@ class AVPlayerManager: NSObject {
         if context == &playerItemContext {
             switch keyPath {
             case #keyPath(AVPlayerItem.status):
-                guard let newValue = change?[NSKeyValueChangeKey.newKey] as? Int else { return }
-                let status = AVPlayer.Status(rawValue: newValue)
+                let status: AVPlayerItem.Status
+                if let newValue = change?[NSKeyValueChangeKey.newKey] as? Int {
+                    status = AVPlayerItem.Status(rawValue: newValue)!
+                }else{
+                    status = .unknown
+                }
                 switch status {
                 case .unknown:
                     print("AVPlayerStatusUnknown")
@@ -409,7 +412,6 @@ class AVPlayerManager: NSObject {
                 let progress = rangeEnd/CMTimeGetSeconds(playerItem.duration)
                 DispatchQueue.main.async {
                     delegate.playerDidLoad(toProgress: progress)
-                    print("rate = \(self.player.rate)")
                 }
             case #keyPath(AVPlayerItem.isPlaybackBufferEmpty):
                 guard let bufferEmpty = change?[NSKeyValueChangeKey.newKey] as? Bool else { return }
