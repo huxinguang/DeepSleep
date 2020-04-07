@@ -28,6 +28,7 @@ class MainVC: BaseVC {
         title = "Sunshine girl"
         
         slider.setThumbImage(UIImage(named: "dot_nor"), for: .normal)
+        slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
         
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
@@ -178,6 +179,7 @@ class MainVC: BaseVC {
 extension MainVC: PlayerUIDelegate{
     func playerReadyToPlay(withDuration duration: Float64) {
         print("playerReadyToPlay")
+        slider.isEnabled = true
         totalTimeLabel.text = timeConverted(fromSeconds: duration)
     }
     
@@ -223,12 +225,11 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerDidFailToPlay() {
-        print("playerDidFailToPlay")
+//        print("playerDidFailToPlay")
     }
     
     func playerDidEndSeeking() {
         sliderIsSliding = false
-
     }
     
     func playerModeDidChange(toMode mode: AudioPlayMode) {
@@ -255,10 +256,36 @@ extension MainVC: PlayerUIDelegate{
     func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus){
         switch status {
         case .paused:
+            print("AVPlayer.TimeControlStatus.paused")
             playBtn.isSelected = false
+            slider.hideIndicator()
         case .playing:
+            print("AVPlayer.TimeControlStatus.playing")
             playBtn.isSelected = true
+            slider.hideIndicator()
         default:
+            print("AVPlayer.TimeControlStatus.waitingToPlayAtSpecifiedRate")
+            
+            slider.showIndicator()
+            
+            guard let reason = AVPlayerManager.share.player.reasonForWaitingToPlay else { return }
+            switch reason {
+            case .toMinimizeStalls:
+                //Indicates that the player is waiting for appropriate playback buffer conditions before starting playback
+                print("toMinimizeStalls")
+                break
+            case .noItemToPlay:
+                //Indicates that the AVPlayer is waiting because its currentItem is nil
+                slider.isEnabled = false
+                print("noItemToPlay")
+                break
+            case .evaluatingBufferingRate:
+                print("evaluatingBufferingRate")
+                break
+            default:
+                break
+            }
+            
             break
         }
     }

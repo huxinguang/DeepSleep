@@ -140,7 +140,6 @@ class AVPlayerManager: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidPlayToEndTime(_:)), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemFailedToPlayToEndTime(_:)), name: .AVPlayerItemFailedToPlayToEndTime, object: playerItem)
         
-        
     }
     
     @objc
@@ -170,7 +169,6 @@ class AVPlayerManager: NSObject {
         guard let delegate = delegate else { return }
         player.seek(to: .zero)
         delegate.playerDidFinishPlaying()
-        print("rate === \(player.rate)")
         switch currentPlayMode {
         case .listLoop, .listRandom:
             guard let currentItem = playingItem, let audioItems = audioItems else { return }
