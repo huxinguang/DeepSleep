@@ -308,6 +308,7 @@ class AVPlayerManager: NSObject {
         guard let playerItem = player.currentItem else { return }
         let totalSeconds = CMTimeGetSeconds(playerItem.duration)
         let currentSeconds = totalSeconds * Float64(progress)
+        print("currentSeconds = \(currentSeconds)")
         let timeScale = playerItem.currentTime().timescale
         let current = CMTime(seconds: currentSeconds, preferredTimescale: timeScale)
         seekSmoothly(toTime: current) 
@@ -316,7 +317,7 @@ class AVPlayerManager: NSObject {
     func seekSmoothly(toTime time: CMTime) {
         guard let playerItem = player.currentItem else { return }
         player.pause()
-        if CMTimeCompare(time, .zero) == 1 && CMTimeCompare(time, playerItem.duration) == -1 && CMTimeCompare(time, chaseTime) != 0{
+        if CMTimeCompare(time, .zero) >= 0 && CMTimeCompare(time, playerItem.duration) <= 0 && CMTimeCompare(time, chaseTime) != 0{
             chaseTime = time
             if !isSeekInProgress {
                 trySeekToChaseTime()

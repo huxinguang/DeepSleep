@@ -253,7 +253,6 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus){
- 
         switch status {
         case .paused:
             playBtn.isSelected = false
