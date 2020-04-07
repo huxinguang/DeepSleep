@@ -118,7 +118,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      When your app moves to the background, the system calls your app delegate’s applicationDidEnterBackground(_:) method. That method has five seconds to perform any tasks and return. Shortly after that method returns, the system puts your app into the suspended state. For most apps, five seconds is enough to perform any crucial tasks, but if you need more time, you can ask UIKit to extend your app’s runtime.
      */
     func applicationDidEnterBackground(_ application: UIApplication) {
-        
+        AVPlayerManager.share.setupRemoteTransportControls()
+        AVPlayerManager.share.setupNowPlaying()
     }
     
 

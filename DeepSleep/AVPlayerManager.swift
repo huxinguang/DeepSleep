@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import AVKit
+import MediaPlayer
 
 /*
  Readme
@@ -104,7 +104,8 @@ class AVPlayerManager: NSObject {
     
     func play(audioItem: AudioItem) {
         guard let url = URL(string: audioItem.url), audioItem != playingItem else { return }
-        let playerItem = AVPlayerItem(url: url)
+        let asset = AVAsset(url: url)
+        let playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: [])
         if player != nil {
             perform(#selector(removeKVO), on: .main, with: self, waitUntilDone: true)
             player.replaceCurrentItem(with: playerItem)
@@ -141,6 +142,59 @@ class AVPlayerManager: NSObject {
         playingItem = audioItem
         
     }
+    
+    func setupRemoteTransportControls() {
+        // Get the shared MPRemoteCommandCenter
+        let commandCenter = MPRemoteCommandCenter.shared()
+     
+        // Add handler for Play Command
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            if self.player.rate == 0.0 {
+                self.play()
+                return .success
+            }
+            return .commandFailed
+        }
+     
+        // Add handler for Pause Command
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            if self.player.rate == 1.0 {
+                self.pause()
+                return .success
+            }
+            return .commandFailed
+        }
+        commandCenter.nextTrackCommand.addTarget {[unowned self] event in
+            self.playNextItem()
+            return .success
+        }
+        
+        commandCenter.previousTrackCommand.addTarget {[unowned self] event in
+            self.playPreviousItem()
+            return .success
+        }
+        
+    }
+    
+    func setupNowPlaying() {
+        guard let playingItem = playingItem, let currentItem = player.currentItem else { return }
+        // Define Now Playing Info
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = playingItem.name
+        if let image = UIImage(named: "lockscreen") {
+            nowPlayingInfo[MPMediaItemPropertyArtwork] =
+                MPMediaItemArtwork(boundsSize: image.size) { size in
+                    return image
+            }
+        }
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = currentItem.currentTime().seconds
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = currentItem.asset.duration.seconds
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
+     
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
+    
     
     @objc
     func addKVO() {
@@ -404,6 +458,7 @@ class AVPlayerManager: NSObject {
                     */
                     guard let delegate = delegate, let playItem = player.currentItem else { return }
                     DispatchQueue.main.async {
+                        self.setupNowPlaying()
                         delegate.playerReadyToPlay(withDuration: CMTimeGetSeconds(playItem.duration))
                     }
                     
