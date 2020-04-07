@@ -28,7 +28,7 @@ class MainVC: BaseVC {
         title = "Sunshine girl"
         
         slider.setThumbImage(UIImage(named: "dot_nor"), for: .normal)
-        slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
+        //slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
         
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
@@ -194,7 +194,7 @@ class MainVC: BaseVC {
 extension MainVC: PlayerUIDelegate{
     func playerReadyToPlay(withDuration duration: Float64) {
         print("playerReadyToPlay")
-        slider.isEnabled = true
+        slider.isUserInteractionEnabled = true // slider.isEnabled = true
         totalTimeLabel.text = timeConverted(fromSeconds: duration)
     }
     
@@ -240,7 +240,7 @@ extension MainVC: PlayerUIDelegate{
     }
     
     func playerDidFailToPlay() {
-//        print("playerDidFailToPlay")
+        print("playerDidFailToPlay")
     }
     
     func playerDidEndSeeking() {
@@ -293,7 +293,7 @@ extension MainVC: PlayerUIDelegate{
                 break
             case .noItemToPlay:
                 //Indicates that the AVPlayer is waiting because its currentItem is nil
-                slider.isEnabled = false
+                slider.isUserInteractionEnabled = false//slider.isEnabled = false
                 print("noItemToPlay")
                 break
             case .evaluatingBufferingRate:
