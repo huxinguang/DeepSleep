@@ -8,14 +8,22 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 
-private let kStatusKeyPath = "status"
-private let kLoadedTimeRangesKeyPath = "loadedTimeRanges"
-private let kPlaybackBufferEmptyKeyPath = "playbackBufferEmpty"
-private let kPlaybackBufferFullKeyPath = "playbackBufferFull"
-private let kPlaybackLikelyToKeepUpKeyPath = "playbackLikelyToKeepUp"
+
 private let kTimeControlStatus = "timeControlStatus"
 private let kPlayerRateKeyPath = "rate"
+
+// Key-value observing context
+private var playerItemContext = 0
+private var playerContext = 0
+
+
+let requiredAssetKeys = [
+    "playable",
+    "hasProtectedContent"
+]
+
 
 enum AudioPlayMode: Int {
     case listLoop = 0
@@ -82,6 +90,7 @@ class AVPlayerManager: NSObject {
         let instance = AVPlayerManager()
         NotificationCenter.default.addObserver(instance, selector: #selector(handleInterruption(_:)), name: AVAudioSession.interruptionNotification, object: AVAudioSession.sharedInstance())
         NotificationCenter.default.addObserver(instance, selector: #selector(handleRouteChange(_:)), name: AVAudioSession.routeChangeNotification, object: AVAudioSession.sharedInstance())
+        
         return instance
     }()
     
@@ -127,14 +136,14 @@ class AVPlayerManager: NSObject {
         */
         
         guard let player = player else { return }
-        player.addObserver(self, forKeyPath: kTimeControlStatus, options: .new, context: nil)
+        player.addObserver(self, forKeyPath: #keyPath(AVPlayer.timeControlStatus), options: .new, context: &playerContext)
         
         guard let playerItem = player.currentItem else { return }
-        playerItem.addObserver(self, forKeyPath: kStatusKeyPath, options: .new, context: nil)
-        playerItem.addObserver(self, forKeyPath: kLoadedTimeRangesKeyPath, options: .new, context: nil)
-        playerItem.addObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath, options: .new, context: nil)
-        playerItem.addObserver(self, forKeyPath: kPlaybackBufferFullKeyPath, options: .new, context: nil)
-        playerItem.addObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath, options: .new, context: nil)
+        playerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: &playerItemContext)
+        playerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges), options: [.old, .new], context: &playerItemContext)
+        playerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty), options: [.old, .new], context: &playerItemContext)
+        playerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferFull), options: [.old, .new], context: &playerItemContext)
+        playerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp), options: [.old, .new], context: &playerItemContext)
         
         NotificationCenter.default.addObserver(self, selector: #selector(playbackStalled(_:)), name: .AVPlayerItemPlaybackStalled, object: playerItem)
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidPlayToEndTime(_:)), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
@@ -146,14 +155,14 @@ class AVPlayerManager: NSObject {
     func removeKVO() {
         
         guard let player = player else { return }
-        player.removeObserver(self, forKeyPath: kTimeControlStatus)
+        player.removeObserver(self, forKeyPath: #keyPath(AVPlayer.timeControlStatus), context: &playerContext)
         
         guard let playerItem = player.currentItem else { return }
-        playerItem.removeObserver(self, forKeyPath: kStatusKeyPath)
-        playerItem.removeObserver(self, forKeyPath: kLoadedTimeRangesKeyPath)
-        playerItem.removeObserver(self, forKeyPath: kPlaybackBufferEmptyKeyPath)
-        playerItem.removeObserver(self, forKeyPath: kPlaybackBufferFullKeyPath)
-        playerItem.removeObserver(self, forKeyPath: kPlaybackLikelyToKeepUpKeyPath)
+        playerItem.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), context: &playerItemContext)
+        playerItem.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.loadedTimeRanges), context: &playerItemContext)
+        playerItem.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferEmpty), context: &playerItemContext)
+        playerItem.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackBufferFull), context: &playerItemContext)
+        playerItem.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp), context: &playerItemContext)
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemPlaybackStalled, object: playerItem)
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemFailedToPlayToEndTime, object: playerItem)
@@ -196,6 +205,9 @@ class AVPlayerManager: NSObject {
         print("playerItemFailedToPlayToEndTime")
     }
     
+    /*
+     Interruptions occur when a competing audio session from an app is activated and that session is not categorized by the system to mix with yours. Your app should respond to interruptions by saving state, updating the user interface, and so on.
+     */
     @objc
     func handleInterruption(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
@@ -353,82 +365,87 @@ class AVPlayerManager: NSObject {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard let newChange = change else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-            return
-        }
-        if keyPath == kStatusKeyPath {
-            guard let newValue = newChange[NSKeyValueChangeKey.newKey] as? Int else { return }
-            let status = AVPlayer.Status(rawValue: newValue)
-            switch status {
-            case .unknown:
-                print("AVPlayerStatusUnknown")
-                break
-            case .readyToPlay:
-                /*
-                There are two ways to ensure that the value of duration is accessed only after it becomes available:
-                
-                1. Wait until the status of the player item is AVPlayerItem.Status.readyToPlay.
-                
-                2. Register for key-value observation of the property, requesting the initial value. If the initial value is reported as indefinite, the player item will notify you of the availability of its duration via key-value observing as soon as its value becomes known.
-                 
-                 readyToPlay不代表AVPlayerItem就能播放了
-                 
-                */
-                guard let delegate = delegate, let playItem = player.currentItem else { return }
+        if context == &playerItemContext {
+            switch keyPath {
+            case #keyPath(AVPlayerItem.status):
+                guard let newValue = change?[NSKeyValueChangeKey.newKey] as? Int else { return }
+                let status = AVPlayer.Status(rawValue: newValue)
+                switch status {
+                case .unknown:
+                    print("AVPlayerStatusUnknown")
+                    break
+                case .readyToPlay:
+                    /*
+                    There are two ways to ensure that the value of duration is accessed only after it becomes available:
+                    
+                    1. Wait until the status of the player item is AVPlayerItem.Status.readyToPlay.
+                    
+                    2. Register for key-value observation of the property, requesting the initial value. If the initial value is reported as indefinite, the player item will notify you of the availability of its duration via key-value observing as soon as its value becomes known.
+                     
+                     readyToPlay不代表AVPlayerItem就能播放了
+                     
+                    */
+                    guard let delegate = delegate, let playItem = player.currentItem else { return }
+                    DispatchQueue.main.async {
+                        delegate.playerReadyToPlay(withDuration: CMTimeGetSeconds(playItem.duration))
+                    }
+                    
+                case .failed:
+                    if let error = player.currentItem?.error {
+                        print(error.localizedDescription)
+                    }
+                    guard let delegate = delegate else { return }
+                    DispatchQueue.main.async {
+                        delegate.playerDidFailToPlay()
+                    }
+                default:
+                    break
+                }
+            case #keyPath(AVPlayerItem.loadedTimeRanges):
+                guard let playerItem = player.currentItem, let timeRange = playerItem.loadedTimeRanges.first?.timeRangeValue, let delegate = delegate else { return }
+                let rangeStart = CMTimeGetSeconds(timeRange.start)
+                let rangeDuration = CMTimeGetSeconds(timeRange.duration)
+                let rangeEnd = rangeStart + rangeDuration
+                let progress = rangeEnd/CMTimeGetSeconds(playerItem.duration)
                 DispatchQueue.main.async {
-                    delegate.playerReadyToPlay(withDuration: CMTimeGetSeconds(playItem.duration))
+                    delegate.playerDidLoad(toProgress: progress)
+                    print("rate = \(self.player.rate)")
                 }
-                
-            case .failed:
-                if let error = player.currentItem?.error {
-                    print(error.localizedDescription)
-                }
+            case #keyPath(AVPlayerItem.isPlaybackBufferEmpty):
+                guard let bufferEmpty = change?[NSKeyValueChangeKey.newKey] as? Bool else { return }
                 guard let delegate = delegate else { return }
                 DispatchQueue.main.async {
-                    delegate.playerDidFailToPlay()
+                    delegate.playbackBufferEmpty(bufferEmpty)
+                }
+            case #keyPath(AVPlayerItem.isPlaybackBufferFull):
+                guard let bufferFull = change?[NSKeyValueChangeKey.newKey] as? Bool else { return }
+                guard let delegate = delegate else { return }
+                DispatchQueue.main.async {
+                    delegate.playbackBufferFull(bufferFull)
+                }
+            case #keyPath(AVPlayerItem.isPlaybackLikelyToKeepUp):
+                /*
+                    Indicates whether the item will likely play through without stalling.
+                 AVPlayer会根据当前的AVPlayerItem的loadedTimeRanges和网速来评估AVPlayerItem是否可以流畅播放而没有停顿，不同AVPlayerItem、不同网络状况，playbackLikelyToKeepUp从fasle变成true时loadedTimeRanges占总的百分比也不尽相同，只有playbackLikelyToKeepUp变成true时，AVPlayer才会播放，否则处于暂停加载状态
+                    
+                */
+                guard let likelyToKeepUp = change?[NSKeyValueChangeKey.newKey] as? Bool else { return }
+                guard let delegate = delegate else { return }
+                DispatchQueue.main.async {
+                    delegate.playbackLikelyToKeepUp(likelyToKeepUp)
                 }
             default:
                 break
             }
-            
-        }else if keyPath == kLoadedTimeRangesKeyPath{
-            guard let playerItem = player.currentItem, let timeRange = playerItem.loadedTimeRanges.first?.timeRangeValue, let delegate = delegate else { return }
-            let rangeStart = CMTimeGetSeconds(timeRange.start)
-            let rangeDuration = CMTimeGetSeconds(timeRange.duration)
-            let rangeEnd = rangeStart + rangeDuration
-            let progress = rangeEnd/CMTimeGetSeconds(playerItem.duration)
-            DispatchQueue.main.async {
-                delegate.playerDidLoad(toProgress: progress)
-                print("rate = \(self.player.rate)")
-            }
-        }else if keyPath == kPlaybackBufferEmptyKeyPath{
-            guard let bufferEmpty = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
-            guard let delegate = delegate else { return }
-            DispatchQueue.main.async {
-                delegate.playbackBufferEmpty(bufferEmpty)
-            }
-        }else if keyPath == kPlaybackLikelyToKeepUpKeyPath{
-            /*
-                Indicates whether the item will likely play through without stalling.
-             AVPlayer会根据当前的AVPlayerItem的loadedTimeRanges和网速来评估AVPlayerItem是否可以流畅播放而没有停顿，不同AVPlayerItem、不同网络状况，playbackLikelyToKeepUp从fasle变成true时loadedTimeRanges占总的百分比也不尽相同，只有playbackLikelyToKeepUp变成true时，AVPlayer才会播放，否则处于暂停加载状态
-                
-            */
-            guard let likelyToKeepUp = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
-            guard let delegate = delegate else { return }
-            DispatchQueue.main.async {
-                delegate.playbackLikelyToKeepUp(likelyToKeepUp)
-            }
-        }else if keyPath == kPlaybackBufferFullKeyPath{
-            guard let bufferFull = newChange[NSKeyValueChangeKey.newKey] as? Bool else { return }
-            guard let delegate = delegate else { return }
-            DispatchQueue.main.async {
-                delegate.playbackBufferFull(bufferFull)
-            }
-        }else if keyPath == kTimeControlStatus{
-            guard let newValue = newChange[NSKeyValueChangeKey.newKey] as? Int, let timeControlStatus = AVPlayer.TimeControlStatus(rawValue: newValue), let delegate = delegate else { return }
-            DispatchQueue.main.async {
-                delegate.playerTimeControlStatusDidChange(toStatus: timeControlStatus)
+        }else if context == &playerContext{
+            switch keyPath {
+            case #keyPath(AVPlayer.timeControlStatus):
+                guard let newValue = change?[NSKeyValueChangeKey.newKey] as? Int, let timeControlStatus = AVPlayer.TimeControlStatus(rawValue: newValue), let delegate = delegate else { return }
+                DispatchQueue.main.async {
+                    delegate.playerTimeControlStatusDidChange(toStatus: timeControlStatus)
+                }
+            default:
+                break
             }
         }else{
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)

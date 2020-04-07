@@ -26,11 +26,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /*
          You can interact with the audio session throughout your app’s life cycle, but it’s often useful to perform this configuration at app launch
+         Most apps only need to set the category once, at launch, but you can change the category as often as you need to. You can change it while the audio session is active; however, it’s generally preferable to deactivate your audio session before changing the category or other session properties. Making these changes while the session is deactivated prevents unnecessary reconfigurations of the audio system.
+         
+         *****Audio Session Default Behavior******
+
+         All iOS, tvOS, and watchOS apps have a default audio session that is preconfigured as follows:
+
+         1. Audio playback is supported, but audio recording is disallowed.
+         2. In iOS, setting the Ring/Silent switch to silent mode silences any audio being played by the app.
+         3. In iOS, when the device is locked, the app's audio is silenced.
+         4. When your app plays audio, any other background audio—such as audio being played by the Music app—is silenced.
+         The default audio session has useful behavior, but in most cases, you should customize it to better suit your app’s needs. To change the behavior, you configure your app’s audio session.
+
+         //  The intention to set the category of audio session
+         
+         The primary means of configuring your audio session is by setting its category. An audio session category defines a set of audio behaviors. The precise behaviors associated with each category are not under your app’s control, but rather are set by the operating system.
+         
          */
         let audioSession = AVAudioSession.sharedInstance()
         do {
             // Set the audio session category, mode, and options.
-            try audioSession.setCategory(.playback)
+            
+            /*
+             AVAudioSession.Category.playback
+             This category indicates that audio playback is a central feature of your app. When you specify this category, your app’s audio continues with the Ring/Silent switch set to silent mode (iOS only). With this category, your app can also play background audio if you're using the Audio, AirPlay, and Picture in Picture background mode.
+             
+             */
+            try audioSession.setCategory(.playback, options: [])
             /*
              You can activate the audio session at any time after setting its category, but it’s generally preferable to defer this call until your app begins audio playback. Deferring the call ensures that you won’t prematurely interrupt any other background audio that may be in progress.
              */
