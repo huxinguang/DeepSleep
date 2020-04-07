@@ -112,20 +112,20 @@ class MainVC: BaseVC {
         if sender.isSelected {
             AVPlayerManager.share.pause()
             
-            let pausedTime = imageView.layer.convertTime(CACurrentMediaTime(), from: nil)
-            imageView.layer.speed = 0.0
-            imageView.layer.timeOffset = pausedTime
+//            let pausedTime = imageView.layer.convertTime(CACurrentMediaTime(), from: nil)
+//            imageView.layer.speed = 0.0
+//            imageView.layer.timeOffset = pausedTime
             
         }else{
             AVPlayerManager.share.play()
             
-            let pausedTime = imageView.layer.timeOffset
-            imageView.layer.speed = 1.0
-            imageView.layer.timeOffset = 0.0
-            imageView.layer.beginTime = 0.0
-            let timeSincePause = imageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-            imageView.layer.beginTime = timeSincePause
-            
+//            let pausedTime = imageView.layer.timeOffset
+//            imageView.layer.speed = 1.0
+//            imageView.layer.timeOffset = 0.0
+//            imageView.layer.beginTime = 0.0
+//            let timeSincePause = imageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+//            imageView.layer.beginTime = timeSincePause
+//
         }
     }
     
@@ -162,6 +162,21 @@ class MainVC: BaseVC {
             return "too long"
         }
         
+    }
+    
+    func startRotationAnimation() {
+        let pausedTime = imageView.layer.timeOffset
+        imageView.layer.speed = 1.0
+        imageView.layer.timeOffset = 0.0
+        imageView.layer.beginTime = 0.0
+        let timeSincePause = imageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        imageView.layer.beginTime = timeSincePause
+    }
+    
+    func stopRotationAnimation() {
+        let pausedTime = imageView.layer.convertTime(CACurrentMediaTime(), from: nil)
+        imageView.layer.speed = 0.0
+        imageView.layer.timeOffset = pausedTime
     }
     
     /*
@@ -259,13 +274,15 @@ extension MainVC: PlayerUIDelegate{
             print("AVPlayer.TimeControlStatus.paused")
             playBtn.isSelected = false
             slider.hideIndicator()
+            stopRotationAnimation()
         case .playing:
             print("AVPlayer.TimeControlStatus.playing")
             playBtn.isSelected = true
             slider.hideIndicator()
+            startRotationAnimation()
         default:
             print("AVPlayer.TimeControlStatus.waitingToPlayAtSpecifiedRate")
-            
+            stopRotationAnimation()
             slider.showIndicator()
             
             guard let reason = AVPlayerManager.share.player.reasonForWaitingToPlay else { return }
