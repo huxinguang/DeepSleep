@@ -31,10 +31,10 @@ enum AudioPlayMode: Int {
 }
 
 protocol PlayerUIDelegate {
-    func playerReadyToPlay(withDuration duration: Float64) -> Void
-    func playerDidLoad(toProgress progress: Float64) -> Void
+    func playerReadyToPlay(withDuration duration: TimeInterval) -> Void
+    func playerDidLoad(toProgress progress: TimeInterval) -> Void
     func playerDidPlay(toProgress progress: Float) -> Void
-    func playerDidPlay(toTime: Float64, totalTime: Float64) -> Void
+    func playerDidPlay(toTime: TimeInterval, totalTime: TimeInterval) -> Void
     func playbackBufferEmpty(_ bufferEmpty: Bool) -> Void
     func playbackLikelyToKeepUp(_ likelyToKeepUp: Bool) -> Void
     func playbackBufferFull(_ bufferFull: Bool) -> Void
@@ -316,7 +316,7 @@ class AVPlayerManager: NSObject {
     func update(progress: Float) {
         guard let playerItem = player.currentItem else { return }
         let totalSeconds = CMTimeGetSeconds(playerItem.duration)
-        let currentSeconds = totalSeconds * Float64(progress)
+        let currentSeconds = totalSeconds * TimeInterval(progress)
         print("currentSeconds = \(currentSeconds)")
         let timeScale = playerItem.currentTime().timescale
         let current = CMTime(seconds: currentSeconds, preferredTimescale: timeScale)

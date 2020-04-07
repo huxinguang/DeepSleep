@@ -96,7 +96,7 @@ class MainVC: BaseVC {
         sliderIsSliding = true
         guard let playerItem = AVPlayerManager.share.player.currentItem else { return }
         let totalSeconds = CMTimeGetSeconds(playerItem.duration)
-        let currentSeconds = totalSeconds * Float64(sender.value)
+        let currentSeconds = totalSeconds * TimeInterval(sender.value)
         currentTimeLabel.text = timeConverted(fromSeconds: currentSeconds)
     }
     
@@ -148,16 +148,16 @@ class MainVC: BaseVC {
         present(vc, animated: true, completion: nil)
     }
     
-    func timeConverted(fromSeconds seconds: Float64) -> String {
+    func timeConverted(fromSeconds seconds: TimeInterval) -> String {
         let sec = Int(seconds)
         if sec >= 0 && sec < 10 {
             return "00:0\(sec)"
         }else if sec >= 10 && sec < 60{
             return "00:\(sec)"
         }else if sec >= 60 && sec < 600{
-            return "0\(sec/60):\(timeConverted(fromSeconds: Float64(sec%60)).suffix(2))"
+            return "0\(sec/60):\(timeConverted(fromSeconds: TimeInterval(sec%60)).suffix(2))"
         }else if sec >= 600 && sec < 3600{
-            return "\(sec/60):\(timeConverted(fromSeconds: Float64(sec%60)).suffix(2))"
+            return "\(sec/60):\(timeConverted(fromSeconds: TimeInterval(sec%60)).suffix(2))"
         }else{
             return "too long"
         }
@@ -192,21 +192,22 @@ class MainVC: BaseVC {
 }
 
 extension MainVC: PlayerUIDelegate{
-    func playerReadyToPlay(withDuration duration: Float64) {
+    func playerReadyToPlay(withDuration duration: TimeInterval) {
         print("playerReadyToPlay")
         slider.isUserInteractionEnabled = true // slider.isEnabled = true
         totalTimeLabel.text = timeConverted(fromSeconds: duration)
     }
     
-    func playerDidLoad(toProgress progress: Float64) {
+    func playerDidLoad(toProgress progress: TimeInterval) {
         print(progress)
        
     }
     
-    func playerDidPlay(toTime: Float64, totalTime: Float64) {
+    func playerDidPlay(toTime: TimeInterval, totalTime: TimeInterval) {
         if !sliderIsSliding {
             currentTimeLabel.text = timeConverted(fromSeconds: toTime)
         }
+        
     }
     
     func playerDidPlay(toProgress progress: Float){
