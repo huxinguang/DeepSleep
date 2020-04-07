@@ -111,21 +111,8 @@ class MainVC: BaseVC {
     @IBAction func onPlayPauseBtn(_ sender: UIButton) {
         if sender.isSelected {
             AVPlayerManager.share.pause()
-            
-//            let pausedTime = imageView.layer.convertTime(CACurrentMediaTime(), from: nil)
-//            imageView.layer.speed = 0.0
-//            imageView.layer.timeOffset = pausedTime
-            
         }else{
             AVPlayerManager.share.play()
-            
-//            let pausedTime = imageView.layer.timeOffset
-//            imageView.layer.speed = 1.0
-//            imageView.layer.timeOffset = 0.0
-//            imageView.layer.beginTime = 0.0
-//            let timeSincePause = imageView.layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-//            imageView.layer.beginTime = timeSincePause
-//
         }
     }
     

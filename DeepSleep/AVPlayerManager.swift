@@ -10,6 +10,15 @@ import UIKit
 import AVFoundation
 import AVKit
 
+/*
+ Readme
+ 
+  It’s important to maintain sample-accurate timing when working with media, and floating-point imprecisions can often result in timing drift. To resolve these imprecisions, AVFoundation represents time using the Core Media framework’s CMTime data type.
+ 
+ 
+ 
+ */
+
 
 private let kTimeControlStatus = "timeControlStatus"
 private let kPlayerRateKeyPath = "rate"
@@ -111,12 +120,17 @@ class AVPlayerManager: NSObject {
             player.automaticallyWaitsToMinimizeStalling = true
             player.usesExternalPlaybackWhileExternalScreenIsActive = true
             play()
-            sliderObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.05, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
+            
+            /*
+             KVO works well for general state observations, but isn’t the right choice for observing player timing because it’s not well suited for observing continuous state changes
+             */
+            let timeScale = CMTimeScale(NSEC_PER_SEC)
+            sliderObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.05, preferredTimescale: timeScale), queue: .main) {[weak self] (time) in
                 guard let strongSelf = self, let delegate = strongSelf.delegate, let playerItem = strongSelf.player.currentItem else { return }
                 let progress = CMTimeGetSeconds(time)/CMTimeGetSeconds(playerItem.duration)
                 delegate.playerDidPlay(toProgress: Float(progress))
             }
-            timeObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), queue: DispatchQueue.main) {[weak self] (time) in
+            timeObserverToken = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: timeScale), queue: .main) {[weak self] (time) in
                 guard let strongSelf = self, let delegate = strongSelf.delegate, let playerItem = strongSelf.player.currentItem, strongSelf.player.status == .readyToPlay, !time.isIndefinite, !playerItem.duration.isIndefinite else { return }
                 delegate.playerDidPlay(toTime: CMTimeGetSeconds(time), totalTime: CMTimeGetSeconds(playerItem.duration))
             }
@@ -481,12 +495,19 @@ class AVPlayerManager: NSObject {
     }
     
     deinit {
-        player.removeTimeObserver(sliderObserverToken!)
-        player.removeTimeObserver(timeObserverToken!)
-        sliderObserverToken = nil
-        timeObserverToken = nil
+        if let player = player {
+            if let sliderObserverToken = sliderObserverToken {
+                player.removeTimeObserver(sliderObserverToken)
+                self.sliderObserverToken = nil
+            }
+            if let timeObserverToken = timeObserverToken {
+                player.removeTimeObserver(timeObserverToken)
+                self.timeObserverToken = nil
+            }
+            player.currentItem?.cancelPendingSeeks()
+        }
+        
         NotificationCenter.default.removeObserver(self)
-        player.currentItem?.cancelPendingSeeks()
         perform(#selector(removeKVO), on: .main, with: self, waitUntilDone: true)
     }
     
