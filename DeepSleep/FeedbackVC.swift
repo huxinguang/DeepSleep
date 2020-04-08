@@ -8,18 +8,39 @@
 
 import UIKit
 import KMPlaceholderTextView
+import RxSwift
+import RxCocoa
 
 class FeedbackVC: UIViewController {
 
     @IBOutlet weak var textView: KMPlaceholderTextView!
+    @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.tintColor = .white
-
-        // Do any additional setup after loading the view.
+        submitBtn.setTitleColor(.white, for: .normal)
+        submitBtn.setTitleColor(.darkGray, for: .disabled)
+        textView.rx.text.orEmpty.map{ $0.count>0 }.bind(to: submitBtn.rx.isEnabled).disposed(by: disposeBag)
     }
     
-
+    @IBAction func onSubmit(_ sender: UIButton) {
+        sender.isEnabled = false
+        sender.setTitle("", for: .normal)
+        indicatorView.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+            self.indicatorView.stopAnimating()
+            sender.setTitle("提交成功", for: .normal)
+            sender.isEnabled = true
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 

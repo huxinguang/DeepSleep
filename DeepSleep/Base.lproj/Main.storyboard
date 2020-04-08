@@ -432,13 +432,22 @@
                                         <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onSubmit:" destination="SAo-gr-yES" eventType="touchUpInside" id="ZRi-J3-1SS"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fsg-5R-eHf">
+                                <rect key="frame" x="197" y="331.5" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.10980392160000001" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Ikt-ZQ-E8S" firstAttribute="leading" secondItem="DKS-WD-38M" secondAttribute="leading" constant="15" id="0IQ-om-xpZ"/>
                             <constraint firstItem="WWG-z1-iga" firstAttribute="leading" secondItem="Ikt-ZQ-E8S" secondAttribute="leading" id="2KA-y9-ewu"/>
                             <constraint firstItem="Ikt-ZQ-E8S" firstAttribute="top" secondItem="DKS-WD-38M" secondAttribute="top" constant="30" id="Ahd-La-AEy"/>
+                            <constraint firstItem="fsg-5R-eHf" firstAttribute="centerY" secondItem="WWG-z1-iga" secondAttribute="centerY" id="K4G-Qa-tGB"/>
+                            <constraint firstItem="fsg-5R-eHf" firstAttribute="centerX" secondItem="DKS-WD-38M" secondAttribute="centerX" id="MdK-ny-zE9"/>
                             <constraint firstItem="WWG-z1-iga" firstAttribute="top" secondItem="Ikt-ZQ-E8S" secondAttribute="bottom" constant="40" id="StV-IC-2lw"/>
                             <constraint firstItem="WWG-z1-iga" firstAttribute="trailing" secondItem="Ikt-ZQ-E8S" secondAttribute="trailing" id="gbx-t1-Mta"/>
                             <constraint firstItem="DKS-WD-38M" firstAttribute="trailing" secondItem="Ikt-ZQ-E8S" secondAttribute="trailing" constant="15" id="iZo-V9-YmQ"/>
@@ -446,6 +455,8 @@
                         <viewLayoutGuide key="safeArea" id="DKS-WD-38M"/>
                     </view>
                     <connections>
+                        <outlet property="indicatorView" destination="fsg-5R-eHf" id="o3e-PX-dRT"/>
+                        <outlet property="submitBtn" destination="WWG-z1-iga" id="yaW-g6-Kd6"/>
                         <outlet property="textView" destination="Ikt-ZQ-E8S" id="Qk8-gW-f2I"/>
                     </connections>
                 </viewController>
