@@ -21,11 +21,6 @@ import MediaPlayer
 private var playerItemContext = 0
 private var playerContext = 0
 
-let requiredAssetKeys = [
-    "playable",
-    "hasProtectedContent"
-]
-
 
 enum AudioPlayMode: Int {
     case listLoop = 0
@@ -47,8 +42,6 @@ protocol PlayerUIDelegate {
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
     func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus) -> Void
-    
-    
 }
 
 class AVPlayerManager: NSObject {
