@@ -145,7 +145,8 @@ class MainVC: BaseVC {
          3. Call the presentViewController:animated:completion: method to present the view controller.
          */
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MusicListVC")
+        let vc = storyboard.instantiateViewController(withIdentifier: "MusicListVC") as! MusicListVC
+        vc.data = data
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = vc.presentationDelegate
         present(vc, animated: true, completion: nil)
@@ -271,6 +272,7 @@ extension MainVC: PlayerUIDelegate{
             currentTimeLabel.text = "00:00"
             totalTimeLabel.text = "--:--"
             imageView.kf.setImage(with: URL(string: playingItem.image_url))
+            NotificationCenter.default.post(name: NSNotification.Name.App.PlayItemDidChange, object: nil)
         }
     }
     

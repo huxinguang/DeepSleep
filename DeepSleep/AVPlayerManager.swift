@@ -63,7 +63,7 @@ class AVPlayerManager: NSObject {
             }
         }
     }
-    fileprivate var playingItem: AudioItem?{
+    private(set) var playingItem: AudioItem?{
         didSet{
             if let delegate = delegate{
                 delegate.playerItemDidChange(toItem: playingItem)
