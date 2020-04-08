@@ -10,7 +10,6 @@
 		2842A59BC9FB564C3D1BF24B /* Pods_DeepSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */; };
 		9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B6F124284F5F00297C60 /* AppDelegate.swift */; };
 		9665B6F924284F5F00297C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9665B6F724284F5F00297C60 /* Main.storyboard */; };
-		9665B6FC24284F5F00297C60 /* DeepSleep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9665B6FA24284F5F00297C60 /* DeepSleep.xcdatamodeld */; };
 		9665B6FE24284F6200297C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9665B6FD24284F6200297C60 /* Assets.xcassets */; };
 		9665B70124284F6200297C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9665B6FF24284F6200297C60 /* LaunchScreen.storyboard */; };
 		9665B70D242881AD00297C60 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B70C242881AD00297C60 /* MainNavigationController.swift */; };
@@ -50,7 +49,6 @@
 		9665B6EE24284F5F00297C60 /* DeepSleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepSleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9665B6F124284F5F00297C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9665B6F824284F5F00297C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9665B6FB24284F5F00297C60 /* DeepSleep.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeepSleep.xcdatamodel; sourceTree = "<group>"; };
 		9665B6FD24284F6200297C60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9665B70024284F6200297C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9665B70224284F6200297C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				9665B6FD24284F6200297C60 /* Assets.xcassets */,
 				9665B6FF24284F6200297C60 /* LaunchScreen.storyboard */,
 				9665B70224284F6200297C60 /* Info.plist */,
-				9665B6FA24284F5F00297C60 /* DeepSleep.xcdatamodeld */,
 			);
 			path = DeepSleep;
 			sourceTree = "<group>";
@@ -307,7 +304,6 @@
 				969BA119242DC2C600710F83 /* MusicTypeLayout.swift in Sources */,
 				969BA1252432D77A00710F83 /* UIButton.swift in Sources */,
 				9665B70F2428936C00297C60 /* MainVC.swift in Sources */,
-				9665B6FC24284F5F00297C60 /* DeepSleep.xcdatamodeld in Sources */,
 				969BA1232431CD3700710F83 /* AudioItem.swift in Sources */,
 				96C9B3E3242C7E2F0021781B /* UIViewController.swift in Sources */,
 				9665B71F2429E71800297C60 /* MusicCell.swift in Sources */,
@@ -526,19 +522,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9665B6FA24284F5F00297C60 /* DeepSleep.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9665B6FB24284F5F00297C60 /* DeepSleep.xcdatamodel */,
-			);
-			currentVersion = 9665B6FB24284F5F00297C60 /* DeepSleep.xcdatamodel */;
-			path = DeepSleep.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9665B6E624284F5F00297C60 /* Project object */;
 }

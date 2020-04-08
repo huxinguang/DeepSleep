@@ -163,7 +163,6 @@ class MainVC: BaseVC {
         }else{
             return "too long"
         }
-        
     }
     
     func startRotationAnimation() {
@@ -176,11 +175,11 @@ class MainVC: BaseVC {
     }
     
     func stopRotationAnimation() {
+        print("stopRotationAnimation")
         let pausedTime = imageView.layer.convertTime(CACurrentMediaTime(), from: nil)
         imageView.layer.speed = 0.0
         imageView.layer.timeOffset = pausedTime
     }
-    
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -271,7 +270,6 @@ extension MainVC: PlayerUIDelegate{
             currentTimeLabel.text = "00:00"
             totalTimeLabel.text = "--:--"
             imageView.kf.setImage(with: URL(string: playingItem.image_url))
-            
         }
     }
     
