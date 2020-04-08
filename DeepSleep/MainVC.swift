@@ -42,21 +42,22 @@ class MainVC: BaseVC {
         //slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
         
-        
-        let path = Bundle.main.path(forResource: "music", ofType: "json")
+        let path = Bundle.main.path(forResource: "File", ofType: "json")
         let url = URL(fileURLWithPath: path!)
         do {
             let json = try Data(contentsOf: url)
             let jsonData = try JSONSerialization.jsonObject(with: json, options: .mutableContainers)
-            if let data = jsonData as? NSDictionary,let musics = data["data"] as? NSArray {
-                var items = [AudioItem]()
-                for music in musics {
-                    if let dic = music as? NSDictionary {
-                        let item = AudioItem(fromDictionary: dic)
-                        items.append(item)
+            if let data = jsonData as? NSDictionary,let categories = data["data"] as? NSArray {
+                if let category = categories.firstObject as? NSDictionary, let musics = category["musics"] as? NSArray{
+                    var items = [AudioItem]()
+                    for music in musics {
+                        if let dic = music as? NSDictionary {
+                            let item = AudioItem(fromDictionary: dic)
+                            items.append(item)
+                        }
                     }
+                    self.data = items
                 }
-                self.data = items
             }
             
         } catch {
