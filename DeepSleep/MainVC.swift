@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 import Kingfisher
 
+private let animationKey = "ImageRotationAnimation"
+
 class MainVC: BaseVC {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -21,8 +23,17 @@ class MainVC: BaseVC {
     @IBOutlet weak var playBtn: UIButton!
     var sliderIsSliding: Bool = false
     var data: [AudioItem]!
-
-
+    lazy var imageAnimation: CABasicAnimation = {
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.fromValue = 0
+        animation.toValue = Double.pi*2
+        animation.duration = 10
+        animation.autoreverses = false
+        animation.fillMode = .forwards
+        animation.repeatCount = MAXFLOAT
+        return animation
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sunshine girl"
@@ -31,15 +42,7 @@ class MainVC: BaseVC {
         //slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
         
-        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
-        animation.fromValue = 0
-        animation.toValue = Double.pi*2
-        animation.duration = 10
-        animation.autoreverses = false
-        animation.fillMode = .forwards
-        animation.repeatCount = MAXFLOAT
-        imageView.layer.add(animation, forKey: "ImageRotationAnimation")
-        
+        imageView.layer.add(imageAnimation, forKey: animationKey)
         
         let path = Bundle.main.path(forResource: "music", ofType: "json")
         let url = URL(fileURLWithPath: path!)
@@ -61,6 +64,9 @@ class MainVC: BaseVC {
             print(error)
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
         AVPlayerManager.share.delegate = self
         AVPlayerManager.share.audioItems = data
         AVPlayerManager.share.play(audioItem: data[0])
@@ -77,6 +83,16 @@ class MainVC: BaseVC {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+    }
+    
+    @objc
+    func appDidEnterBackground() {
+        imageView.layer.removeAnimation(forKey: animationKey)
+    }
+    
+    @objc
+    func appWillEnterForeground() {
+        imageView.layer.add(imageAnimation, forKey: animationKey)
     }
     
     @IBAction func onUnfoldBtn(_ sender: UIButton) {
@@ -166,6 +182,10 @@ class MainVC: BaseVC {
         imageView.layer.timeOffset = pausedTime
     }
     
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     /*
     // MARK: - Navigation
 

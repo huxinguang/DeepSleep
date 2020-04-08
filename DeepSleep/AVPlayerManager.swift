@@ -15,13 +15,7 @@ import MediaPlayer
  
   It’s important to maintain sample-accurate timing when working with media, and floating-point imprecisions can often result in timing drift. To resolve these imprecisions, AVFoundation represents time using the Core Media framework’s CMTime data type.
  
- 
- 
  */
-
-
-private let kTimeControlStatus = "timeControlStatus"
-private let kPlayerRateKeyPath = "rate"
 
 // Key-value observing context
 private var playerItemContext = 0
@@ -282,6 +276,7 @@ class AVPlayerManager: NSObject {
             let type = AVAudioSession.InterruptionType(rawValue: typeValue) else { return }
         if type == .began {
             // Interruption began, take appropriate actions (save state, update user interface)
+            
         }else if type == .ended {
             /*
              If the interruption type is AVAudioSessionInterruptionTypeEnded, the userInfo dictionary might contain an AVAudioSessionInterruptionOptions value. An options value of AVAudioSessionInterruptionOptionShouldResume is a hint that indicates whether your app should automatically resume playback if it had been playing when it was interrupted. Media playback apps should always look for this flag before beginning playback after an interruption. If it’s not present, playback should not begin again until initiated by the user. Apps that don’t present a playback interface, such as a game, can ignore this flag and reactivate and resume playback when the interruption ends.
@@ -294,6 +289,7 @@ class AVPlayerManager: NSObject {
             let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
             if options.contains(.shouldResume) {
                 // Interruption Ended - playback should resume
+                play()
             }
         }
     }
@@ -336,10 +332,6 @@ class AVPlayerManager: NSObject {
             print("Failed to activate audio session")
         }
         player.play()
-        
-//        UIApplication.shared.beginBackgroundTask(withName: Constant.Background.taskName) {
-//
-//        }
     }
     
     func pause() {
@@ -453,7 +445,7 @@ class AVPlayerManager: NSObject {
                     
                     2. Register for key-value observation of the property, requesting the initial value. If the initial value is reported as indefinite, the player item will notify you of the availability of its duration via key-value observing as soon as its value becomes known.
                      
-                     readyToPlay不代表AVPlayerItem就能播放了
+                     readyToPlay不代表AVPlayerItem就要开始播放了
                      
                     */
                     guard let delegate = delegate, let playItem = player.currentItem else { return }
