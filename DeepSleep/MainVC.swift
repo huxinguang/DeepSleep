@@ -21,6 +21,8 @@ class MainVC: BaseVC {
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var modeBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var unfoldBtn: UIButton!
+    
     fileprivate var sliderIsSliding: Bool = false
     fileprivate var data: [AudioItem]!
     fileprivate var categories: [AudioCategory]!
@@ -38,35 +40,11 @@ class MainVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sunshine girl"
-        
+    
         slider.setThumbImage(UIImage(named: "dot_nor"), for: .normal)
         //slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
-//
-//        let path = Bundle.main.path(forResource: "File", ofType: "json")
-//        let url = URL(fileURLWithPath: path!)
-//        do {
-//            let json = try Data(contentsOf: url)
-//            let jsonData = try JSONSerialization.jsonObject(with: json, options: .mutableContainers)
-//            if let data = jsonData as? NSDictionary,let categories = data["data"] as? NSArray {
-//                if let category = categories.firstObject as? NSDictionary, let musics = category["musics"] as? NSArray{
-//                    var items = [AudioItem]()
-//                    for music in musics {
-//                        if let dic = music as? NSDictionary {
-//                            let item = AudioItem(fromDictionary: dic)
-//                            items.append(item)
-//                        }
-//                    }
-//                    self.data = items
-//                }
-//            }
-//
-//        } catch {
-//            print(error)
-//        }
-        
-        
+
         let path = Bundle.main.path(forResource: "category", ofType: "json")
         let url = URL(fileURLWithPath: path!)
         do {
@@ -85,6 +63,8 @@ class MainVC: BaseVC {
         AVPlayerManager.share.delegate = self
         AVPlayerManager.share.audioItems = data
         AVPlayerManager.share.play(audioItem: data[0])
+        
+        unfoldBtn.setTitle(categories.first?.name ?? "选择分类", for: .normal)
         
     }
     
@@ -329,6 +309,10 @@ extension MainVC: PlayerUIDelegate{
             
             break
         }
+    }
+    
+    func playerItemsDidChange(items: [AudioItem]) {
+        data = items
     }
     
 }

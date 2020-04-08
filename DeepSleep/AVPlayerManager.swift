@@ -42,6 +42,7 @@ protocol PlayerUIDelegate {
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
     func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus) -> Void
+    func playerItemsDidChange(items: [AudioItem]) -> Void
 }
 
 class AVPlayerManager: NSObject {
@@ -51,7 +52,13 @@ class AVPlayerManager: NSObject {
     fileprivate var sliderObserverToken: Any!
     fileprivate var timeObserverToken: Any!
     var delegate: PlayerUIDelegate?
-    var audioItems: [AudioItem]?
+    var audioItems: [AudioItem]?{
+        didSet{
+            if let delegate = delegate, let newItems = audioItems{
+                delegate.playerItemsDidChange(items: newItems)
+            }
+        }
+    }
     fileprivate var shuffledAudioItems: [AudioItem]?
     private(set) var currentPlayMode: AudioPlayMode!{
         didSet{

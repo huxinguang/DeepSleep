@@ -16,7 +16,6 @@ class MusicTypeListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(playItemDidChange), name: NSNotification.Name.App.PlayItemDidChange, object: nil)
-        updateCurrent()
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,15 +37,9 @@ class MusicTypeListVC: UIViewController {
     @objc
     func playItemDidChange() {
         tableView.reloadData()
-        updateCurrent()
+        
     }
-       
-    func updateCurrent() {
-//        if let playingItem = AVPlayerManager.share.playingItem {
-//            playingLabel.text = "正在播放：" + playingItem.name
-//        }
-    }
-    
+           
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -84,6 +77,21 @@ extension MusicTypeListVC: UITableViewDataSource, UITableViewDelegate{
        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if AVPlayerManager.share.playingItem == data[indexPath.row] {
+            if AVPlayerManager.share.player.rate > 0 {
+                AVPlayerManager.share.pause()
+            }else{
+                AVPlayerManager.share.play()
+            }
+            tableView.reloadData()
+            updateCurrent()
+        }else{
+            AVPlayerManager.share.audioItems = data
+            AVPlayerManager.share.play(audioItem: data[indexPath.row])
+        }
+        
+        
+        
     }
     
     
