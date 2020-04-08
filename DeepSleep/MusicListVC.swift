@@ -26,7 +26,7 @@ class MusicListVC: BaseVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let lineLayer = CALayer()
-        lineLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0.5)
+        lineLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 1/UIScreen.main.scale)
         lineLayer.backgroundColor = UIColor.darkGray.cgColor
         closeButton.layer.addSublayer(lineLayer)
     }
