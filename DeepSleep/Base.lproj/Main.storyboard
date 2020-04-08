@@ -334,15 +334,24 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlW-jv-h8t">
+                                                                <rect key="frame" x="335.5" y="20.5" width="33.5" height="19.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="hlW-jv-h8t" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dUP-lS-Yro" secondAttribute="trailing" constant="10" id="Md5-N8-fpT"/>
                                                             <constraint firstItem="dUP-lS-Yro" firstAttribute="centerY" secondItem="7Lh-ou-6l5" secondAttribute="centerY" id="cyJ-DB-tu7"/>
-                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dUP-lS-Yro" secondAttribute="trailing" constant="30" id="fTA-NX-dFE"/>
+                                                            <constraint firstAttribute="trailing" secondItem="hlW-jv-h8t" secondAttribute="trailing" constant="25" id="gbh-n4-0Hv"/>
                                                             <constraint firstItem="dUP-lS-Yro" firstAttribute="leading" secondItem="7Lh-ou-6l5" secondAttribute="leading" constant="15" id="kml-6j-YlN"/>
+                                                            <constraint firstItem="hlW-jv-h8t" firstAttribute="centerY" secondItem="dUP-lS-Yro" secondAttribute="centerY" id="loy-O6-lLX"/>
                                                         </constraints>
                                                     </tableViewCellContentView>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
+                                                        <outlet property="detailLabel" destination="hlW-jv-h8t" id="2hM-7P-KWc"/>
                                                         <outlet property="titleLabel" destination="dUP-lS-Yro" id="y7A-CT-WOj"/>
                                                     </connections>
                                                 </tableViewCell>

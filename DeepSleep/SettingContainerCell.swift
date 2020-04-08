@@ -41,7 +41,13 @@ extension SettingContainerCell: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SettingCell
         cell.titleLabel.text = titles![indexPath.row]
-        cell.accessoryView = UIImageView(image: UIImage(named: "arrow"))
+        if indexPath.row == 2 {
+            cell.accessoryView = nil
+            cell.detailLabel.text = "1.0.0"
+        }else{
+            cell.accessoryView = UIImageView(image: UIImage(named: "arrow"))
+            cell.detailLabel.text = ""
+        }
         if indexPath.row == titles!.count - 1 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
         }else{
