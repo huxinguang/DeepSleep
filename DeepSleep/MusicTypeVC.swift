@@ -59,13 +59,14 @@ extension MusicTypeVC: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MusicTypeCell", for: indexPath) as! MusicTypeCell
-        
+        cell.iconView.kf.setImage(with: URL(string: categories[indexPath.item].image_url))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeListVC")
+        let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeListVC") as! MusicTypeListVC
+        vc.data = categories[indexPath.item].musics
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = TestObjectTwo.share
         present(vc, animated: true, completion: nil)

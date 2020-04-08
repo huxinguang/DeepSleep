@@ -11,10 +11,12 @@ import UIKit
 class MusicTypeListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeBtn: UIButton!
+    var data: [AudioItem]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(playItemDidChange), name: NSNotification.Name.App.PlayItemDidChange, object: nil)
+        updateCurrent()
     }
     
     override func viewDidLayoutSubviews() {
@@ -33,6 +35,22 @@ class MusicTypeListVC: UIViewController {
         }
     }
     
+    @objc
+    func playItemDidChange() {
+        tableView.reloadData()
+        updateCurrent()
+    }
+       
+    func updateCurrent() {
+//        if let playingItem = AVPlayerManager.share.playingItem {
+//            playingLabel.text = "正在播放：" + playingItem.name
+//        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -47,7 +65,7 @@ class MusicTypeListVC: UIViewController {
 
 extension MusicTypeListVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,8 +73,12 @@ extension MusicTypeListVC: UITableViewDataSource, UITableViewDelegate{
         cell.imageView?.image = UIImage(named: "music")
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont(name: "PingFangSC-Regular", size: 15)
-        cell.textLabel?.text = "第\(indexPath.row)首歌曲"
-        cell.accessoryView = UIImageView(image: UIImage(named: "cell_play"))
+        cell.textLabel?.text = data[indexPath.row].name
+        if AVPlayerManager.share.playingItem == data[indexPath.row] && AVPlayerManager.share.player.rate > 0 {
+            cell.accessoryView = UIImageView(image: UIImage(named: "cell_pause"))
+        }else{
+            cell.accessoryView = UIImageView(image: UIImage(named: "cell_play"))
+        }
         return cell
     }
        

@@ -112,7 +112,8 @@ class MainVC: BaseVC {
     
     @IBAction func onUnfoldBtn(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeVC")
+        let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeVC") as! MusicTypeVC
+        vc.categories = categories
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = TestObject.share
         present(vc, animated: true, completion: nil)
