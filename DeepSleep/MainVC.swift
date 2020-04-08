@@ -21,8 +21,10 @@ class MainVC: BaseVC {
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var modeBtn: UIButton!
     @IBOutlet weak var playBtn: UIButton!
-    var sliderIsSliding: Bool = false
-    var data: [AudioItem]!
+    fileprivate var sliderIsSliding: Bool = false
+    fileprivate var data: [AudioItem]!
+    fileprivate var categories: [AudioCategory]!
+    
     lazy var imageAnimation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.fromValue = 0
@@ -41,25 +43,38 @@ class MainVC: BaseVC {
         slider.setThumbImage(UIImage(named: "dot_nor"), for: .normal)
         //slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
+//
+//        let path = Bundle.main.path(forResource: "File", ofType: "json")
+//        let url = URL(fileURLWithPath: path!)
+//        do {
+//            let json = try Data(contentsOf: url)
+//            let jsonData = try JSONSerialization.jsonObject(with: json, options: .mutableContainers)
+//            if let data = jsonData as? NSDictionary,let categories = data["data"] as? NSArray {
+//                if let category = categories.firstObject as? NSDictionary, let musics = category["musics"] as? NSArray{
+//                    var items = [AudioItem]()
+//                    for music in musics {
+//                        if let dic = music as? NSDictionary {
+//                            let item = AudioItem(fromDictionary: dic)
+//                            items.append(item)
+//                        }
+//                    }
+//                    self.data = items
+//                }
+//            }
+//
+//        } catch {
+//            print(error)
+//        }
         
-        let path = Bundle.main.path(forResource: "File", ofType: "json")
+        
+        let path = Bundle.main.path(forResource: "category", ofType: "json")
         let url = URL(fileURLWithPath: path!)
         do {
             let json = try Data(contentsOf: url)
-            let jsonData = try JSONSerialization.jsonObject(with: json, options: .mutableContainers)
-            if let data = jsonData as? NSDictionary,let categories = data["data"] as? NSArray {
-                if let category = categories.firstObject as? NSDictionary, let musics = category["musics"] as? NSArray{
-                    var items = [AudioItem]()
-                    for music in musics {
-                        if let dic = music as? NSDictionary {
-                            let item = AudioItem(fromDictionary: dic)
-                            items.append(item)
-                        }
-                    }
-                    self.data = items
-                }
-            }
-            
+            let categories = try JSONDecoder().decode([AudioCategory].self, from: json)
+            guard let category = categories.first else { return }
+            data = category.musics
+            self.categories = categories
         } catch {
             print(error)
         }
