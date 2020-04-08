@@ -42,7 +42,6 @@ class MainVC: BaseVC {
         //slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
         slider.setThumbImage(UIImage(named: "dot_sel"), for: .highlighted)
         
-        imageView.layer.add(imageAnimation, forKey: animationKey)
         
         let path = Bundle.main.path(forResource: "music", ofType: "json")
         let url = URL(fileURLWithPath: path!)
@@ -77,12 +76,12 @@ class MainVC: BaseVC {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-
+        imageView.layer.add(imageAnimation, forKey: animationKey)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        imageView.layer.removeAnimation(forKey: animationKey)
     }
     
     @objc
