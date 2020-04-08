@@ -84,13 +84,10 @@ extension MusicTypeListVC: UITableViewDataSource, UITableViewDelegate{
                 AVPlayerManager.share.play()
             }
             tableView.reloadData()
-            updateCurrent()
         }else{
             AVPlayerManager.share.audioItems = data
             AVPlayerManager.share.play(audioItem: data[indexPath.row])
         }
-        
-        
         
     }
     
