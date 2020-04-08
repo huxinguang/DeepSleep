@@ -12,12 +12,15 @@ class MusicListVC: BaseVC {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var playingLabel: UILabel!
+    
     var data: [AudioItem]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setCorner(10, [.topLeft, .topRight])
         NotificationCenter.default.addObserver(self, selector: #selector(playItemDidChange), name: NSNotification.Name.App.PlayItemDidChange, object: nil)
+        updateCurrent()
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,6 +38,13 @@ class MusicListVC: BaseVC {
     @objc
     func playItemDidChange() {
         tableView.reloadData()
+        updateCurrent()
+    }
+    
+    func updateCurrent() {
+        if let playingItem = AVPlayerManager.share.playingItem {
+            playingLabel.text = "正在播放：" + playingItem.name
+        }
     }
 
     deinit {
@@ -65,12 +75,27 @@ extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont(name: "PingFangSC-Regular", size: 15)
         cell.textLabel?.text = data[indexPath.row].name
-        cell.accessoryView = UIImageView(image: UIImage(named: AVPlayerManager.share.playingItem == data[indexPath.row] ? "cell_pause" : "cell_play"))
+        if AVPlayerManager.share.playingItem == data[indexPath.row] && AVPlayerManager.share.player.rate > 0 {
+            cell.accessoryView = UIImageView(image: UIImage(named: "cell_pause"))
+        }else{
+            cell.accessoryView = UIImageView(image: UIImage(named: "cell_play"))
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if AVPlayerManager.share.playingItem == data[indexPath.row] {
+            if AVPlayerManager.share.player.rate > 0 {
+                AVPlayerManager.share.pause()
+            }else{
+                AVPlayerManager.share.play()
+            }
+            tableView.reloadData()
+            updateCurrent()
+        }else{
+            AVPlayerManager.share.play(audioItem: data[indexPath.row])
+        }
         
     }
     

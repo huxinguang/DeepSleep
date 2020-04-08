@@ -501,7 +501,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.85017123287671237" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Rnu-Tz-VVT" firstAttribute="leading" secondItem="v49-eu-LQa" secondAttribute="leading" id="2ab-0M-57Q"/>
                             <constraint firstItem="wir-Ni-y0L" firstAttribute="top" secondItem="YuK-uS-AbR" secondAttribute="bottom" constant="10" id="32A-PE-aVx"/>
@@ -518,6 +518,7 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Rnu-Tz-VVT" id="QsN-fK-Goq"/>
+                        <outlet property="playingLabel" destination="IlI-2i-27j" id="6iC-lG-hUu"/>
                         <outlet property="tableView" destination="wir-Ni-y0L" id="bfF-ol-XZO"/>
                     </connections>
                 </viewController>
