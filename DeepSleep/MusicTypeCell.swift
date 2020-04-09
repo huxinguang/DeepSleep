@@ -22,7 +22,7 @@ class MusicTypeCell: UICollectionViewCell {
         playingView.isHidden = false
         let imageNames = ["playing1","playing2","playing3","playing4"]
         playingView.animationImages = imageNames.map{UIImage(named: $0)!}
-        playingView.animationDuration = 1.5
+        playingView.animationDuration = 1.2
         playingView.startAnimating()
     }
     
