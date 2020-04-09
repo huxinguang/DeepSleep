@@ -47,7 +47,10 @@ class SettingVC: UITableViewController {
         cell.titles = titles[indexPath.section]
         cell.tableView.rx.itemSelected.subscribe(onNext: { (subIndexPath) in
             if indexPath.section == 0{
-                
+                let appUrl = URL.init(string: "itms-apps://itunes.apple.com/app/id1501350998?action=write-review")!
+                if UIApplication.shared.canOpenURL(appUrl){
+                    UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
+                }
             }else{
                 switch subIndexPath.row {
                 case 0:
