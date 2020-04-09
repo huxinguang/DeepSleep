@@ -11,17 +11,27 @@ import UIKit
 class MusicTypeCell: UICollectionViewCell {
     
     @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var playingView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
     
-
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//    }
+    func startPlayingAnimation() {
+        playingView.isHidden = false
+        let imageNames = ["playing1","playing2","playing3","playing4"]
+        playingView.animationImages = imageNames.map{UIImage(named: $0)!}
+        playingView.animationDuration = 1.5
+        playingView.startAnimating()
+    }
+    
+    func stopPlayingAnimation() {
+        playingView.isHidden = false
+        if playingView.isAnimating {
+            playingView.stopAnimating()
+        }
+    }
     
     
     

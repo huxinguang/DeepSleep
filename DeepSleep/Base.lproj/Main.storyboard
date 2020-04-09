@@ -30,25 +30,25 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBI-r7-sUw">
-                                <rect key="frame" x="24" y="702" width="366" height="0.0"/>
+                                <rect key="frame" x="24" y="642" width="366" height="0.0"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcx-Ce-WLf">
-                                <rect key="frame" x="24" y="752" width="0.0" height="0.0"/>
+                                <rect key="frame" x="24" y="692" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-kq-dFP">
-                                <rect key="frame" x="390" y="752" width="0.0" height="0.0"/>
+                                <rect key="frame" x="390" y="692" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GIQ-Wc-fGa" customClass="ThinTrackSlider" customModule="DeepSleep" customModuleProvider="target">
-                                <rect key="frame" x="28" y="712" width="358" height="31"/>
+                                <rect key="frame" x="28" y="652" width="358" height="31"/>
                                 <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="slideDidEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aaR-DD-CcJ"/>
@@ -56,24 +56,24 @@
                                 </connections>
                             </slider>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="th4-BP-1ut">
-                                <rect key="frame" x="30" y="772" width="354" height="60"/>
+                                <rect key="frame" x="30" y="712" width="354" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zhp-81-UaL">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="120"/>
                                         <state key="normal" image="recircle"/>
                                         <connections>
                                             <action selector="onModeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lLy-bv-gzU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEm-fy-iEK">
-                                        <rect key="frame" x="71" y="0.0" width="70.5" height="60"/>
+                                        <rect key="frame" x="71" y="0.0" width="70.5" height="120"/>
                                         <state key="normal" image="previous"/>
                                         <connections>
                                             <action selector="onPreviousBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWL-F2-JIO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdS-fY-Md3">
-                                        <rect key="frame" x="141.5" y="0.0" width="71" height="60"/>
+                                        <rect key="frame" x="141.5" y="0.0" width="71" height="120"/>
                                         <state key="normal" image="play"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="pause"/>
@@ -83,14 +83,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0e-5m-ifK">
-                                        <rect key="frame" x="212.5" y="0.0" width="70.5" height="60"/>
+                                        <rect key="frame" x="212.5" y="0.0" width="70.5" height="120"/>
                                         <state key="normal" image="next"/>
                                         <connections>
                                             <action selector="onNextBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rEX-Wn-EVW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyJ-ey-Z7W">
-                                        <rect key="frame" x="283" y="0.0" width="71" height="60"/>
+                                        <rect key="frame" x="283" y="0.0" width="71" height="120"/>
                                         <state key="normal" image="play_list"/>
                                         <connections>
                                             <action selector="onListBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cmS-dh-LbQ"/>
@@ -173,7 +173,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doi-8a-KXK">
-                                <rect key="frame" x="177" y="826" width="60" height="60"/>
+                                <rect key="frame" x="192" y="856" width="30" height="30"/>
                                 <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="Vum-iT-gWg"/>
@@ -195,10 +195,15 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="142" height="136"/>
                                                     <color key="backgroundColor" red="0.20784313730000001" green="0.10980392160000001" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </imageView>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playing1" translatesAutoresizingMaskIntoConstraints="NO" id="9Wz-hA-nbu">
+                                                    <rect key="frame" x="61" y="58" width="20" height="20"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uGT-OY-p0P" firstAttribute="top" secondItem="xyb-ff-SVL" secondAttribute="top" id="8W4-HO-gGD"/>
                                                 <constraint firstAttribute="trailing" secondItem="uGT-OY-p0P" secondAttribute="trailing" id="Bvb-Vz-99E"/>
+                                                <constraint firstItem="9Wz-hA-nbu" firstAttribute="centerX" secondItem="uGT-OY-p0P" secondAttribute="centerX" id="FD0-hA-tz3"/>
+                                                <constraint firstItem="9Wz-hA-nbu" firstAttribute="centerY" secondItem="uGT-OY-p0P" secondAttribute="centerY" id="fsJ-Vb-yAk"/>
                                                 <constraint firstItem="uGT-OY-p0P" firstAttribute="leading" secondItem="xyb-ff-SVL" secondAttribute="leading" id="qBB-m4-SCw"/>
                                                 <constraint firstAttribute="bottom" secondItem="uGT-OY-p0P" secondAttribute="bottom" id="x1b-cs-KLK"/>
                                             </constraints>
@@ -206,6 +211,7 @@
                                         <size key="customSize" width="142" height="136"/>
                                         <connections>
                                             <outlet property="iconView" destination="uGT-OY-p0P" id="uTy-92-InM"/>
+                                            <outlet property="playingView" destination="9Wz-hA-nbu" id="Uy5-6J-oN5"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -244,7 +250,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mej-nR-jR7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicCell" id="8sD-zN-aUb" customClass="MusicCell" customModule="DeepSleep" customModuleProvider="target">
@@ -263,7 +269,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-Yc-5NO">
-                                <rect key="frame" x="192" y="856" width="30" height="30"/>
+                                <rect key="frame" x="177" y="826" width="60" height="60"/>
                                 <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="h7A-dL-qzK" eventType="touchUpInside" id="mfg-qS-SVM"/>
@@ -556,80 +562,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_moon" translatesAutoresizingMaskIntoConstraints="NO" id="gz6-52-KMY">
-                                <rect key="frame" x="147" y="94" width="120" height="120"/>
+                                <rect key="frame" x="87" y="94" width="240" height="240"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-vp-y3U">
-                                <rect key="frame" x="20" y="244" width="374" height="190"/>
+                                <rect key="frame" x="20" y="364" width="374" height="201.5"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="听音乐可以是娱乐性的，也是愉悦的源泉，科学研究证明，音乐的心理益处远远超出了我们的听觉乐趣。">
+                                    <fragment>
+                                        <string key="content">听音乐可以是娱乐性的，也是愉悦的源泉，科学研究证明，音乐的心理益处远远超出了我们的听觉乐趣。 音乐有一种影响思想，情感和情绪的方式，这是一种常见的观念。 亲密的歌谣可以让观众们流泪，而摇滚歌曲可以点燃人们的激情并令人热血沸腾。作为心理影响因素，音乐对我们睡眠的方式的影响尤为强大。 如果您有睡眠困难时，播放您喜欢的专辑可以帮助您入睡并在夜里更好地休息。 更好的睡眠可以在白天带来更好的情绪和更高的效率。</string>
                                         <attributes>
                                             <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="音乐有一种影响思想，情感和情绪的方式，这是一种常见的观念。">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="亲密的歌谣可以让观众们流泪，而摇滚歌曲可以点燃人们的激情并令人热血沸腾。作为心理影响因素，音乐对我们睡眠的方式的影响尤为强大。">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="如果您有睡眠困难时，播放您喜欢的专辑可以帮助您入睡并在夜里更好地休息。">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="更好的睡眠可以在白天带来更好的情绪和更高的效率。">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -637,7 +580,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系作者：18811609868@163.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y16-2o-zOd">
-                                <rect key="frame" x="20" y="484" width="374" height="21"/>
+                                <rect key="frame" x="20" y="615.5" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -696,6 +639,7 @@
         <image name="pause" width="60" height="60"/>
         <image name="play" width="60" height="60"/>
         <image name="play_list" width="30" height="30"/>
+        <image name="playing1" width="20" height="20"/>
         <image name="previous" width="30" height="30"/>
         <image name="recircle" width="25" height="25"/>
         <image name="setting" width="30" height="30"/>
