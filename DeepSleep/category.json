@@ -270,37 +270,37 @@
         ]
     }, {
         "id": 6,
-        "name": "水声",
+        "name": "冥想",
         "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/277868fc9551eb1a5683/21.png?imageMogr2/thumbnail/400x400/quality/90",
         "musics": [{
                 "id": 1,
                 "url": "http://lc-heisafnh.cn-n1.lcfile.com/990221d7d79b4cc89eba9bccbb838c60.mp3",
                 "name": "流水声",
-                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/d24a502dbb4cae7b2d16/4.png?imageMogr2/thumbnail/400x400/quality/90"
+                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/277868fc9551eb1a5683/21.png?imageMogr2/thumbnail/400x400/quality/90"
             },
             {
                 "id": 2,
                 "url": "http://lc-heisafnh.cn-n1.lcfile.com/101e50ecd4e3497fa94cccdc46180087.mp3",
                 "name": "鸟叫",
-                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/f8ec44f800553305dfce/17.png?imageMogr2/thumbnail/400x400/quality/90"
+                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/277868fc9551eb1a5683/21.png?imageMogr2/thumbnail/400x400/quality/90"
             },
             {
                 "id": 3,
                 "url": "http://lc-heisafnh.cn-n1.lcfile.com/3a9530fd15b641f4b0b476860d9007ca.mp3",
                 "name": "重生",
-                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/74572a4e96923f40020b/%E7%9D%A1%E7%9C%A0.png?imageMogr2/thumbnail/400x400/quality/90"
+                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/277868fc9551eb1a5683/21.png?imageMogr2/thumbnail/400x400/quality/90"
             },
             {
                 "id": 4,
                 "url": "http://fdfs.xmcdn.com/group30/M00/04/A9/wKgJXlnLFpbAHejMAAdOCo3583E788.mp3",
                 "name": "冥想",
-                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/e6d312261d8b9eba969f/%E9%9B%B7%E9%9B%A8.png?imageMogr2/thumbnail/400x400/quality/90"
+                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/277868fc9551eb1a5683/21.png?imageMogr2/thumbnail/400x400/quality/90"
             },
             {
                 "id": 5,
                 "url": "http://fdfs.xmcdn.com/group30/M02/55/E8/wKgJXlnN13aT3EFOAAwYvWxN5Ho540.mp3",
                 "name": "雨打落叶",
-                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/5d17264410e4cbce4f2a/23.png?imageMogr2/thumbnail/400x400/quality/90"
+                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/277868fc9551eb1a5683/21.png?imageMogr2/thumbnail/400x400/quality/90"
             },
             {
                 "id": 6,
@@ -312,7 +312,7 @@
                 "id": 7,
                 "url": "http://lc-heisafnh.cn-n1.lcfile.com/d45dd2dbee452f3c0c87.mp3",
                 "name": "蓝色午夜",
-                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/141e3e886fbceee74f53/19.png?imageMogr2/thumbnail/400x400/quality/90"
+                "image_url": "http://lc-heisafnh.cn-n1.lcfile.com/277868fc9551eb1a5683/21.png?imageMogr2/thumbnail/400x400/quality/90"
             }
 
         ]
