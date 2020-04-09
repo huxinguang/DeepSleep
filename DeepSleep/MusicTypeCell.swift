@@ -27,7 +27,7 @@ class MusicTypeCell: UICollectionViewCell {
     }
     
     func stopPlayingAnimation() {
-        playingView.isHidden = false
+        playingView.isHidden = true
         if playingView.isAnimating {
             playingView.stopAnimating()
         }

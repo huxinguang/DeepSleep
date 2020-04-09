@@ -62,7 +62,11 @@ extension MusicTypeVC: UICollectionViewDataSource, UICollectionViewDelegate{
         let layout = collectionView.collectionViewLayout as! MusicTypeLayout
         cell.iconView.layer.cornerRadius = layout.itemSize.width/2
         cell.iconView.kf.setImage(with: URL(string: categories[indexPath.item].image_url))
-        cell.startPlayingAnimation()
+        if AVPlayerManager.share.currentCategory == categories[indexPath.item] {
+            cell.startPlayingAnimation()
+        }else{
+            cell.stopPlayingAnimation()
+        }
         return cell
     }
     
