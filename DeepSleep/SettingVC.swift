@@ -56,6 +56,9 @@ class SettingVC: UITableViewController {
                     self.navigationController?.pushViewController(vc, animated: true)
                     break
                 case 1:
+                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "AboutUsVC")
+                    self.navigationController?.pushViewController(vc, animated: true)
                     break
                 default:
                     break

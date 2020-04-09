@@ -59,6 +59,8 @@ extension MusicTypeVC: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MusicTypeCell", for: indexPath) as! MusicTypeCell
+        let layout = collectionView.collectionViewLayout as! MusicTypeLayout
+        cell.iconView.layer.cornerRadius = layout.itemSize.width/2
         cell.iconView.kf.setImage(with: URL(string: categories[indexPath.item].image_url))
         return cell
     }

@@ -17,8 +17,7 @@ class MusicTypeCell: UICollectionViewCell {
         
     }
     
-    
-    
+
 //    override func layoutSubviews() {
 //        super.layoutSubviews()
 //

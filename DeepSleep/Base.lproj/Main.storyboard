@@ -173,7 +173,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Doi-8a-KXK">
-                                <rect key="frame" x="192" y="856" width="30" height="30"/>
+                                <rect key="frame" x="177" y="826" width="60" height="60"/>
                                 <state key="normal" image="packup"/>
                                 <connections>
                                     <action selector="onCloseBtn:" destination="IMG-ar-S58" eventType="touchUpInside" id="Vum-iT-gWg"/>
@@ -472,8 +472,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YuK-uS-AbR">
-                                <rect key="frame" x="15" y="59" width="384" height="47.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YuK-uS-AbR">
+                                <rect key="frame" x="15" y="59" width="384" height="52.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgt-h1-qcQ">
                                         <rect key="frame" x="0.0" y="0.0" width="68" height="24"/>
@@ -482,7 +482,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在播放：Sunshine girl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlI-2i-27j">
-                                        <rect key="frame" x="0.0" y="29" width="141" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="34" width="141" height="18.5"/>
                                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -503,7 +503,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wir-Ni-y0L">
-                                <rect key="frame" x="0.0" y="116.5" width="414" height="701.5"/>
+                                <rect key="frame" x="0.0" y="121.5" width="414" height="696.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicCell" rowHeight="67" id="PaK-tx-6A6" customClass="MusicCell" customModule="DeepSleep" customModuleProvider="target">
@@ -547,6 +547,120 @@
             </objects>
             <point key="canvasLocation" x="1961" y="755"/>
         </scene>
+        <!--关于-->
+        <scene sceneID="Fbk-wy-WrY">
+            <objects>
+                <viewController storyboardIdentifier="AboutUsVC" title="关于" id="ejQ-PF-pVK" customClass="AboutUsVC" customModule="DeepSleep" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i0q-S2-itv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleep_moon" translatesAutoresizingMaskIntoConstraints="NO" id="gz6-52-KMY">
+                                <rect key="frame" x="147" y="94" width="120" height="120"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-vp-y3U">
+                                <rect key="frame" x="20" y="244" width="374" height="190"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="听音乐可以是娱乐性的，也是愉悦的源泉，科学研究证明，音乐的心理益处远远超出了我们的听觉乐趣。">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="音乐有一种影响思想，情感和情绪的方式，这是一种常见的观念。">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="亲密的歌谣可以让观众们流泪，而摇滚歌曲可以点燃人们的激情并令人热血沸腾。作为心理影响因素，音乐对我们睡眠的方式的影响尤为强大。">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="如果您有睡眠困难时，播放您喜欢的专辑可以帮助您入睡并在夜里更好地休息。">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".SFNS-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="更好的睡眠可以在白天带来更好的情绪和更高的效率。">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="0.99997437000274658" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系作者：18811609868@163.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y16-2o-zOd">
+                                <rect key="frame" x="20" y="484" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20784313725490194" green="0.10980392156862745" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Y16-2o-zOd" firstAttribute="trailing" secondItem="wGN-vp-y3U" secondAttribute="trailing" id="3Q6-kE-nC8"/>
+                            <constraint firstItem="wGN-vp-y3U" firstAttribute="leading" secondItem="Gcx-LN-EcR" secondAttribute="leading" constant="20" id="942-VC-X9V"/>
+                            <constraint firstItem="Y16-2o-zOd" firstAttribute="leading" secondItem="wGN-vp-y3U" secondAttribute="leading" id="9Fz-Mg-xr2"/>
+                            <constraint firstItem="gz6-52-KMY" firstAttribute="centerX" secondItem="Gcx-LN-EcR" secondAttribute="centerX" id="NFd-P0-xlJ"/>
+                            <constraint firstItem="gz6-52-KMY" firstAttribute="top" secondItem="Gcx-LN-EcR" secondAttribute="top" constant="50" id="XNs-Xo-tKi"/>
+                            <constraint firstItem="wGN-vp-y3U" firstAttribute="top" secondItem="gz6-52-KMY" secondAttribute="bottom" constant="30" id="XhA-20-zZJ"/>
+                            <constraint firstItem="Y16-2o-zOd" firstAttribute="top" secondItem="wGN-vp-y3U" secondAttribute="bottom" constant="50" id="l6n-T2-84W"/>
+                            <constraint firstItem="Gcx-LN-EcR" firstAttribute="trailing" secondItem="wGN-vp-y3U" secondAttribute="trailing" constant="20" id="qM1-om-8YR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gcx-LN-EcR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nAQ-QJ-i5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2824" y="756"/>
+        </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="6aT-3B-h30">
             <objects>
@@ -585,6 +699,7 @@
         <image name="previous" width="30" height="30"/>
         <image name="recircle" width="25" height="25"/>
         <image name="setting" width="30" height="30"/>
+        <image name="sleep_moon" width="120" height="120"/>
         <image name="unfold" width="22" height="22"/>
     </resources>
 </document>

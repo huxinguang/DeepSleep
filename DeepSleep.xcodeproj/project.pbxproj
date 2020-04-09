@@ -10,6 +10,7 @@
 		2842A59BC9FB564C3D1BF24B /* Pods_DeepSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */; };
 		965F30EC243DA6C600D65B5F /* AudioCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F30EB243DA6C600D65B5F /* AudioCategory.swift */; };
 		965F30EE243DA89E00D65B5F /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 965F30ED243DA89E00D65B5F /* category.json */; };
+		96643080243EBE7400D1F0F0 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664307F243EBE7400D1F0F0 /* AboutUsVC.swift */; };
 		9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665B6F124284F5F00297C60 /* AppDelegate.swift */; };
 		9665B6F924284F5F00297C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9665B6F724284F5F00297C60 /* Main.storyboard */; };
 		9665B6FE24284F6200297C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9665B6FD24284F6200297C60 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepSleep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		965F30EB243DA6C600D65B5F /* AudioCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCategory.swift; sourceTree = "<group>"; };
 		965F30ED243DA89E00D65B5F /* category.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
+		9664307F243EBE7400D1F0F0 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		9665B6EE24284F5F00297C60 /* DeepSleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepSleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9665B6F124284F5F00297C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9665B6F824284F5F00297C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				9665B724242B0A0E00297C60 /* SettingContainerCell.swift */,
 				9665B726242B197400297C60 /* SettingCell.swift */,
 				9665B728242B2A6700297C60 /* FeedbackVC.swift */,
+				9664307F243EBE7400D1F0F0 /* AboutUsVC.swift */,
 				96C9B3E0242C71B60021781B /* PresentationDelegateObject.swift */,
 				969BA10E242C93CA00710F83 /* TestObject.swift */,
 				969BA112242DA03F00710F83 /* TestObjectTwo.swift */,
@@ -300,6 +303,7 @@
 				969BA12B24333F5800710F83 /* ThinTrackSlider.swift in Sources */,
 				969BA117242DC22800710F83 /* MusicTypeCell.swift in Sources */,
 				9665B7132429A03B00297C60 /* MusicListVC.swift in Sources */,
+				96643080243EBE7400D1F0F0 /* AboutUsVC.swift in Sources */,
 				9665B725242B0A0E00297C60 /* SettingContainerCell.swift in Sources */,
 				9665B70D242881AD00297C60 /* MainNavigationController.swift in Sources */,
 				969BA1292433082E00710F83 /* AVPlayerManager.swift in Sources */,
