@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import AVFoundation
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
+        
         
         /*
          You can interact with the audio session throughout your app’s life cycle, but it’s often useful to perform this configuration at app launch
@@ -67,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    
 
     // MARK: - Core Data stack
 

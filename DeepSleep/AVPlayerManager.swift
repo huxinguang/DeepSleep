@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
+import Alamofire
 
 /*
  Readme
@@ -137,6 +138,8 @@ class AVPlayerManager: NSObject {
         playingItem = audioItem
         
     }
+    
+    
     
     func setupRemoteTransportControls() {
         // Get the shared MPRemoteCommandCenter

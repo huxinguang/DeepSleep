@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Kingfisher
+import Alamofire
 
 private let animationKey = "ImageRotationAnimation"
 
@@ -44,6 +45,8 @@ class MainVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        monitorNetwork()
     
         slider.setThumbImage(UIImage(named: "dot_nor"), for: .normal)
         //slider.setThumbImage(UIImage(named: "dot_disable"), for: .disabled)
@@ -83,6 +86,34 @@ class MainVC: BaseVC {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         imageView.layer.removeAnimation(forKey: animationKey)
+    }
+    
+    func monitorNetwork(){
+        let manager = NetworkReachabilityManager()
+        manager?.startListening(onQueue: .main, onUpdatePerforming: { (status) in
+            switch status {
+            case .unknown:
+                break
+            case .notReachable:
+                break
+            case .reachable(.cellular):
+                AVPlayerManager.share.pause()
+                let alert = UIAlertController(title: "温馨提示", message: "当前为蜂窝网络，继续播放会消耗流量", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "暂不播放", style: .cancel) { (action) in
+                }
+                let okAction = UIAlertAction(title: "继续播放", style: .default) { (action) in
+                    AVPlayerManager.share.play()
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+                
+            case .reachable(.ethernetOrWiFi):
+                print("WIFI")
+                break
+            }
+        })
+
     }
     
     @objc
