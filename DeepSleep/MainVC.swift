@@ -107,7 +107,6 @@ class MainVC: BaseVC {
                 alert.addAction(cancelAction)
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
-                
             case .reachable(.ethernetOrWiFi):
                 print("WIFI")
                 break
