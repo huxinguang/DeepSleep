@@ -13,8 +13,7 @@ class MusicListVC: BaseVC {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var playingLabel: UILabel!
-    
-    var data: [AudioItem]!
+    var category: AudioCategory!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +65,7 @@ class MusicListVC: BaseVC {
 
 extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return category.musics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,8 +73,8 @@ extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
         cell.imageView?.image = UIImage(named: "music")
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont(name: "PingFangSC-Regular", size: 15)
-        cell.textLabel?.text = data[indexPath.row].name
-        if AVPlayerManager.share.playingItem == data[indexPath.row] && AVPlayerManager.share.player.rate > 0 {
+        cell.textLabel?.text = category.musics[indexPath.row].name
+        if AVPlayerManager.share.playingItem == category.musics[indexPath.row] && AVPlayerManager.share.player.rate > 0 {
             cell.accessoryView = UIImageView(image: UIImage(named: "cell_pause"))
         }else{
             cell.accessoryView = UIImageView(image: UIImage(named: "cell_play"))
@@ -85,7 +84,7 @@ extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if AVPlayerManager.share.playingItem == data[indexPath.row] {
+        if AVPlayerManager.share.playingItem == category.musics[indexPath.row] {
             if AVPlayerManager.share.player.rate > 0 {
                 AVPlayerManager.share.pause()
             }else{
@@ -94,7 +93,7 @@ extension MusicListVC: UITableViewDataSource, UITableViewDelegate{
             tableView.reloadData()
             updateCurrent()
         }else{
-            AVPlayerManager.share.play(audioItem: data[indexPath.row])
+            AVPlayerManager.share.play(audioItem: category.musics[indexPath.row])
         }
         
     }

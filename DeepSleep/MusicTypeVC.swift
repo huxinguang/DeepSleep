@@ -69,7 +69,7 @@ extension MusicTypeVC: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "MusicTypeListVC") as! MusicTypeListVC
-        vc.data = categories[indexPath.item].musics
+        vc.category = categories[indexPath.item]
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = TestObjectTwo.share
         present(vc, animated: true, completion: nil)

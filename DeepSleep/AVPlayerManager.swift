@@ -42,7 +42,7 @@ protocol PlayerUIDelegate {
     func playerModeDidChange(toMode mode: AudioPlayMode) -> Void
     func playerItemDidChange(toItem item: AudioItem?) -> Void
     func playerTimeControlStatusDidChange(toStatus status: AVPlayer.TimeControlStatus) -> Void
-    func playerItemsDidChange(items: [AudioItem]) -> Void
+    func playerCategoryDidChange(category: AudioCategory) -> Void
 }
 
 class AVPlayerManager: NSObject {
@@ -52,13 +52,14 @@ class AVPlayerManager: NSObject {
     fileprivate var sliderObserverToken: Any!
     fileprivate var timeObserverToken: Any!
     var delegate: PlayerUIDelegate?
-    var audioItems: [AudioItem]?{
+    var currentCategory: AudioCategory?{
         didSet{
-            if let delegate = delegate, let newItems = audioItems{
-                delegate.playerItemsDidChange(items: newItems)
+            if let delegate = delegate, let newCategory = currentCategory{
+                delegate.playerCategoryDidChange(category: newCategory)
             }
         }
     }
+    
     fileprivate var shuffledAudioItems: [AudioItem]?
     private(set) var currentPlayMode: AudioPlayMode!{
         didSet{
@@ -241,7 +242,7 @@ class AVPlayerManager: NSObject {
         delegate.playerDidFinishPlaying()
         switch currentPlayMode {
         case .listLoop, .listRandom:
-            guard let currentItem = playingItem, let audioItems = audioItems else { return }
+            guard let currentItem = playingItem, let audioItems = currentCategory?.musics else { return }
             var items: [AudioItem]!
             if currentPlayMode == .listLoop {
                 items = audioItems
@@ -340,7 +341,7 @@ class AVPlayerManager: NSObject {
     }
     
     func playPreviousItem() {
-        guard let audioItems = audioItems, let currentItem = playingItem else { return }
+        guard let audioItems = currentCategory?.musics, let currentItem = playingItem else { return }
         var items: [AudioItem]!
         if currentPlayMode == .listRandom {
             if shuffledAudioItems == nil {
@@ -357,7 +358,7 @@ class AVPlayerManager: NSObject {
     }
     
     func playNextItem() {
-        guard let audioItems = audioItems, let currentItem = playingItem else { return }
+        guard let audioItems = currentCategory?.musics, let currentItem = playingItem else { return }
         var items: [AudioItem]!
         if currentPlayMode == .listRandom {
             if shuffledAudioItems == nil {
@@ -522,7 +523,7 @@ class AVPlayerManager: NSObject {
             currentPlayMode = .singleLoop
         case .singleLoop:
             currentPlayMode = .listRandom
-            guard let audioItems = audioItems else { return }
+            guard let audioItems = currentCategory?.musics else { return }
             shuffledAudioItems = shuffled(originalItems: audioItems)
             print(shuffledAudioItems!, audioItems)
         default:

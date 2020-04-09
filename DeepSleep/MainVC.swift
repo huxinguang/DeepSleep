@@ -24,8 +24,12 @@ class MainVC: BaseVC {
     @IBOutlet weak var unfoldBtn: UIButton!
     
     fileprivate var sliderIsSliding: Bool = false
-    fileprivate var data: [AudioItem]!
     fileprivate var categories: [AudioCategory]!
+    fileprivate var category: AudioCategory!{
+        didSet{
+            unfoldBtn.setTitle(category.name, for: .normal)
+        }
+    }
     
     lazy var imageAnimation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
@@ -51,7 +55,7 @@ class MainVC: BaseVC {
             let json = try Data(contentsOf: url)
             let categories = try JSONDecoder().decode([AudioCategory].self, from: json)
             guard let category = categories.first else { return }
-            data = category.musics
+            self.category = category
             self.categories = categories
         } catch {
             print(error)
@@ -61,9 +65,10 @@ class MainVC: BaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         AVPlayerManager.share.delegate = self
-        AVPlayerManager.share.audioItems = data
-        AVPlayerManager.share.play(audioItem: data[0])
-        
+        AVPlayerManager.share.currentCategory = categories.first
+        if let audio = categories.first?.musics.first{
+            AVPlayerManager.share.play(audioItem: audio)
+        }
         unfoldBtn.setTitle(categories.first?.name ?? "选择分类", for: .normal)
         
     }
@@ -142,7 +147,7 @@ class MainVC: BaseVC {
          */
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "MusicListVC") as! MusicListVC
-        vc.data = data
+        vc.category = category
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = vc.presentationDelegate
         present(vc, animated: true, completion: nil)
@@ -311,8 +316,8 @@ extension MainVC: PlayerUIDelegate{
         }
     }
     
-    func playerItemsDidChange(items: [AudioItem]) {
-        data = items
+    func playerCategoryDidChange(category: AudioCategory) {
+        self.category = category
     }
     
 }
