@@ -33,6 +33,5 @@ class MusicTypeCell: UICollectionViewCell {
         }
     }
     
-    
-    
+
 }
