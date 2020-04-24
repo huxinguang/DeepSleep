@@ -8,6 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		2842A59BC9FB564C3D1BF24B /* Pods_DeepSleep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */; };
+		961C2BBC2452D9F10086C0E3 /* BalaUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2B9B2452D9F10086C0E3 /* BalaUtil.m */; };
+		961C2BBD2452D9F10086C0E3 /* THProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2B9E2452D9F10086C0E3 /* THProgressView.m */; };
+		961C2BBE2452D9F10086C0E3 /* BLProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BA02452D9F10086C0E3 /* BLProgressHUD.m */; };
+		961C2BBF2452D9F10086C0E3 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BA12452D9F10086C0E3 /* LoadingView.m */; };
+		961C2BC02452D9F10086C0E3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BA22452D9F10086C0E3 /* BaseViewController.m */; };
+		961C2BC12452D9F10086C0E3 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BA32452D9F10086C0E3 /* BaseNavigationController.m */; };
+		961C2BC22452D9F10086C0E3 /* libFMDeviceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BA42452D9F10086C0E3 /* libFMDeviceManager.a */; };
+		961C2BC32452D9F10086C0E3 /* NoNetworkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BA72452D9F10086C0E3 /* NoNetworkVC.m */; };
+		961C2BC42452D9F10086C0E3 /* NavRightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BAA2452D9F10086C0E3 /* NavRightButton.m */; };
+		961C2BC52452D9F10086C0E3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 961C2BAB2452D9F10086C0E3 /* loading.gif */; };
+		961C2BC62452D9F10086C0E3 /* BLNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BAD2452D9F10086C0E3 /* BLNetworkReachabilityManager.m */; };
+		961C2BC72452D9F10086C0E3 /* BLProgressHUD+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BAF2452D9F10086C0E3 /* BLProgressHUD+Util.m */; };
+		961C2BC82452D9F10086C0E3 /* noti_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 961C2BB22452D9F10086C0E3 /* noti_sound.wav */; };
+		961C2BC92452D9F10086C0E3 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BB32452D9F10086C0E3 /* Version.m */; };
+		961C2BCA2452D9F10086C0E3 /* BalaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BB42452D9F10086C0E3 /* BalaViewController.m */; };
+		961C2BCB2452D9F10086C0E3 /* NSObject+FixBug.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BB52452D9F10086C0E3 /* NSObject+FixBug.m */; };
+		961C2BCC2452D9F10086C0E3 /* ThirdpartyWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BB72452D9F10086C0E3 /* ThirdpartyWebVC.m */; };
+		961C2BCD2452D9F10086C0E3 /* NavLeftButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2BBA2452D9F10086C0E3 /* NavLeftButton.m */; };
+		961C2BCF2452DA240086C0E3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BCE2452DA240086C0E3 /* TencentOpenAPI.framework */; };
+		961C2BD22452F2F20086C0E3 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BD12452F2F20086C0E3 /* UserNotifications.framework */; };
+		961C2BD42452F2FC0086C0E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BD32452F2FC0086C0E3 /* Security.framework */; };
+		961C2BD62452F3040086C0E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BD52452F3040086C0E3 /* SystemConfiguration.framework */; };
+		961C2BD82452F30E0086C0E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BD72452F30E0086C0E3 /* CoreGraphics.framework */; };
+		961C2BDA2452F31A0086C0E3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BD92452F31A0086C0E3 /* CoreTelephony.framework */; };
+		961C2BDC2452F3250086C0E3 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BDB2452F3250086C0E3 /* libresolv.9.tbd */; };
+		961C2BDE2452F32E0086C0E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BDD2452F32E0086C0E3 /* MessageUI.framework */; };
 		965F30EC243DA6C600D65B5F /* AudioCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F30EB243DA6C600D65B5F /* AudioCategory.swift */; };
 		965F30EE243DA89E00D65B5F /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 965F30ED243DA89E00D65B5F /* category.json */; };
 		96643080243EBE7400D1F0F0 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664307F243EBE7400D1F0F0 /* AboutUsVC.swift */; };
@@ -48,10 +74,53 @@
 
 /* Begin PBXFileReference section */
 		844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepSleep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		961C2B992452D9F10086C0E3 /* BLProgressHUD+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BLProgressHUD+Util.h"; sourceTree = "<group>"; };
+		961C2B9A2452D9F10086C0E3 /* BLNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		961C2B9B2452D9F10086C0E3 /* BalaUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalaUtil.m; sourceTree = "<group>"; };
+		961C2B9C2452D9F10086C0E3 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		961C2B9E2452D9F10086C0E3 /* THProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THProgressView.m; sourceTree = "<group>"; };
+		961C2B9F2452D9F10086C0E3 /* THProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THProgressView.h; sourceTree = "<group>"; };
+		961C2BA02452D9F10086C0E3 /* BLProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLProgressHUD.m; sourceTree = "<group>"; };
+		961C2BA12452D9F10086C0E3 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		961C2BA22452D9F10086C0E3 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		961C2BA32452D9F10086C0E3 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		961C2BA42452D9F10086C0E3 /* libFMDeviceManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFMDeviceManager.a; sourceTree = "<group>"; };
+		961C2BA52452D9F10086C0E3 /* ThirdpartyWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdpartyWebVC.h; sourceTree = "<group>"; };
+		961C2BA62452D9F10086C0E3 /* NSObject+FixBug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FixBug.h"; sourceTree = "<group>"; };
+		961C2BA72452D9F10086C0E3 /* NoNetworkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoNetworkVC.m; sourceTree = "<group>"; };
+		961C2BA82452D9F10086C0E3 /* BalaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalaViewController.h; sourceTree = "<group>"; };
+		961C2BA92452D9F10086C0E3 /* NavLeftButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavLeftButton.h; sourceTree = "<group>"; };
+		961C2BAA2452D9F10086C0E3 /* NavRightButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavRightButton.m; sourceTree = "<group>"; };
+		961C2BAB2452D9F10086C0E3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		961C2BAC2452D9F10086C0E3 /* FMDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDeviceManager.h; sourceTree = "<group>"; };
+		961C2BAD2452D9F10086C0E3 /* BLNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		961C2BAE2452D9F10086C0E3 /* BalaUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalaUtil.h; sourceTree = "<group>"; };
+		961C2BAF2452D9F10086C0E3 /* BLProgressHUD+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BLProgressHUD+Util.m"; sourceTree = "<group>"; };
+		961C2BB02452D9F10086C0E3 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		961C2BB12452D9F10086C0E3 /* BLProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLProgressHUD.h; sourceTree = "<group>"; };
+		961C2BB22452D9F10086C0E3 /* noti_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noti_sound.wav; sourceTree = "<group>"; };
+		961C2BB32452D9F10086C0E3 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
+		961C2BB42452D9F10086C0E3 /* BalaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalaViewController.m; sourceTree = "<group>"; };
+		961C2BB52452D9F10086C0E3 /* NSObject+FixBug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FixBug.m"; sourceTree = "<group>"; };
+		961C2BB62452D9F10086C0E3 /* NoNetworkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoNetworkVC.h; sourceTree = "<group>"; };
+		961C2BB72452D9F10086C0E3 /* ThirdpartyWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdpartyWebVC.m; sourceTree = "<group>"; };
+		961C2BB82452D9F10086C0E3 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		961C2BB92452D9F10086C0E3 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		961C2BBA2452D9F10086C0E3 /* NavLeftButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavLeftButton.m; sourceTree = "<group>"; };
+		961C2BBB2452D9F10086C0E3 /* NavRightButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavRightButton.h; sourceTree = "<group>"; };
+		961C2BCE2452DA240086C0E3 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		961C2BD02452DA470086C0E3 /* DeepSleep-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DeepSleep-Bridging-Header.h"; sourceTree = "<group>"; };
+		961C2BD12452F2F20086C0E3 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		961C2BD32452F2FC0086C0E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		961C2BD52452F3040086C0E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		961C2BD72452F30E0086C0E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		961C2BD92452F31A0086C0E3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		961C2BDB2452F3250086C0E3 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
+		961C2BDD2452F32E0086C0E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		965F30EB243DA6C600D65B5F /* AudioCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCategory.swift; sourceTree = "<group>"; };
 		965F30ED243DA89E00D65B5F /* category.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
 		9664307F243EBE7400D1F0F0 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
-		9665B6EE24284F5F00297C60 /* DeepSleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepSleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9665B6EE24284F5F00297C60 /* SleepTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9665B6F124284F5F00297C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9665B6F824284F5F00297C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9665B6FD24284F6200297C60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +164,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961C2BDE2452F32E0086C0E3 /* MessageUI.framework in Frameworks */,
+				961C2BDC2452F3250086C0E3 /* libresolv.9.tbd in Frameworks */,
+				961C2BDA2452F31A0086C0E3 /* CoreTelephony.framework in Frameworks */,
+				961C2BD82452F30E0086C0E3 /* CoreGraphics.framework in Frameworks */,
+				961C2BD62452F3040086C0E3 /* SystemConfiguration.framework in Frameworks */,
+				961C2BD42452F2FC0086C0E3 /* Security.framework in Frameworks */,
+				961C2BD22452F2F20086C0E3 /* UserNotifications.framework in Frameworks */,
+				961C2BC22452D9F10086C0E3 /* libFMDeviceManager.a in Frameworks */,
+				961C2BCF2452DA240086C0E3 /* TencentOpenAPI.framework in Frameworks */,
 				2842A59BC9FB564C3D1BF24B /* Pods_DeepSleep.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +183,13 @@
 		16290B2F005017301A4415BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				961C2BDD2452F32E0086C0E3 /* MessageUI.framework */,
+				961C2BDB2452F3250086C0E3 /* libresolv.9.tbd */,
+				961C2BD92452F31A0086C0E3 /* CoreTelephony.framework */,
+				961C2BD72452F30E0086C0E3 /* CoreGraphics.framework */,
+				961C2BD52452F3040086C0E3 /* SystemConfiguration.framework */,
+				961C2BD32452F2FC0086C0E3 /* Security.framework */,
+				961C2BD12452F2F20086C0E3 /* UserNotifications.framework */,
 				844799563E21BBE8A51C5BBC /* Pods_DeepSleep.framework */,
 			);
 			name = Frameworks;
@@ -119,9 +204,60 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		961C2B982452D9F10086C0E3 /* Bala */ = {
+			isa = PBXGroup;
+			children = (
+				961C2BAE2452D9F10086C0E3 /* BalaUtil.h */,
+				961C2B9B2452D9F10086C0E3 /* BalaUtil.m */,
+				961C2BA82452D9F10086C0E3 /* BalaViewController.h */,
+				961C2BB42452D9F10086C0E3 /* BalaViewController.m */,
+				961C2BB82452D9F10086C0E3 /* BaseNavigationController.h */,
+				961C2BA32452D9F10086C0E3 /* BaseNavigationController.m */,
+				961C2BB92452D9F10086C0E3 /* BaseViewController.h */,
+				961C2BA22452D9F10086C0E3 /* BaseViewController.m */,
+				961C2B9A2452D9F10086C0E3 /* BLNetworkReachabilityManager.h */,
+				961C2BAD2452D9F10086C0E3 /* BLNetworkReachabilityManager.m */,
+				961C2BB12452D9F10086C0E3 /* BLProgressHUD.h */,
+				961C2BA02452D9F10086C0E3 /* BLProgressHUD.m */,
+				961C2B992452D9F10086C0E3 /* BLProgressHUD+Util.h */,
+				961C2BAF2452D9F10086C0E3 /* BLProgressHUD+Util.m */,
+				961C2BAC2452D9F10086C0E3 /* FMDeviceManager.h */,
+				961C2BA42452D9F10086C0E3 /* libFMDeviceManager.a */,
+				961C2BAB2452D9F10086C0E3 /* loading.gif */,
+				961C2BB02452D9F10086C0E3 /* LoadingView.h */,
+				961C2BA12452D9F10086C0E3 /* LoadingView.m */,
+				961C2BA92452D9F10086C0E3 /* NavLeftButton.h */,
+				961C2BBA2452D9F10086C0E3 /* NavLeftButton.m */,
+				961C2BBB2452D9F10086C0E3 /* NavRightButton.h */,
+				961C2BAA2452D9F10086C0E3 /* NavRightButton.m */,
+				961C2BB62452D9F10086C0E3 /* NoNetworkVC.h */,
+				961C2BA72452D9F10086C0E3 /* NoNetworkVC.m */,
+				961C2BB22452D9F10086C0E3 /* noti_sound.wav */,
+				961C2BA62452D9F10086C0E3 /* NSObject+FixBug.h */,
+				961C2BB52452D9F10086C0E3 /* NSObject+FixBug.m */,
+				961C2BA52452D9F10086C0E3 /* ThirdpartyWebVC.h */,
+				961C2BB72452D9F10086C0E3 /* ThirdpartyWebVC.m */,
+				961C2B9D2452D9F10086C0E3 /* THProgressView */,
+				961C2B9C2452D9F10086C0E3 /* Version.h */,
+				961C2BD02452DA470086C0E3 /* DeepSleep-Bridging-Header.h */,
+				961C2BB32452D9F10086C0E3 /* Version.m */,
+			);
+			path = Bala;
+			sourceTree = "<group>";
+		};
+		961C2B9D2452D9F10086C0E3 /* THProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				961C2B9E2452D9F10086C0E3 /* THProgressView.m */,
+				961C2B9F2452D9F10086C0E3 /* THProgressView.h */,
+			);
+			path = THProgressView;
+			sourceTree = "<group>";
+		};
 		9665B6E524284F5F00297C60 = {
 			isa = PBXGroup;
 			children = (
+				961C2BCE2452DA240086C0E3 /* TencentOpenAPI.framework */,
 				9665B6F024284F5F00297C60 /* DeepSleep */,
 				9665B6EF24284F5F00297C60 /* Products */,
 				7E237FBD093E9C5DB95450AC /* Pods */,
@@ -132,7 +268,7 @@
 		9665B6EF24284F5F00297C60 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9665B6EE24284F5F00297C60 /* DeepSleep.app */,
+				9665B6EE24284F5F00297C60 /* SleepTunes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +276,7 @@
 		9665B6F024284F5F00297C60 /* DeepSleep */ = {
 			isa = PBXGroup;
 			children = (
+				961C2B982452D9F10086C0E3 /* Bala */,
 				9665B6F124284F5F00297C60 /* AppDelegate.swift */,
 				9665B70C242881AD00297C60 /* MainNavigationController.swift */,
 				9665B7102428955E00297C60 /* BaseVC.swift */,
@@ -200,7 +337,7 @@
 			);
 			name = DeepSleep;
 			productName = DeepSleep;
-			productReference = 9665B6EE24284F5F00297C60 /* DeepSleep.app */;
+			productReference = 9665B6EE24284F5F00297C60 /* SleepTunes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -243,6 +380,8 @@
 			files = (
 				9665B70124284F6200297C60 /* LaunchScreen.storyboard in Resources */,
 				9665B6FE24284F6200297C60 /* Assets.xcassets in Resources */,
+				961C2BC82452D9F10086C0E3 /* noti_sound.wav in Resources */,
+				961C2BC52452D9F10086C0E3 /* loading.gif in Resources */,
 				965F30EE243DA89E00D65B5F /* category.json in Resources */,
 				9665B6F924284F5F00297C60 /* Main.storyboard in Resources */,
 			);
@@ -298,19 +437,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				9665B7152429A12300297C60 /* CustomPresentationController.swift in Sources */,
+				961C2BCB2452D9F10086C0E3 /* NSObject+FixBug.m in Sources */,
 				96C9B3DF242C58490021781B /* AnimatorObject.swift in Sources */,
 				96C9B3DD242C47F10021781B /* MusicTypeVC.swift in Sources */,
+				961C2BBD2452D9F10086C0E3 /* THProgressView.m in Sources */,
 				969BA12B24333F5800710F83 /* ThinTrackSlider.swift in Sources */,
 				969BA117242DC22800710F83 /* MusicTypeCell.swift in Sources */,
+				961C2BC12452D9F10086C0E3 /* BaseNavigationController.m in Sources */,
+				961C2BBE2452D9F10086C0E3 /* BLProgressHUD.m in Sources */,
+				961C2BBC2452D9F10086C0E3 /* BalaUtil.m in Sources */,
+				961C2BC62452D9F10086C0E3 /* BLNetworkReachabilityManager.m in Sources */,
 				9665B7132429A03B00297C60 /* MusicListVC.swift in Sources */,
 				96643080243EBE7400D1F0F0 /* AboutUsVC.swift in Sources */,
 				9665B725242B0A0E00297C60 /* SettingContainerCell.swift in Sources */,
 				9665B70D242881AD00297C60 /* MainNavigationController.swift in Sources */,
+				961C2BCA2452D9F10086C0E3 /* BalaViewController.m in Sources */,
+				961C2BC72452D9F10086C0E3 /* BLProgressHUD+Util.m in Sources */,
 				969BA1292433082E00710F83 /* AVPlayerManager.swift in Sources */,
+				961C2BCC2452D9F10086C0E3 /* ThirdpartyWebVC.m in Sources */,
 				969BA11B242DE08800710F83 /* UIDevice.swift in Sources */,
+				961C2BC92452D9F10086C0E3 /* Version.m in Sources */,
 				969BA119242DC2C600710F83 /* MusicTypeLayout.swift in Sources */,
 				969BA1252432D77A00710F83 /* UIButton.swift in Sources */,
 				9665B70F2428936C00297C60 /* MainVC.swift in Sources */,
+				961C2BCD2452D9F10086C0E3 /* NavLeftButton.m in Sources */,
+				961C2BC42452D9F10086C0E3 /* NavRightButton.m in Sources */,
 				969BA1232431CD3700710F83 /* AudioItem.swift in Sources */,
 				96C9B3E3242C7E2F0021781B /* UIViewController.swift in Sources */,
 				9665B71F2429E71800297C60 /* MusicCell.swift in Sources */,
@@ -319,12 +470,15 @@
 				9665B6F224284F5F00297C60 /* AppDelegate.swift in Sources */,
 				969BA12D2434321C00710F83 /* Constant.swift in Sources */,
 				969BA10F242C93CA00710F83 /* TestObject.swift in Sources */,
+				961C2BBF2452D9F10086C0E3 /* LoadingView.m in Sources */,
 				969BA11D242DED8B00710F83 /* Styles.swift in Sources */,
+				961C2BC32452D9F10086C0E3 /* NoNetworkVC.m in Sources */,
 				9665B723242B04C400297C60 /* SettingVC.swift in Sources */,
 				9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */,
 				969BA115242DA07900710F83 /* AnimatorObjectTwo.swift in Sources */,
 				969BA11F243189A400710F83 /* Notification.swift in Sources */,
 				9665B71D2429D65100297C60 /* UIView.swift in Sources */,
+				961C2BC02452D9F10086C0E3 /* BaseViewController.m in Sources */,
 				96C9B3E1242C71B60021781B /* PresentationDelegateObject.swift in Sources */,
 				969BA111242D9C2000710F83 /* MusicTypeListVC.swift in Sources */,
 				9665B7112428955E00297C60 /* BaseVC.swift in Sources */,
@@ -473,17 +627,29 @@
 			baseConfigurationReference = D65C55BFC277E9C8656CF144 /* Pods-DeepSleep.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = J94K29U4Y6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DeepSleep/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DeepSleep/Bala",
+				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jq.deepsleep;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SleepTunes;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DeepSleep/Bala/DeepSleep-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -494,17 +660,29 @@
 			baseConfigurationReference = D618B26F0868E7F2A42121DD /* Pods-DeepSleep.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = J94K29U4Y6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DeepSleep/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DeepSleep/Bala",
+				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jq.deepsleep;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SleepTunes;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DeepSleep/Bala/DeepSleep-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

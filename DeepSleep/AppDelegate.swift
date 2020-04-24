@@ -15,9 +15,11 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var launchNetworkNotReachable: Bool!
+    private var qqOAuth: TencentOAuth!
+    public var vm: Version!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        sleep(2)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -125,8 +127,249 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVPlayerManager.share.setupNowPlaying()
     }
     
-
     
+    private func startApp(){
+        checkVesionUpdate()
+//        if launchNetworkNotReachable {
+//            let vc = NoNetworkVC()
+//            vc.refreshBlock = { [weak self] in
+//                guard let strongSelf = self else {return}
+//                strongSelf.startApp()
+//            }
+//            window?.rootViewController = UINavigationController(rootViewController: vc)
+//        }else{
+//            let dic = ["updateDesc":"Bala快赚####idfa####00000000-0000-0000-0000-000000000000####https://dns.balamoney.com/balala####openApp####您限制了广告跟踪，导致任务无法完成！请前往手机“设置”中：设置-隐私-广告-限制广告跟踪（关闭此选项）####openSafari####canRefresh=No","forceUpdate":1,"latestVersion":"1.0.1"] as [String : Any]
+//            vm = Version(fromDictionary: dic)
+//
+//            if vm.forceUpdate == 1{
+//                let vc = BalaViewController()
+//                window?.rootViewController = BalaNavigationController(rootViewController: vc)
+//
+//            }else{
+//                window?.rootViewController = initTabBarController()
+//                sessionLogin()
+//            }
+//        }
+        
+    }
+    
+    
+    private func monitorNetwork(){
+//        let manager = BLNetworkReachabilityManager()
+//        manager?.listener = { status in
+//            switch status {
+//            case .unknown:
+//                MBProgressHUD.showTipMessageInWindow(message: "网络连接异常", hideDelay: 1.5)
+//                break
+//            case .notReachable:
+//                MBProgressHUD.showTipMessageInWindow(message: "无网络连接", hideDelay: 1.5)
+//                break
+//            case .reachable(.wwan):
+//                print("蜂窝网")
+//                break
+//            case .reachable(.ethernetOrWiFi):
+//                print("WIFI")
+//                break
+//            }
+//        }
+//        manager?.startListening()
+    }
+    
+    private func checkVesionUpdate(){
+//        let semaphore = DispatchSemaphore(value: 0)
+//        let url = URL(string: BalaUtil.share().getVersionUrl())!
+//        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+//        URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
+//            guard let strongSelf = self else { return }
+//            if let err: NSError = error as NSError?{
+//                if err.code == NSURLErrorNotConnectedToInternet{
+//                    strongSelf.launchNetworkNotReachable = true
+//                }else{
+//                    strongSelf.launchNetworkNotReachable = false
+//                }
+//
+//            }else{
+//                strongSelf.launchNetworkNotReachable = false
+//                if let responseData = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? [String : Any]{
+//
+//                    if let code = responseData["code"] as? String{
+//                        if code == "0000"{
+//                            if let dic = responseData["data"] as? [String:Any]{
+//                                strongSelf.vm = Version(fromDictionary: dic)
+//                            }
+//                        }
+//                    }
+//
+//                }
+//
+//            }
+//            semaphore.signal()
+//        }).resume()
+//        _ = semaphore.wait(timeout: .distantFuture)
+        
+    }
+
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        if url.absoluteString.hasPrefix(BalaUtil.share().getAppScheme()) {
+//            if url.host == "idresponse"{
+//                if let query = url.query{
+//                    let dic = NSString.dictionary(fromUrlQueryString: query)
+//                    if let idStr = dic["id"] as? String{
+//                        BalaUtil.share().saveDeviceId(idStr)
+//                    }
+//                    if let maStr = dic["ma"] as? String{
+//                        BalaUtil.share().saveDeviceMA(maStr)
+//                    }
+//
+//                }
+//            }
+//            return true
+//        }else{
+//            if WXApi.handleOpen(url, delegate: self) {
+//                return true
+//            }
+//            if TencentOAuth.canHandleOpen(url) {
+//                return TencentOAuth.handleOpen(url)
+//            }
+//            return false
+//        }
+//    }
+    
+//
+//    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+//        if userActivity.activityType != NSUserActivityTypeBrowsingWeb || userActivity.webpageURL == nil {
+//            return false
+//        }
+//        if let urlString = userActivity.webpageURL?.absoluteString {
+//            if urlString.hasPrefix(kWeChatUniversalLink + kWeChatAppId) {
+//                return WXApi.handleOpenUniversalLink(userActivity, delegate: self)
+//            }else if urlString.hasPrefix(kQQUniversalLink){
+//                if TencentOAuth.canHandleUniversalLink(userActivity.webpageURL) {
+//                    return TencentOAuth.handleUniversalLink(userActivity.webpageURL)
+//                }
+//                
+//            }
+//        }
+//        return true
+//    }
+
 
 }
+
+
+extension AppDelegate : UNUserNotificationCenterDelegate{
+    
+    /*
+    收到通知时，在不同的状态在点击通知栏的通知时所调用的方法不同。未启动时，点击通知的回调方法是：
+    
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+    
+    而对应的通知内容则为
+    
+    NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    当pushNotificationKey为nil时，说明用户是直接点击APP进入的，如果点击的是通知栏，那么即为对应的通知内容。
+    */
+    
+    func configUPush(options: [UIApplication.LaunchOptionsKey: Any]?) {
+        // Push组件基本功能配置
+        let entity = UMessageRegisterEntity()
+        //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
+        entity.types = Int(UMessageAuthorizationOptions.badge.rawValue|UMessageAuthorizationOptions.sound.rawValue|UMessageAuthorizationOptions.alert.rawValue)
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+        } else {
+            // Fallback on earlier versions
+        }
+        UMessage.registerForRemoteNotifications(launchOptions: options, entity: entity) { (granted, error) in
+            if (granted) {
+            }else{
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        UMessage.registerDeviceToken(deviceToken)
+        var token: String!
+        if #available(iOS 13.0, *){
+            token = deviceToken.reduce("", {$0 + String(format: "%02x", $1)})
+        }else{
+            token = deviceToken.description.replacingOccurrences(of: "<", with: "").replacingOccurrences(of: ">", with: "").replacingOccurrences(of: " ", with: "")
+        }
+        print("######"+token)
+        BalaUtil.share().saveDeviceToken(token)
+        
+    }
+    
+    //iOS10新增：处理前台收到通知的代理方法
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        if let trigger = notification.request.trigger, trigger.isKind(of: UNPushNotificationTrigger.self){
+            //应用处于前台时的远程推送接受
+            //关闭U-Push自带的弹出框
+            UMessage.setAutoAlert(false)
+            //必须加这句代码
+            UMessage.didReceiveRemoteNotification(notification.request.content.userInfo)
+        }else{
+            //应用处于前台时的本地推送接受
+        }
+        
+        completionHandler([.sound,.badge,.alert])
+        
+    }
+    
+    //iOS10新增：处理后台点击通知的代理方法
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if let trigger = response.notification.request.trigger, trigger.isKind(of: UNPushNotificationTrigger.self) {
+            let userInfo = response.notification.request.content.userInfo
+            //应用处于后台时的远程推送接受
+            //必须加这句代码
+            UMessage.didReceiveRemoteNotification(userInfo)
+            if let info = userInfo as? [String : Any] {
+                receivePush(userInfo: info)
+            }
+        }else{
+            //应用处于后台时的本地推送接受
+        }
+    }
+    
+    func receivePush(userInfo : [String : Any]) {
+        if let url = userInfo["openUrl"] as? String {
+            BalaUtil.share().pushUrl = url
+            BalaUtil.share().needJump = true
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "JumpToPushPageNotification"), object: nil)
+        }
+    }
+}
+
+extension AppDelegate : WXApiDelegate{
+    
+    func onReq(_ req: BaseReq) {
+        
+    }
+    
+    func onResp(_ resp: BaseResp) {
+        if resp.isMember(of: SendAuthResp.self) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kWxAuthRespNotification"), object: nil, userInfo: ["resp":resp])
+        }
+    }
+    
+}
+
+extension AppDelegate : TencentSessionDelegate{
+    
+    func tencentDidLogin() {
+        
+    }
+    
+    func tencentDidNotLogin(_ cancelled: Bool) {
+        
+    }
+    
+    func tencentDidNotNetWork() {
+        
+    }
+    
+}
+
 
