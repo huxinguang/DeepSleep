@@ -11,6 +11,9 @@ import CoreData
 import AVFoundation
 import Alamofire
 
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -155,57 +158,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func monitorNetwork(){
-//        let manager = BLNetworkReachabilityManager()
-//        manager?.listener = { status in
-//            switch status {
-//            case .unknown:
-//                MBProgressHUD.showTipMessageInWindow(message: "网络连接异常", hideDelay: 1.5)
-//                break
-//            case .notReachable:
-//                MBProgressHUD.showTipMessageInWindow(message: "无网络连接", hideDelay: 1.5)
-//                break
-//            case .reachable(.wwan):
-//                print("蜂窝网")
-//                break
-//            case .reachable(.ethernetOrWiFi):
-//                print("WIFI")
-//                break
-//            }
-//        }
-//        manager?.startListening()
+        let manager = BLNetworkReachabilityManager()
+        manager.setReachabilityStatusChange { (status) in
+            switch status{
+            case .unknown:
+                BLProgressHUD.showTipInView(withMessage: "网络连接异常", hideDelay: 1.5)
+            case .notReachable:
+                BLProgressHUD.showTipInView(withMessage: "无网络连接", hideDelay: 1.5)
+            case .reachableViaWiFi,.reachableViaWWAN:
+                break
+            default:
+                break
+            }
+        }
+        manager.startMonitoring()
     }
     
     private func checkVesionUpdate(){
-//        let semaphore = DispatchSemaphore(value: 0)
-//        let url = URL(string: BalaUtil.share().getVersionUrl())!
-//        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-//        URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
-//            guard let strongSelf = self else { return }
-//            if let err: NSError = error as NSError?{
-//                if err.code == NSURLErrorNotConnectedToInternet{
-//                    strongSelf.launchNetworkNotReachable = true
-//                }else{
-//                    strongSelf.launchNetworkNotReachable = false
-//                }
-//
-//            }else{
-//                strongSelf.launchNetworkNotReachable = false
-//                if let responseData = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? [String : Any]{
-//
-//                    if let code = responseData["code"] as? String{
-//                        if code == "0000"{
-//                            if let dic = responseData["data"] as? [String:Any]{
-//                                strongSelf.vm = Version(fromDictionary: dic)
-//                            }
-//                        }
-//                    }
-//
-//                }
-//
-//            }
-//            semaphore.signal()
-//        }).resume()
-//        _ = semaphore.wait(timeout: .distantFuture)
+        let semaphore = DispatchSemaphore(value: 0)
+        let url = URL(string: BalaUtil.share().getVersionUrl())!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
+            guard let strongSelf = self else { return }
+            if let err: NSError = error as NSError?{
+                if err.code == NSURLErrorNotConnectedToInternet{
+                    strongSelf.launchNetworkNotReachable = true
+                }else{
+                    strongSelf.launchNetworkNotReachable = false
+                }
+
+            }else{
+                strongSelf.launchNetworkNotReachable = false
+                if let responseData = try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves) as? [String : Any]{
+
+                    if let code = responseData["code"] as? String{
+                        if code == "0000"{
+                            if let dic = responseData["data"] as? [String:Any]{
+                                strongSelf.vm = Version(fromDictionary: dic)
+                            }
+                        }
+                    }
+
+                }
+
+            }
+            semaphore.signal()
+        }).resume()
+        _ = semaphore.wait(timeout: .distantFuture)
         
     }
 
