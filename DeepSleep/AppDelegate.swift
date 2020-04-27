@@ -12,14 +12,14 @@ import AVFoundation
 import Alamofire
 
 private let kUMPushAppkey = "5ea160dc0cafb2bf7a0002e2"
-private let kWeChatAppId = "wx27bb6ee7893db79b"
+private let kWeChatAppId = "wx593852abe2d209eb"
 private let kWeChatAppSecret = "97deb4a45abb27e9b972adbf734fc86a"
-private let kWeChatUniversalLink = "https://www.balamoney.com/eternallyclassics/"
+private let kWeChatUniversalLink = "https://www.balamoney.com/sleeptunes/"
 //港盒礼尚
 
-private let kQQAppId = "101873120"
-private let kQQAppKey = "b3b1363ea0693f1a912ac0f48f3fa98c"
-private let kQQUniversalLink = "https://www.balamoney.com/qq_conn/101873120"
+private let kQQAppId = "101865893"
+private let kQQAppKey = "d2083c2d20d6748ed3634c3a377ce580"
+private let kQQUniversalLink = "https://www.balamoney.com/qq_conn/101865893"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,13 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public var vm: Version!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        BalaUtil.share().getRequiredParams()
+        UMConfigure.initWithAppkey(kUMPushAppkey, channel: "App Store")
+        WXApi.registerApp(kWeChatAppId, universalLink: kWeChatUniversalLink)
+        self.qqOAuth = TencentOAuth(appId: kQQAppId, andUniversalLink: kQQUniversalLink, andDelegate: self)
+        configUPush(options: launchOptions)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
-        
         window?.makeKeyAndVisible()
         
+        startApp()
+        monitorNetwork()
         
-        /*
+        
+        /*b
          You can interact with the audio session throughout your app’s life cycle, but it’s often useful to perform this configuration at app launch
          Most apps only need to set the category once, at launch, but you can change the category as often as you need to. You can change it while the audio session is active; however, it’s generally preferable to deactivate your audio session before changing the category or other session properties. Making these changes while the session is deactivated prevents unnecessary reconfigurations of the audio system.
          
@@ -140,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkVesionUpdate()
         if launchNetworkNotReachable {
             let vc = NoNetworkVC()
-            vc.refreshBlock = { [weak self] in
+            vc.block = { [weak self] in
                 guard let strongSelf = self else {return}
                 strongSelf.startApp()
             }

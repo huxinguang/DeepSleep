@@ -28,6 +28,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -56,5 +57,86 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>LSApplicationQueriesSchemes</key>
+       <array>
+           <string>taobao</string>
+           <string>wechat</string>
+           <string>weixin</string>
+           <string>weixinULAPI</string>
+           <string>tim</string>
+           <string>mqq</string>
+           <string>mqqapi</string>
+           <string>mqqbrowser</string>
+           <string>mttbrowser</string>
+           <string>mqqOpensdkSSoLogin</string>
+           <string>mqqopensdkapiV2</string>
+           <string>mqqopensdkapiV4</string>
+           <string>mqzone</string>
+           <string>mqzoneopensdk</string>
+           <string>mqzoneopensdkapi</string>
+           <string>mqzoneopensdkapi19</string>
+           <string>mqzoneopensdkapiV2</string>
+           <string>mqqopensdkfriend</string>
+           <string>mqqopensdkavatar</string>
+           <string>mqqopensdkminiapp</string>
+           <string>mqqopensdkdataline</string>
+           <string>mqqgamebindinggroup</string>
+           <string>mqqopensdkgrouptribeshare</string>
+           <string>tencentapi.qq.reqContent</string>
+           <string>tencentapi.qzone.reqContent</string>
+           <string>mqqthirdappgroup</string>
+           <string>mqqopensdklaunchminiapp</string>
+       </array>
+       <key>CFBundleAllowMixedLocalizations</key>
+       <true/>
+       <key>UIUserInterfaceStyle</key>
+       <string>Light</string>
+       <key>UIViewControllerBasedStatusBarAppearance</key>
+       <true/>
+       <key>CFBundleURLTypes</key>
+       <array>
+           <dict>
+               <key>CFBundleTypeRole</key>
+               <string>Editor</string>
+               <key>CFBundleURLName</key>
+               <string>com.jq.deepsleep</string>
+               <key>CFBundleURLSchemes</key>
+               <array>
+                   <string>sleeptunes</string>
+               </array>
+           </dict>
+           <dict>
+               <key>CFBundleTypeRole</key>
+               <string>Editor</string>
+               <key>CFBundleURLSchemes</key>
+               <array>
+                   <string>wx593852abe2d209eb</string>
+               </array>
+           </dict>
+           <dict>
+               <key>CFBundleTypeRole</key>
+               <string>Editor</string>
+               <key>CFBundleURLSchemes</key>
+               <array>
+                   <string>tencent101865893</string>
+               </array>
+           </dict>
+           <dict>
+               <key>CFBundleTypeRole</key>
+               <string>Editor</string>
+               <key>CFBundleURLSchemes</key>
+               <array>
+                   <string>QQ061259a5</string>
+               </array>
+           </dict>
+       </array>
+       <key>NSCameraUsageDescription</key>
+       <string>需要使用相机用于拍照</string>
+       <key>NSLocationWhenInUseUsageDescription</key>
+       <string>需要访问您的位置，用于获取wifi信息</string>
+       <key>NSPhotoLibraryAddUsageDescription</key>
+       <string>需要访问相册用于保存图片</string>
+       <key>NSPhotoLibraryUsageDescription</key>
+       <string>需要访问相册来选取照片</string>
 </dict>
 </plist>

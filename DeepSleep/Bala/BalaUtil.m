@@ -53,7 +53,7 @@ static BalaUtil *shareUtil = nil;
 }
 
 - (NSString *)getAppScheme{
-    return @"eternallyclassics://";
+    return @"sleeptunes://";
 }
 
 - (NSString *)getBundleId{
