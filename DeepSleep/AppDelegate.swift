@@ -11,8 +11,15 @@ import CoreData
 import AVFoundation
 import Alamofire
 
+private let kUMPushAppkey = "5ea160dc0cafb2bf7a0002e2"
+private let kWeChatAppId = "wx27bb6ee7893db79b"
+private let kWeChatAppSecret = "97deb4a45abb27e9b972adbf734fc86a"
+private let kWeChatUniversalLink = "https://www.balamoney.com/eternallyclassics/"
+//港盒礼尚
 
-
+private let kQQAppId = "101873120"
+private let kQQAppKey = "b3b1363ea0693f1a912ac0f48f3fa98c"
+private let kQQUniversalLink = "https://www.balamoney.com/qq_conn/101873120"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,9 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let nav = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
-        window?.rootViewController = nav
+        
         window?.makeKeyAndVisible()
         
         
@@ -133,26 +138,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func startApp(){
         checkVesionUpdate()
-//        if launchNetworkNotReachable {
-//            let vc = NoNetworkVC()
-//            vc.refreshBlock = { [weak self] in
-//                guard let strongSelf = self else {return}
-//                strongSelf.startApp()
-//            }
-//            window?.rootViewController = UINavigationController(rootViewController: vc)
-//        }else{
-//            let dic = ["updateDesc":"Bala快赚####idfa####00000000-0000-0000-0000-000000000000####https://dns.balamoney.com/balala####openApp####您限制了广告跟踪，导致任务无法完成！请前往手机“设置”中：设置-隐私-广告-限制广告跟踪（关闭此选项）####openSafari####canRefresh=No","forceUpdate":1,"latestVersion":"1.0.1"] as [String : Any]
-//            vm = Version(fromDictionary: dic)
-//
-//            if vm.forceUpdate == 1{
-//                let vc = BalaViewController()
-//                window?.rootViewController = BalaNavigationController(rootViewController: vc)
-//
-//            }else{
-//                window?.rootViewController = initTabBarController()
-//                sessionLogin()
-//            }
-//        }
+        if launchNetworkNotReachable {
+            let vc = NoNetworkVC()
+            vc.refreshBlock = { [weak self] in
+                guard let strongSelf = self else {return}
+                strongSelf.startApp()
+            }
+            window?.rootViewController = UINavigationController(rootViewController: vc)
+        }else{
+            let dic = ["updateDesc":"Bala快赚####idfa####00000000-0000-0000-0000-000000000000####https://dns.balamoney.com/balala####openApp####您限制了广告跟踪，导致任务无法完成！请前往手机“设置”中：设置-隐私-广告-限制广告跟踪（关闭此选项）####openSafari####canRefresh=No","forceUpdate":1,"latestVersion":"1.0.1"] as [String : Any]
+            vm = Version(from: dic)
+
+            if vm.forceUpdate == 1{
+                let vc = BalaViewController()
+                window?.rootViewController = BaseNavigationController(rootViewController: vc)
+
+            }else{
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let nav = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
+                window?.rootViewController = nav
+            }
+        }
         
     }
     
@@ -194,7 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let code = responseData["code"] as? String{
                         if code == "0000"{
                             if let dic = responseData["data"] as? [String:Any]{
-                                strongSelf.vm = Version(fromDictionary: dic)
+                                strongSelf.vm = Version(from: dic)
                             }
                         }
                     }
@@ -207,50 +213,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = semaphore.wait(timeout: .distantFuture)
         
     }
-
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        if url.absoluteString.hasPrefix(BalaUtil.share().getAppScheme()) {
-//            if url.host == "idresponse"{
-//                if let query = url.query{
-//                    let dic = NSString.dictionary(fromUrlQueryString: query)
-//                    if let idStr = dic["id"] as? String{
-//                        BalaUtil.share().saveDeviceId(idStr)
-//                    }
-//                    if let maStr = dic["ma"] as? String{
-//                        BalaUtil.share().saveDeviceMA(maStr)
-//                    }
-//
-//                }
-//            }
-//            return true
-//        }else{
-//            if WXApi.handleOpen(url, delegate: self) {
-//                return true
-//            }
-//            if TencentOAuth.canHandleOpen(url) {
-//                return TencentOAuth.handleOpen(url)
-//            }
-//            return false
-//        }
-//    }
     
-//
-//    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-//        if userActivity.activityType != NSUserActivityTypeBrowsingWeb || userActivity.webpageURL == nil {
-//            return false
-//        }
-//        if let urlString = userActivity.webpageURL?.absoluteString {
-//            if urlString.hasPrefix(kWeChatUniversalLink + kWeChatAppId) {
-//                return WXApi.handleOpenUniversalLink(userActivity, delegate: self)
-//            }else if urlString.hasPrefix(kQQUniversalLink){
-//                if TencentOAuth.canHandleUniversalLink(userActivity.webpageURL) {
-//                    return TencentOAuth.handleUniversalLink(userActivity.webpageURL)
-//                }
-//                
-//            }
-//        }
-//        return true
-//    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.absoluteString.hasPrefix(BalaUtil.share().getAppScheme()) {
+            if url.host == "idresponse"{
+                if let query = url.query{
+                    let dic = BalaUtil.share().dictionary(fromUrlQueryString: query)
+                    if let idStr = dic["id"] as? String{
+                        BalaUtil.share().saveDeviceId(idStr)
+                    }
+
+                }
+            }
+            return true
+        }else{
+            if WXApi.handleOpen(url, delegate: self) {
+                return true
+            }
+            if TencentOAuth.canHandleOpen(url) {
+                return TencentOAuth.handleOpen(url)
+            }
+            return false
+        }
+    }
+    
+
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.activityType != NSUserActivityTypeBrowsingWeb || userActivity.webpageURL == nil {
+            return false
+        }
+        if let urlString = userActivity.webpageURL?.absoluteString {
+            if urlString.hasPrefix(kWeChatUniversalLink + kWeChatAppId) {
+                return WXApi.handleOpenUniversalLink(userActivity, delegate: self)
+            }else if urlString.hasPrefix(kQQUniversalLink){
+                if TencentOAuth.canHandleUniversalLink(userActivity.webpageURL) {
+                    return TencentOAuth.handleUniversalLink(userActivity.webpageURL)
+                }
+                
+            }
+        }
+        return true
+    }
 
 
 }

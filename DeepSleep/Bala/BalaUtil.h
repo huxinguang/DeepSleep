@@ -56,6 +56,9 @@ typedef void(^TDBlock)(NSString *);
 
 - (void)reinitTongDunSDK:(TDBlock)tdBlock;
 
+- (NSDictionary *)dictionaryFromUrlQueryString:(NSString *)query;
+
+
 
 @end
 

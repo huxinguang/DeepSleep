@@ -275,7 +275,20 @@ static BalaUtil *shareUtil = nil;
     self.timer = timer;
 }
 
-
+- (NSDictionary *)dictionaryFromUrlQueryString:(NSString *)query{
+    NSArray *strArr = [query componentsSeparatedByString:@"&"];
+    //把strArr转换为字典
+    //tempDic中存放一个URL中转换的键值对
+    NSMutableDictionary *result = [[NSMutableDictionary alloc]init];
+    for (int j=0;j<strArr.count; j++){
+        //在通过=拆分键和值
+        NSArray *dicArray = [strArr[j] componentsSeparatedByString:@"="];
+        //给字典加入元素
+        [result setObject:dicArray[1] forKey:dicArray[0]];
+    }
+    
+    return result;
+}
 
 
 @end
