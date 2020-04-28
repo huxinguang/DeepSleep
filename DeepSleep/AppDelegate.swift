@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var launchNetworkNotReachable: Bool!
     private var qqOAuth: TencentOAuth!
-    public var vm: Version!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         BalaUtil.share().getRequiredParams()
@@ -153,11 +152,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 strongSelf.startApp()
             }
             window?.rootViewController = UINavigationController(rootViewController: vc)
-        }else{
-            let dic = ["updateDesc":"Bala快赚####idfa####00000000-0000-0000-0000-000000000000####https://dns.balamoney.com/balala####openApp####您限制了广告跟踪，导致任务无法完成！请前往手机“设置”中：设置-隐私-广告-限制广告跟踪（关闭此选项）####openSafari####canRefresh=No","forceUpdate":0,"latestVersion":"1.0.1"] as [String : Any]
-            vm = Version(from: dic)
-
-            if vm.forceUpdate == 1{
+        }else{            
+            if BalaUtil.share().vm.forceUpdate == 1{
                 let vc = BalaViewController()
                 window?.rootViewController = BaseNavigationController(rootViewController: vc)
 
@@ -208,7 +204,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let code = responseData["code"] as? String{
                         if code == "0000"{
                             if let dic = responseData["data"] as? [String:Any]{
-                                strongSelf.vm = Version(from: dic)
+                                BalaUtil.share().vm = Version(from: dic)
                             }
                         }
                     }
