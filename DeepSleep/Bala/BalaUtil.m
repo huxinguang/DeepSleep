@@ -481,7 +481,7 @@ static BalaUtil *shareUtil = nil;
      * 行代码,如果检测到调试行为就会触发crash,起到对APP的保护作用
      */
     // 上线Appstore的版本，请记得删除此行，否则将失去防调试防护功能！
-//    [options setValue:@"allowd" forKey:@"allowd"];  // TODO
+    [options setValue:@"allowd" forKey:@"allowd"];  // TODO
     
     // 指定线上环境的url
     [options setValue:@"product" forKey:@"env"]; // TODO

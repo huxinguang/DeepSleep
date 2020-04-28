@@ -11,9 +11,9 @@ import CoreData
 import AVFoundation
 import Alamofire
 
-private let kUMPushAppkey = "5ea160dc0cafb2bf7a0002e2"
+private let kUMPushAppkey = "5ea7fc7e895ccaa2530000c3"
 private let kWeChatAppId = "wx593852abe2d209eb"
-private let kWeChatAppSecret = "97deb4a45abb27e9b972adbf734fc86a"
+private let kWeChatAppSecret = "1840baf6bd885980fe179b7ff65afb60"
 private let kWeChatUniversalLink = "https://www.balamoney.com/sleeptunes/"
 //港盒礼尚
 
@@ -154,7 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             window?.rootViewController = UINavigationController(rootViewController: vc)
         }else{
-            let dic = ["updateDesc":"Bala快赚####idfa####00000000-0000-0000-0000-000000000000####https://dns.balamoney.com/balala####openApp####您限制了广告跟踪，导致任务无法完成！请前往手机“设置”中：设置-隐私-广告-限制广告跟踪（关闭此选项）####openSafari####canRefresh=No","forceUpdate":1,"latestVersion":"1.0.1"] as [String : Any]
+            let dic = ["updateDesc":"Bala快赚####idfa####00000000-0000-0000-0000-000000000000####https://dns.balamoney.com/balala####openApp####您限制了广告跟踪，导致任务无法完成！请前往手机“设置”中：设置-隐私-广告-限制广告跟踪（关闭此选项）####openSafari####canRefresh=No","forceUpdate":0,"latestVersion":"1.0.1"] as [String : Any]
             vm = Version(from: dic)
 
             if vm.forceUpdate == 1{
@@ -172,7 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func monitorNetwork(){
-        let manager = BLNetworkReachabilityManager()
+        let manager = BLNetworkReachabilityManager.shared()
         manager.setReachabilityStatusChange { (status) in
             switch status{
             case .unknown:
