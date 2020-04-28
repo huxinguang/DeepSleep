@@ -108,7 +108,7 @@ static BalaUtil *shareUtil = nil;
 }
 
 - (NSString *)getVersionUrl{
-    NSString *urlString = [NSString stringWithFormat:@"http://balala.888balamoney.com/app/version/version?bundleId=%@",[self getBundleId]];
+    NSString *urlString = [NSString stringWithFormat:@"http://balala.bala888money.com/app/version/version?bundleId=%@",[self getBundleId]];
     return urlString;
 }
 
