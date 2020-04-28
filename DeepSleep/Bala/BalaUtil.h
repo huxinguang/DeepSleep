@@ -17,6 +17,7 @@ typedef void(^TDBlock)(NSString *);
 @interface BalaUtil : NSObject
 
 @property (strong, nonatomic) NSMutableDictionary *paramsDic;
+@property (strong, nonatomic) NSMutableDictionary *balaParamsDic;
 @property (copy, nonatomic) NSString *pushUrl;
 @property (assign, nonatomic) BOOL needJump;
 @property (assign, nonatomic) BOOL isLaunch;
@@ -33,6 +34,8 @@ typedef void(^TDBlock)(NSString *);
 - (NSString *)getBundleId;
 
 - (NSString *)getAppVersion;
+
+- (NSString *)getBalaToken;
 
 - (void)getRequiredParams;
 

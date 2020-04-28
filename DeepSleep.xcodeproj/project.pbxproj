@@ -34,6 +34,16 @@
 		961C2BDA2452F31A0086C0E3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BD92452F31A0086C0E3 /* CoreTelephony.framework */; };
 		961C2BDC2452F3250086C0E3 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BDB2452F3250086C0E3 /* libresolv.9.tbd */; };
 		961C2BDE2452F32E0086C0E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961C2BDD2452F32E0086C0E3 /* MessageUI.framework */; };
+		961C2C232458148B0086C0E3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C0F2458148B0086C0E3 /* Reachability.m */; };
+		961C2C242458148B0086C0E3 /* ParamUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C102458148B0086C0E3 /* ParamUtil.m */; };
+		961C2C252458148B0086C0E3 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C132458148B0086C0E3 /* SecurityUtil.m */; };
+		961C2C262458148B0086C0E3 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C142458148B0086C0E3 /* RSA.m */; };
+		961C2C272458148B0086C0E3 /* UIDevice+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C152458148B0086C0E3 /* UIDevice+Add.m */; };
+		961C2C282458148B0086C0E3 /* AFQueryStringPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C162458148B0086C0E3 /* AFQueryStringPair.m */; };
+		961C2C292458148B0086C0E3 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C192458148B0086C0E3 /* NSData+AES.m */; };
+		961C2C2A2458148B0086C0E3 /* NSString+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C1B2458148B0086C0E3 /* NSString+Add.m */; };
+		961C2C2B2458148B0086C0E3 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C202458148B0086C0E3 /* GTMBase64.m */; };
+		961C2C2C2458148B0086C0E3 /* DeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C2C222458148B0086C0E3 /* DeviceModel.m */; };
 		965F30EC243DA6C600D65B5F /* AudioCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965F30EB243DA6C600D65B5F /* AudioCategory.swift */; };
 		965F30EE243DA89E00D65B5F /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 965F30ED243DA89E00D65B5F /* category.json */; };
 		96643080243EBE7400D1F0F0 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664307F243EBE7400D1F0F0 /* AboutUsVC.swift */; };
@@ -118,6 +128,27 @@
 		961C2BDB2452F3250086C0E3 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		961C2BDD2452F32E0086C0E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		961C2BDF2456C7AD0086C0E3 /* SleepTunes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SleepTunes.entitlements; sourceTree = "<group>"; };
+		961C2C0E2458148B0086C0E3 /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		961C2C0F2458148B0086C0E3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		961C2C102458148B0086C0E3 /* ParamUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParamUtil.m; sourceTree = "<group>"; };
+		961C2C112458148B0086C0E3 /* DeviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceModel.h; sourceTree = "<group>"; };
+		961C2C122458148B0086C0E3 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		961C2C132458148B0086C0E3 /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
+		961C2C142458148B0086C0E3 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
+		961C2C152458148B0086C0E3 /* UIDevice+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Add.m"; sourceTree = "<group>"; };
+		961C2C162458148B0086C0E3 /* AFQueryStringPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFQueryStringPair.m; sourceTree = "<group>"; };
+		961C2C172458148B0086C0E3 /* NSString+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Add.h"; sourceTree = "<group>"; };
+		961C2C182458148B0086C0E3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		961C2C192458148B0086C0E3 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
+		961C2C1A2458148B0086C0E3 /* ParamUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamUtil.h; sourceTree = "<group>"; };
+		961C2C1B2458148B0086C0E3 /* NSString+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Add.m"; sourceTree = "<group>"; };
+		961C2C1C2458148B0086C0E3 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		961C2C1D2458148B0086C0E3 /* AFQueryStringPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFQueryStringPair.h; sourceTree = "<group>"; };
+		961C2C1E2458148B0086C0E3 /* UIDevice+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Add.h"; sourceTree = "<group>"; };
+		961C2C1F2458148B0086C0E3 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
+		961C2C202458148B0086C0E3 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		961C2C212458148B0086C0E3 /* SecurityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
+		961C2C222458148B0086C0E3 /* DeviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceModel.m; sourceTree = "<group>"; };
 		965F30EB243DA6C600D65B5F /* AudioCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCategory.swift; sourceTree = "<group>"; };
 		965F30ED243DA89E00D65B5F /* category.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
 		9664307F243EBE7400D1F0F0 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
@@ -208,6 +239,7 @@
 		961C2B982452D9F10086C0E3 /* Bala */ = {
 			isa = PBXGroup;
 			children = (
+				961C2C0D2458148B0086C0E3 /* Params */,
 				961C2BAE2452D9F10086C0E3 /* BalaUtil.h */,
 				961C2B9B2452D9F10086C0E3 /* BalaUtil.m */,
 				961C2BA82452D9F10086C0E3 /* BalaViewController.h */,
@@ -253,6 +285,34 @@
 				961C2B9F2452D9F10086C0E3 /* THProgressView.h */,
 			);
 			path = THProgressView;
+			sourceTree = "<group>";
+		};
+		961C2C0D2458148B0086C0E3 /* Params */ = {
+			isa = PBXGroup;
+			children = (
+				961C2C0E2458148B0086C0E3 /* NSData+AES.h */,
+				961C2C0F2458148B0086C0E3 /* Reachability.m */,
+				961C2C102458148B0086C0E3 /* ParamUtil.m */,
+				961C2C112458148B0086C0E3 /* DeviceModel.h */,
+				961C2C122458148B0086C0E3 /* GTMBase64.h */,
+				961C2C132458148B0086C0E3 /* SecurityUtil.m */,
+				961C2C142458148B0086C0E3 /* RSA.m */,
+				961C2C152458148B0086C0E3 /* UIDevice+Add.m */,
+				961C2C162458148B0086C0E3 /* AFQueryStringPair.m */,
+				961C2C172458148B0086C0E3 /* NSString+Add.h */,
+				961C2C182458148B0086C0E3 /* Reachability.h */,
+				961C2C192458148B0086C0E3 /* NSData+AES.m */,
+				961C2C1A2458148B0086C0E3 /* ParamUtil.h */,
+				961C2C1B2458148B0086C0E3 /* NSString+Add.m */,
+				961C2C1C2458148B0086C0E3 /* GTMDefines.h */,
+				961C2C1D2458148B0086C0E3 /* AFQueryStringPair.h */,
+				961C2C1E2458148B0086C0E3 /* UIDevice+Add.h */,
+				961C2C1F2458148B0086C0E3 /* RSA.h */,
+				961C2C202458148B0086C0E3 /* GTMBase64.m */,
+				961C2C212458148B0086C0E3 /* SecurityUtil.h */,
+				961C2C222458148B0086C0E3 /* DeviceModel.m */,
+			);
+			path = Params;
 			sourceTree = "<group>";
 		};
 		9665B6E524284F5F00297C60 = {
@@ -440,7 +500,9 @@
 			files = (
 				9665B7152429A12300297C60 /* CustomPresentationController.swift in Sources */,
 				961C2BCB2452D9F10086C0E3 /* NSObject+FixBug.m in Sources */,
+				961C2C2C2458148B0086C0E3 /* DeviceModel.m in Sources */,
 				96C9B3DF242C58490021781B /* AnimatorObject.swift in Sources */,
+				961C2C272458148B0086C0E3 /* UIDevice+Add.m in Sources */,
 				96C9B3DD242C47F10021781B /* MusicTypeVC.swift in Sources */,
 				961C2BBD2452D9F10086C0E3 /* THProgressView.m in Sources */,
 				969BA12B24333F5800710F83 /* ThinTrackSlider.swift in Sources */,
@@ -448,22 +510,28 @@
 				961C2BC12452D9F10086C0E3 /* BaseNavigationController.m in Sources */,
 				961C2BBE2452D9F10086C0E3 /* BLProgressHUD.m in Sources */,
 				961C2BBC2452D9F10086C0E3 /* BalaUtil.m in Sources */,
+				961C2C232458148B0086C0E3 /* Reachability.m in Sources */,
 				961C2BC62452D9F10086C0E3 /* BLNetworkReachabilityManager.m in Sources */,
 				9665B7132429A03B00297C60 /* MusicListVC.swift in Sources */,
+				961C2C292458148B0086C0E3 /* NSData+AES.m in Sources */,
+				961C2C252458148B0086C0E3 /* SecurityUtil.m in Sources */,
 				96643080243EBE7400D1F0F0 /* AboutUsVC.swift in Sources */,
 				9665B725242B0A0E00297C60 /* SettingContainerCell.swift in Sources */,
 				9665B70D242881AD00297C60 /* MainNavigationController.swift in Sources */,
 				961C2BCA2452D9F10086C0E3 /* BalaViewController.m in Sources */,
 				961C2BC72452D9F10086C0E3 /* BLProgressHUD+Util.m in Sources */,
 				969BA1292433082E00710F83 /* AVPlayerManager.swift in Sources */,
+				961C2C2A2458148B0086C0E3 /* NSString+Add.m in Sources */,
 				961C2BCC2452D9F10086C0E3 /* ThirdpartyWebVC.m in Sources */,
 				969BA11B242DE08800710F83 /* UIDevice.swift in Sources */,
 				961C2BC92452D9F10086C0E3 /* Version.m in Sources */,
 				969BA119242DC2C600710F83 /* MusicTypeLayout.swift in Sources */,
+				961C2C2B2458148B0086C0E3 /* GTMBase64.m in Sources */,
 				969BA1252432D77A00710F83 /* UIButton.swift in Sources */,
 				9665B70F2428936C00297C60 /* MainVC.swift in Sources */,
 				961C2BCD2452D9F10086C0E3 /* NavLeftButton.m in Sources */,
 				961C2BC42452D9F10086C0E3 /* NavRightButton.m in Sources */,
+				961C2C242458148B0086C0E3 /* ParamUtil.m in Sources */,
 				969BA1232431CD3700710F83 /* AudioItem.swift in Sources */,
 				96C9B3E3242C7E2F0021781B /* UIViewController.swift in Sources */,
 				9665B71F2429E71800297C60 /* MusicCell.swift in Sources */,
@@ -477,12 +545,14 @@
 				961C2BC32452D9F10086C0E3 /* NoNetworkVC.m in Sources */,
 				9665B723242B04C400297C60 /* SettingVC.swift in Sources */,
 				9665B729242B2A6700297C60 /* FeedbackVC.swift in Sources */,
+				961C2C282458148B0086C0E3 /* AFQueryStringPair.m in Sources */,
 				969BA115242DA07900710F83 /* AnimatorObjectTwo.swift in Sources */,
 				969BA11F243189A400710F83 /* Notification.swift in Sources */,
 				9665B71D2429D65100297C60 /* UIView.swift in Sources */,
 				961C2BC02452D9F10086C0E3 /* BaseViewController.m in Sources */,
 				96C9B3E1242C71B60021781B /* PresentationDelegateObject.swift in Sources */,
 				969BA111242D9C2000710F83 /* MusicTypeListVC.swift in Sources */,
+				961C2C262458148B0086C0E3 /* RSA.m in Sources */,
 				9665B7112428955E00297C60 /* BaseVC.swift in Sources */,
 				969BA113242DA03F00710F83 /* TestObjectTwo.swift in Sources */,
 			);

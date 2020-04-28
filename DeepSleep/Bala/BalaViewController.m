@@ -168,6 +168,7 @@
         [configuration.userContentController addScriptMessageHandler:self name:@"getWxCode"];
         [configuration.userContentController addScriptMessageHandler:self name:@"canOpenApp"];
         [configuration.userContentController addScriptMessageHandler:self name:@"checkInstallation"];
+        [configuration.userContentController addScriptMessageHandler:self name:@"getBalaToken"];
         
         _webView = [[WKWebView alloc]initWithFrame:CGRectZero configuration:configuration];
         _webView.backgroundColor = [UIColor whiteColor];
@@ -473,6 +474,11 @@
         [dic setObject:[[UIApplication sharedApplication]canOpenURL:[NSURL URLWithString:@"mqq://"]] ? @"1" : @"0" forKey:@"qq"];
         [dic setObject:[[UIApplication sharedApplication]canOpenURL:[NSURL URLWithString:@"taobao://"]] ? @"1" : @"0" forKey:@"taobao"];
         NSString *jsonString = [self jsonStringFromDictionary:dic];
+        [self jsCallBack:jsFunctionString paramStr:jsonString];
+    }else if ([message.name isEqualToString:@"getBalaToken"]){
+        NSDictionary *jsData = message.body;
+        NSString *jsFunctionString = jsData[@"result"];
+        NSString *jsonString = [self jsonStringFromDictionary:@{@"data":[[BalaUtil share] getBalaToken]}];
         [self jsCallBack:jsFunctionString paramStr:jsonString];
     }
     
